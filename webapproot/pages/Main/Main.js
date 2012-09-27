@@ -25,5 +25,15 @@ dojo.declare("Main", wm.Page, {
           this.logoutButton.show();
       }
     },
-  _end: 0
+  backButtonClick: function(inSender) {
+        if (app.historyVar.getCount() > 1) {
+            this.pageContainer1.page.priorQuestion();
+        } else {
+            this.mainMenuLayer.activate();
+        }
+    },
+    layers1Change: function(inSender, inIndex) {
+        this.backButton.setDisabled(inIndex === 0);
+    },
+    _end: 0
 });

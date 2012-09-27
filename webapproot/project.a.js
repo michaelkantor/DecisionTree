@@ -508,6 +508,7 @@ dojo.declare("DecisionTree", wm.Application, {
 
 DecisionTree.extend({
      announcePath: function() {
+         var path = [];
           var historyCount = app.historyVar.getCount();
           for (var i = 0; i < historyCount; i++) {
               var currentItem = app.historyVar.getItem(i);              
@@ -528,7 +529,6 @@ DecisionTree.extend({
           app.alert(html); 
     },
 	takePictureSVarSuccess: function(inSender, inDeprecated) {
-        alert("Picture taken");
       this.announcePath(inSender.getValue("dataValue"));
     },
   _end: 0
