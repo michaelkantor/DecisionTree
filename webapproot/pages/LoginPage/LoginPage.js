@@ -1,4 +1,5 @@
 dojo.declare("LoginPage", wm.Page, {
+	"preferredDevice": "phone",
     start: function() {    
         var data = app.phonegapCredentialsVar.getData();        
         if (data && data.name) {
@@ -17,7 +18,6 @@ dojo.declare("LoginPage", wm.Page, {
                                                dataValue: data.objectId}); // datavalue is the userID
             dojo.cookie("sessionToken", data.sessionToken);
             //app.alert("sessionToken of " + data.sessionToken + " saved");
-            main.pageContainer1.setPageName("QuestionPage");
       } else {
           this.parseLoginSVarError(inSender, "");
       }
@@ -25,8 +25,7 @@ dojo.declare("LoginPage", wm.Page, {
     },
 
   parseLoginSVarError: function(inSender, inError) {
-      alert("ERROR");
-              app.toastWarning("Username and password were not validated:" + inError);
+              app.toastWarning("Username and password were not validated");
 
     },
   showRegistrationForm: function() {
