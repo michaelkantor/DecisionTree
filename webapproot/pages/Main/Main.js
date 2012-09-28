@@ -1,5 +1,10 @@
 dojo.declare("Main", wm.Page, {
 	"preferredDevice": "phone",
+    diagnosis: {
+        DispositionNextDay: "Hey ho",
+        DispositionUrgentCare: "Ho Hum",
+        DispositionHomeCare: "Home boy"
+    },
     start: function() {
             if (wm.device == "desktop") {
                window.location.search = djConfig.isDebug ? "?debug&wmmobile=tablet" : "?wmmobile=tablet";
@@ -26,14 +31,23 @@ dojo.declare("Main", wm.Page, {
       }
     },
   backButtonClick: function(inSender) {
-        if (app.historyVar.getCount() > 1) {
+      if (this.endLayer.isActive()) {
+          this.mainMenuVar.activate();
+       } else if (app.historyVar.getCount() > 2) {
             this.pageContainer1.page.priorQuestion();
-        } else {
+       } else {
             this.mainMenuLayer.activate();
-        }
+       }
     },
     layers1Change: function(inSender, inIndex) {
         this.backButton.setDisabled(inIndex === 0);
+    },
+    endLayerShow: function(inSender) {
+        var diagnosisId;
+        for (var i = app.historyVar.getCount() -1; !diagnosisId && i >= 0; i--) {
+            diagnosisId = app.historyVar.getItem(i).getValue("actionCode");
+        }
+        this.endHtml.setHtml("<div class='Complaint'>Complaint: " + this.mainMenuList.selectedItem.getValue("name") + "</div><hr/><div class='Diagnosis'>" + this.diagnosis[diagnosisId] + "</div>");
     },
     _end: 0
 });

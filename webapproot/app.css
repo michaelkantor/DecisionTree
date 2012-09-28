@@ -9,3 +9,30 @@ background: -ms-linear-gradient(top, #aaaaaa 0%,#555555 18%,#555555 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aaaaaa', endColorstr='#555555',GradientType=0);
 
 }
+
+
+.curvedlist .wmlist-item, .inputPanel, .Question, .Answer {
+    color: black !important;
+    background: -webkit-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#dcdbcf), to(#b2b2aa));
+    background: -moz-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
+    background: -ms-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
+    background: -o-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
+}
+div .Answer {
+    background: -webkit-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#F8F8A5), to(#D1CA76));    
+    background: -moz-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);
+    background: -ms-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);
+    background: -o-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);
+}
+.Question, .Answer {
+   padding: 10px 15px;   
+   border: solid 1px #333;
+   border-radius: 4px;
+   -webkit-border-radius: 4px;
+} .NoSizeNode .wmSizeNode {
+     display: block;
+} .NoSizeNode .wmSizeNode {
+     display: block;
+}

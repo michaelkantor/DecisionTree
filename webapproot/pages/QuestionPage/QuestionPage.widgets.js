@@ -12,26 +12,52 @@ QuestionPage.widgets = {
 			}]
 		}]
 	}],
-	createSessionSVar: ["wm.ServiceVariable", {"operation":"parse.com.CreateSession","service":"xhrService","startUpdate":true}, {"onSuccess":"createSessionSVarSuccess"}, {
+	createSessionSVar: ["wm.ServiceVariable", {"operation":"parse.com.CreateSession","service":"xhrService"}, {"onSuccess":"createSessionSVarSuccess"}, {
 		input: ["wm.ServiceInput", {"type":"parse.com.CreateSessionInputs"}, {}, {
 			binding: ["wm.Binding", {}, {}, {
 				wire: ["wm.Wire", {"expression":"\"QS1yDzKQNakBesD2zm8QbYKZKNcCHhF3II7IFBhr\"","targetProperty":"X-Parse-Application-Id"}, {}],
 				wire1: ["wm.Wire", {"expression":"\"nkRl8lPEzOH3jtZVJJE2AA0oZVj6t1jZclZSYRyC\"","targetProperty":"X-Parse-REST-API-Key"}, {}],
 				wire2: ["wm.Wire", {"expression":undefined,"source":"app.phonegapCredentialsVar.dataValue","targetProperty":"patient.objectId"}, {}],
 				wire3: ["wm.Wire", {"expression":"\"Pointer\"","targetProperty":"patient.__type"}, {}],
-				wire4: ["wm.Wire", {"expression":"\"_User\"","targetProperty":"patient.className"}, {}]
+				wire4: ["wm.Wire", {"expression":"\"_User\"","targetProperty":"patient.className"}, {}],
+				wire5: ["wm.Wire", {"expression":undefined,"source":"parseUserPointer","targetProperty":"patient"}, {}],
+				wire6: ["wm.Wire", {"expression":"\"test\"","targetProperty":"notes"}, {}],
+				wire7: ["wm.Wire", {"expression":"\"none\"","targetProperty":"modelDiagnosis"}, {}],
+				wire8: ["wm.Wire", {"expression":"\"none\"","targetProperty":"intermediateDiagnosis"}, {}],
+				wire9: ["wm.Wire", {"expression":"\"none\"","targetProperty":"finalDiagnosis"}, {}],
+				wire10: ["wm.Wire", {"expression":"1","targetProperty":"score"}, {}]
 			}]
 		}]
 	}],
-	addMessagesToSessionSVar: ["wm.ServiceVariable", {"operation":"parse.com.AddMessageToSession","service":"xhrService"}, {}, {
+	addMessagesToSessionSVar: ["wm.ServiceVariable", {"inFlightBehavior":"executeAll","operation":"parse.com.AddMessageToSession","service":"xhrService"}, {}, {
 		input: ["wm.ServiceInput", {"type":"parse.com.AddMessageToSessionInputs"}, {}, {
 			binding: ["wm.Binding", {}, {}, {
 				wire: ["wm.Wire", {"expression":"\"QS1yDzKQNakBesD2zm8QbYKZKNcCHhF3II7IFBhr\"","targetProperty":"X-Parse-Application-Id"}, {}],
 				wire1: ["wm.Wire", {"expression":"\"nkRl8lPEzOH3jtZVJJE2AA0oZVj6t1jZclZSYRyC\"","targetProperty":"X-Parse-REST-API-Key"}, {}],
-				wire2: ["wm.Wire", {"expression":undefined,"source":"createSessionSVar.objectId","targetProperty":"objectId"}, {}]
+				wire2: ["wm.Wire", {"expression":undefined,"source":"createSessionSVar.objectId","targetProperty":"objectId"}, {}],
+				wire3: ["wm.Wire", {"expression":undefined,"source":"createSessionSVar.objectId","targetProperty":"GameScore"}, {}],
+				wire4: ["wm.Wire", {"expression":undefined,"source":"messageRelationshipVar","targetProperty":"messages"}, {}],
+				wire5: ["wm.Wire", {"expression":undefined,"source":"createSessionSVar.objectId","targetProperty":"Session"}, {}]
 			}]
 		}]
 	}],
+	parseUserPointer: ["wm.Variable", {"type":"parse.com.Pointer"}, {}, {
+		binding: ["wm.Binding", {}, {}, {
+			wire: ["wm.Wire", {"expression":"\"Pointer\"","targetProperty":"dataSet.__type"}, {}],
+			wire1: ["wm.Wire", {"expression":"\"_User\"","targetProperty":"dataSet.className"}, {}],
+			wire2: ["wm.Wire", {"expression":undefined,"source":"app.phonegapCredentialsVar.dataValue","targetProperty":"dataSet.objectId"}, {}]
+		}]
+	}],
+	createMessageSVar: ["wm.ServiceVariable", {"inFlightBehavior":"executeAll","operation":"parse.com.CreateMessage","service":"xhrService"}, {"onSuccess":"createMessageSVarSuccess"}, {
+		input: ["wm.ServiceInput", {"type":"parse.com.CreateMessageInputs"}, {}]
+	}],
+	messageRelationshipVar: ["wm.Variable", {"type":"parse.com.AddRelationshipType"}, {}, {
+		binding: ["wm.Binding", {}, {}, {
+			wire: ["wm.Wire", {"expression":undefined,"source":"messageRelationshipsObjectsVar","targetProperty":"dataSet.objects"}, {}],
+			wire1: ["wm.Wire", {"expression":"\"AddRelation\"","targetProperty":"dataSet.__op"}, {}]
+		}]
+	}],
+	messageRelationshipsObjectsVar: ["wm.Variable", {"isList":true,"type":"parse.com.AddRelationshipType.objects"}, {}],
 	layoutBox1: ["wm.Layout", {"autoScroll":false,"horizontalAlign":"left","verticalAlign":"top"}, {}, {
 		panel: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
 			historyList: ["wm.List", {"_classes":{"domNode":["curvedlist","MobileListStyle"]},"autoSizeHeight":true,"border":"0","columns":[{"show":false,"field":"picture","title":"Picture","width":"40px","align":"left","formatFunc":"wm_image_formatter","formatProps":{"prefix":"resources/images/","height":43},"expression":"","isCustomField":true,"mobileColumn":false},{"show":true,"field":"answer","title":"Answer","width":"100%","editorProps":{"restrictValues":true},"expression":"\n\nif (${question}) {\n\"<img class='Avatar' src='resources/images/doctorcroppedsmall.png'/><div class='Question'>\" + ${question} + \"</div>\";\n} else if (${answer}) {\n\"<img class='Avatar' src='resources/images/patientsmall.png'/><div class='Answer'>\" + ${answer} + \"</div>\";\n} else {\n  \"<img class='Avatar' src='resources/images/doctorcroppedsmall.png'/><img src='resources/images/spinner.gif' style='width:60%'>\";\n}","mobileColumn":false},{"show":false,"field":"question","title":"Question","width":"100%","mobileColumn":false},{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"","mobileColumn":false},{"show":false,"field":"actionCode","title":"ActionCode","width":"100%","align":"left","formatFunc":"","mobileColumn":false}],"headerVisible":false,"height":"4px","manageHistory":false,"margin":"0,2,2,2","minDesktopHeight":60,"renderVisibleRowsOnly":false,"styleAsGrid":false}, {"onSelect":"historyListSelect","onStyleRow":"historyListStyleRow"}, {
@@ -40,7 +66,7 @@ QuestionPage.widgets = {
 				}]
 			}],
 			answersLabel: ["wm.Label", {"caption":"Answers","height":"20px","padding":"4","width":"100%"}, {}],
-			responseList: ["wm.List", {"_classes":{"domNode":["AnswersMenu","MobileListStyle"]},"autoSizeHeight":true,"border":"0","columns":[{"show":true,"field":"answer","title":"Answer","width":"100%","mobileColumn":false},{"show":false,"field":"question","title":"Question","width":"100%","mobileColumn":false},{"show":false,"field":"MOBILE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>Answer: \" + ${answer} + \"</div>\"\n","isCustomField":true,"mobileColumn":false},{"show":false,"field":"actionCode","title":"ActionCode","width":"100%","displayType":"String","align":"left","formatFunc":""},{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>Answer: \" + ${answer} + \"</div>\"\n","mobileColumn":true}],"headerVisible":false,"height":"139px","margin":"0,20,0,20","minDesktopHeight":60,"renderVisibleRowsOnly":false,"styleAsGrid":false,"styles":{}}, {"onSelect":"responseListSelect","onStyleRow":"responseListStyleRow"}, {
+			responseList: ["wm.List", {"_classes":{"domNode":["AnswersMenu","MobileListStyle"]},"autoSizeHeight":true,"border":"0","columns":[{"show":true,"field":"answer","title":"Answer","width":"100%","mobileColumn":false},{"show":false,"field":"question","title":"Question","width":"100%","mobileColumn":false},{"show":false,"field":"MOBILE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>Answer: \" + ${answer} + \"</div>\"\n","isCustomField":true,"mobileColumn":false},{"show":false,"field":"actionCode","title":"ActionCode","width":"100%","displayType":"String","align":"left","formatFunc":""},{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>Answer: \" + ${answer} + \"</div>\"\n","mobileColumn":true}],"headerVisible":false,"height":"1696px","margin":"0,20,0,20","minDesktopHeight":60,"renderVisibleRowsOnly":false,"styleAsGrid":false,"styles":{}}, {"onSelect":"responseListSelect","onStyleRow":"responseListStyleRow"}, {
 				binding: ["wm.Binding", {}, {}, {
 					wire: ["wm.Wire", {"expression":undefined,"source":"currentQuestionVar.responses","targetProperty":"dataSet"}, {}]
 				}]

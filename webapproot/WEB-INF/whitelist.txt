@@ -1,4 +1,5 @@
-https://api.parse.com/1/classes/GameScore
+https://api.parse.com/1/classes/
+https://api.parse.com/1/classes/Message
 https://api.parse.com/1/classes/Session
 https://api.parse.com/1/login
 https://api.parse.com/1/users

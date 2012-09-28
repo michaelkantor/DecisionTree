@@ -10,7 +10,7 @@ dojo.declare("DecisionTree", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha7", 
+	"projectSubVersion": "Alpha9", 
 	"projectVersion": 1, 
 	"showIOSPhoneGapBackButton": false, 
 	"studioVersion": "6.5.0.RC1", 
@@ -63,9 +63,10 @@ dojo.declare("DecisionTree", wm.Application, {
 			response: ["wm.TypeDefinitionField", {"fieldName":"responses","fieldType":"QueryResponse","isList":true}, {}],
 			field1: ["wm.TypeDefinitionField", {"fieldName":"actionCode"}, {}]
 		}], 
-		"parse.com.AddMessageToSession": ["wm.XhrDefinition", {"contentType":"application/json","headers":{},"parameters":{"X-Parse-REST-API-Key":{"transmitType":0,"type":"String"},"X-Parse-Application-Id":{"transmitType":0,"type":"String"},"message":{"transmitType":0,"type":"parse.com.AddRelationshipType"},"objectId":{"transmitType":0,"type":"String"}},"requestType":"PUT","returnType":undefined,"url":"https://api.parse.com/1/classes/GameScore","useProxy":false}, {}], 
-		"parse.com.CreateSession": ["wm.XhrDefinition", {"contentType":"application/json","headers":{},"parameters":{"notes":{"transmitType":0,"type":"String","bindable":true},"score":{"transmitType":0,"type":"Number","bindable":true},"modelDiagnosis":{"transmitType":0,"type":"String","bindable":true},"intermediateDiagnosis":{"transmitType":0,"type":"String","bindable":true},"finalDiagnosis":{"transmitType":0,"type":"String","bindable":true},"patient":{"transmitType":0,"type":"parse.com.Pointer","bindable":true},"provider":{"transmitType":0,"type":"parse.com.Pointer","bindable":true},"resolved":{"transmitType":0,"type":"Boolean","bindable":true},"X-Parse-REST-API-Key":{"transmitType":0,"type":"String","bindable":true},"X-Parse-Application-Id":{"transmitType":0,"type":"String","bindable":true}},"requestType":"POST","returnType":"parse.com.CreateSessionResponse","url":"https://api.parse.com/1/classes/Session","useProxy":false}, {}], 
-		"parse.com.Login": ["wm.XhrDefinition", {"headers":{},"parameters":{"username":{"transmitType":0,"type":"string"},"password":{"transmitType":0,"type":"string"},"X-Parse-Application-Id":{"transmitType":0,"type":"string"},"X-Parse-REST-API-Key":{"transmitType":0,"type":"string"}},"returnType":"parse.com.LoginResponse","url":"https://api.parse.com/1/login","useProxy":false}, {}, {
+		"parse.com.AddMessageToSession": ["wm.XhrDefinition", {"contentType":"application/json","headers":{"X-Parse-REST-API-Key":"nkRl8lPEzOH3jtZVJJE2AA0oZVj6t1jZclZSYRyC","X-Parse-Application-Id":"QS1yDzKQNakBesD2zm8QbYKZKNcCHhF3II7IFBhr"},"parameters":{"messages":{"transmitType":0,"type":"parse.com.AddRelationshipType"},"Session":{"transmitType":"path","type":"String"}},"requestType":"PUT","returnType":"parse.com.AddRelationshipType","url":"https://api.parse.com/1/classes/","useProxy":false}, {}], 
+		"parse.com.CreateMessage": ["wm.XhrDefinition", {"contentType":"application/json","headers":{"X-Parse-REST-API-Key":"nkRl8lPEzOH3jtZVJJE2AA0oZVj6t1jZclZSYRyC","X-Parse-Application-Id":"QS1yDzKQNakBesD2zm8QbYKZKNcCHhF3II7IFBhr"},"parameters":{"from":{"transmitType":0,"type":"String"},"message":{"transmitType":0,"type":"String"}},"requestType":"POST","returnType":"parse.com.CreateSessionResponse","url":"https://api.parse.com/1/classes/Message","useProxy":false}, {}], 
+		"parse.com.CreateSession": ["wm.XhrDefinition", {"contentType":"application/json","headers":{"X-Parse-REST-API-Key":"nkRl8lPEzOH3jtZVJJE2AA0oZVj6t1jZclZSYRyC","X-Parse-Application-Id":"QS1yDzKQNakBesD2zm8QbYKZKNcCHhF3II7IFBhr"},"parameters":{"notes":{"transmitType":0,"type":"String","bindable":true},"score":{"transmitType":0,"type":"Number","bindable":true},"modelDiagnosis":{"transmitType":0,"type":"String","bindable":true},"intermediateDiagnosis":{"transmitType":0,"type":"String","bindable":true},"finalDiagnosis":{"transmitType":0,"type":"String","bindable":true},"patient":{"transmitType":0,"type":"parse.com.Pointer","bindable":true},"provider":{"transmitType":0,"type":"parse.com.Pointer","bindable":true},"resolved":{"transmitType":0,"type":"Boolean","bindable":true}},"requestType":"POST","returnType":"parse.com.CreateSessionResponse","url":"https://api.parse.com/1/classes/Session","useProxy":false}, {}], 
+		"parse.com.Login": ["wm.XhrDefinition", {"headers":{"X-Parse-Application-Id":"QS1yDzKQNakBesD2zm8QbYKZKNcCHhF3II7IFBhr","X-Parse-REST-API-Key":"nkRl8lPEzOH3jtZVJJE2AA0oZVj6t1jZclZSYRyC"},"parameters":{"username":{"transmitType":"queryString","type":"string"},"password":{"transmitType":"queryString","type":"string"}},"returnType":"parse.com.LoginResponse","url":"https://api.parse.com/1/login","useProxy":false}, {}, {
 			"parse.com.LoginResponse": ["wm.TypeDefinition", {}, {}, {
 				"parse.com.LoginResponse.username": ["wm.TypeDefinitionField", {"fieldName":"username","fieldType":"string"}, {}],
 				"parse.com.LoginResponse.phone": ["wm.TypeDefinitionField", {"fieldName":"phone","fieldType":"string"}, {}],
@@ -91,6 +92,8 @@ dojo.declare("DecisionTree", wm.Application, {
 
 DecisionTree.extend({
      announcePath: function() {
+         main.endLayer.activate();
+         return;
          var path = [];
           var historyCount = app.historyVar.getCount();
           for (var i = 0; i < historyCount; i++) {

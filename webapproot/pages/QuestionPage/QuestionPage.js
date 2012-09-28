@@ -26,6 +26,7 @@ dojo.declare("QuestionPage", wm.Page, {
       var data = inSender.selectedItem.getData();     
       app.historyVar.addItem({question: "",//this.currentQuestionVar.getValue("question"),
                               answer: inSender.selectedItem.getValue("answer"),
+                              actionCode: data.actionCode,
                               queryResponse: ""}); //this.currentQuestionVar.getData()});                              
             
       if (data.question) {      
@@ -41,7 +42,7 @@ dojo.declare("QuestionPage", wm.Page, {
             if (data.answer == this.cameraQuestion.getValue("responses").getItem(0).getValue("answer")) {
                 this.cameraSVar.update();
             } else {
-                app.announcePath();
+                this.questionsDone();                
                 this.showInputPanel();
             }
       } else {
@@ -95,7 +96,7 @@ historyListSelect: function(inSender, inItem) {
       if (takePicture) {
           app.takePictureSVar.update();
       } else {
-        app.announcePath();   
+          this.questionsDone();        
             this.showInputPanel();
       }
     },
@@ -151,8 +152,33 @@ historyListSelect: function(inSender, inItem) {
   responseListStyleRow: function(inSender, inRow/* inRow.customClasses += " myClass"; inRow.customStyles += ";background-color:red"; */, rowData) {
       inRow.customClasses += " wmbutton";
     },
-  createSessionSVarSuccess: function(inSender, inDeprecated) {
-      alert(dojo.toJson(inSender.getData()));
+    questionsDone: function() {
+        app.announcePath();
+        this.createSessionSVar.update();
     },
-  _end: 0
+  createSessionSVarSuccess: function(inSender, inDeprecated) {
+      //alert(dojo.toJson(inSender.getData()));
+          var historyCount = app.historyVar.getCount();
+          for (var i = 0; i < historyCount; i++) {
+              var from, text;
+              var currentItem = app.historyVar.getItem(i);
+          
+              if (currentItem.getValue("question")) {
+                  from = "autodoctor";
+                  text = currentItem.getValue("question");              
+               } else {
+                  from = "user";
+                  text = currentItem.getValue("answer");                  
+               }
+                this.createMessageSVar.input.setData({from: from,message: text});
+                this.createMessageSVar.update();
+          }                      
+    },
+  createMessageSVarSuccess: function(inSender, inDeprecated) {
+        this.messageRelationshipsObjectsVar.addItem({__type: "Pointer", "className": "Message", objectId: inSender.getValue("objectId")});
+        if (inSender._inFlightBacklog.length == 0) {
+            this.addMessagesToSessionSVar.update();   
+        }
+    },
+    _end: 0
 }); 
