@@ -49,5 +49,10 @@ dojo.declare("Main", wm.Page, {
         }
         this.endHtml.setHtml("<div class='Complaint'>Complaint: " + this.mainMenuList.selectedItem.getValue("name") + "</div><hr/><div class='Diagnosis'>" + this.diagnosis[diagnosisId] + "</div>");
     },
+    mainMenuListSelect: function(inSender, inItem) {
+        var json = wm.load("resources/data/" + inSender.selectedItem.getValue("dataValue") + ".js");
+        app.decisionTreeVar.setData(dojo.fromJson(json));
+        this.questionsLayer.update();
+    },
     _end: 0
 });
