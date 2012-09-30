@@ -1,10 +1,5 @@
 dojo.declare("Main", wm.Page, {
 "preferredDevice": "phone",
-diagnosis: {
-DispositionNextDay: "Hey ho",
-DispositionUrgentCare: "Ho Hum",
-DispositionHomeCare: "Home boy"
-},
 start: function() {
 if (wm.device == "desktop") {
 window.location.search = djConfig.isDebug ? "?debug&wmmobile=tablet" : "?wmmobile=tablet";
@@ -29,7 +24,7 @@ this.logoutButton.show();
 },
 backButtonClick: function(inSender) {
 if (this.endLayer.isActive()) {
-this.mainMenuVar.activate();
+this.mainMenuLayer.activate();
 } else if (app.historyVar.getCount() > 2) {
 this.pageContainer1.page.priorQuestion();
 } else {
@@ -44,7 +39,8 @@ var diagnosisId;
 for (var i = app.historyVar.getCount() -1; !diagnosisId && i >= 0; i--) {
 diagnosisId = app.historyVar.getItem(i).getValue("actionCode");
 }
-this.endHtml.setHtml("<div class='Complaint'>Complaint: " + this.mainMenuList.selectedItem.getValue("name") + "</div><hr/><div class='Diagnosis'>" + this.diagnosis[diagnosisId] + "</div>");
+var item = app.diagnosisVar.query({name: diagnosisId});
+this.endHtml.setHtml("<div class='Complaint'>Complaint: " + this.mainMenuList.selectedItem.getValue("name") + "</div><hr/><div class='Diagnosis'>" + item.getValue("dataValue") + "</div>");
 },
 mainMenuListSelect: function(inSender, inItem) {
 var json = wm.load("resources/data/" + inSender.selectedItem.getValue("dataValue") + ".js");
@@ -79,10 +75,23 @@ wire: ["wm.Wire", {"expression":undefined,"source":"mainMenuVar","targetProperty
 questionsLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}, {
 pageContainer1: ["wm.PageContainer", {"deferLoad":true,"margin":"4","pageName":"QuestionPage","subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {"onPageChanged":"pageContainer1PageChanged"}]
 }],
-endLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {"onShow":"endLayerShow"}, {
+endLayer: ["wm.Layer", {"autoScroll":true,"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {"onShow":"endLayerShow"}, {
 picture1: ["wm.Picture", {"height":"59px","source":"resources/images/doctorcroppedsmall.png","width":"55px"}, {}],
-endHtml: ["wm.Html", {"_classes":{"domNode":["Question","curvedlist","NoSizeNode"]},"html":"You suck\n<hr/>\nI suck more","margin":"10","minDesktopHeight":15}, {}]
+endHtmlPanel: ["wm.Panel", {"fitToContentHeight":true,"height":"79px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"10","verticalAlign":"top","width":"100%"}, {}, {
+endHtml: ["wm.Html", {"_classes":{"domNode":["Question","curvedlist","NoSizeNode"]},"autoScroll":false,"autoSizeHeight":true,"height":"59px","html":"You suck\n<hr/>\nI suck more","minDesktopHeight":15}, {}]
 }]
+}]
+}],
+toggleButtonPanel1: ["wm.ToggleButtonPanel", {"_classes":{"domNode":["NoRadius"]},"height":"68px","horizontalAlign":"left","mobileHeight":"68px","styles":{"fontSize":""},"verticalAlign":"top"}, {}, {
+binding: ["wm.Binding", {}, {}, {
+wire: ["wm.Wire", {"expression":undefined,"source":"button1","targetProperty":"currentButton"}, {}]
+}],
+button4: ["wm.Button", {"border":"0,1,0,0","height":"100%","margin":"0","showing":false,"width":"100%"}, {}],
+button1: ["wm.Button", {"_classes":{"domNode":["BottomButton","button1","button1"]},"border":"0,1,0,0","caption":"<img src='resources/images/buttons/stethascope.png'/><br/>Exam Room","height":"100%","margin":"0","styles":{"fontSize":"","backgroundGradient":"","backgroundColor":""},"width":"100%"}, {}],
+togglePanelButton1: ["wm.Button", {"_classes":{"domNode":["BottomButton"]},"caption":"<img src='resources/images/buttons/heart.png'/><br/>Care Packs","height":"100%","margin":"0","width":"100%"}, {}],
+button2: ["wm.Button", {"_classes":{"domNode":["BottomButton"]},"border":"0,1,0,0","caption":"<img src='resources/images/buttons/profile.png'/><br/>Profile","height":"100%","margin":"0","width":"100%"}, {}],
+button3: ["wm.Button", {"_classes":{"domNode":["BottomButton"]},"border":"0,1,0,0","caption":"<img src='resources/images/buttons/settings.png'/><br/>Settings","height":"100%","margin":"0","width":"100%"}, {}],
+button5: ["wm.Button", {"border":"0,1,0,0","height":"100%","margin":"0","showing":false,"width":"100%"}, {}]
 }]
 }]
 };
@@ -90,6 +99,10 @@ endHtml: ["wm.Html", {"_classes":{"domNode":["Question","curvedlist","NoSizeNode
 Main.prototype._cssText = '.Diagnosis, .Complaint {\
 margin: 10px;\
 font-size: 1.2Em;\
+}\
+.Main-endHtml .wmSizeNode {\
+position: relative;\
+top: 0px;\
 }\
 ';
 Main.prototype._htmlText = '';

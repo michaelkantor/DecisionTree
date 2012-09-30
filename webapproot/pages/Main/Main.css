@@ -2,3 +2,8 @@
     margin: 10px;
     font-size: 1.2Em;
 }
+
+.Main-endHtml .wmSizeNode {
+    position: relative;
+	top: 0px;
+}

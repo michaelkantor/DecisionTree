@@ -1,10 +1,6 @@
 dojo.declare("Main", wm.Page, {
 	"preferredDevice": "phone",
-    diagnosis: {
-        DispositionNextDay: "Hey ho",
-        DispositionUrgentCare: "Ho Hum",
-        DispositionHomeCare: "Home boy"
-    },
+    
     start: function() {
             if (wm.device == "desktop") {
                window.location.search = djConfig.isDebug ? "?debug&wmmobile=tablet" : "?wmmobile=tablet";
@@ -32,7 +28,7 @@ dojo.declare("Main", wm.Page, {
     },
   backButtonClick: function(inSender) {
       if (this.endLayer.isActive()) {
-          this.mainMenuVar.activate();
+          this.mainMenuLayer.activate();
        } else if (app.historyVar.getCount() > 2) {
             this.pageContainer1.page.priorQuestion();
        } else {
@@ -47,7 +43,8 @@ dojo.declare("Main", wm.Page, {
         for (var i = app.historyVar.getCount() -1; !diagnosisId && i >= 0; i--) {
             diagnosisId = app.historyVar.getItem(i).getValue("actionCode");
         }
-        this.endHtml.setHtml("<div class='Complaint'>Complaint: " + this.mainMenuList.selectedItem.getValue("name") + "</div><hr/><div class='Diagnosis'>" + this.diagnosis[diagnosisId] + "</div>");
+        var item = app.diagnosisVar.query({name: diagnosisId});
+        this.endHtml.setHtml("<div class='Complaint'>Complaint: " + this.mainMenuList.selectedItem.getValue("name") + "</div><hr/><div class='Diagnosis'>" + item.getValue("dataValue") + "</div>");
     },
     mainMenuListSelect: function(inSender, inItem) {
         var json = wm.load("resources/data/" + inSender.selectedItem.getValue("dataValue") + ".js");
