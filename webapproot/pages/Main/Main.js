@@ -16,27 +16,17 @@ dojo.declare("Main", wm.Page, {
       var page = wm.Page.getPage("LoginPage");
       if (page) page.showRegistrationForm();
     },
-  pageContainer1PageChanged: function(inSender, inNewPage, inPreviousPage) {
-      if (inNewPage.name == "LoginPage") {
-
-           this.registerButton.show();
-          this.logoutButton.hide();
-      } else {
-                    this.registerButton.hide();
-          this.logoutButton.show();
-      }
-    },
   backButtonClick: function(inSender) {
       if (this.endLayer.isActive()) {
           this.mainMenuLayer.activate();
-       } else if (app.historyVar.getCount() > 2) {
+       } else if (app.historyVar.getCount() > 1) {
             this.pageContainer1.page.priorQuestion();
        } else {
             this.mainMenuLayer.activate();
        }
     },
     layers1Change: function(inSender, inIndex) {
-        this.backButton.setDisabled(inIndex === 0);
+        this.backAndForthPanel.setShowing(inIndex > 1);        
     },
     endLayerShow: function(inSender) {
         var diagnosisId;

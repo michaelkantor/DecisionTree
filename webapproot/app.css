@@ -1,16 +1,54 @@
-html.WMApp body .AnswersMenu .wmlist-item {
-  border: solid 1px black;
+html.WMApp body .ButtonList .wmlist-item,
+html.WMApp body .ButtonList .wmlist-item-selected {
+  border: solid 3px rgb(108,176,205);
   text-align: center;
+  padding: 0px;
+  font-size: 14pt;
+  font-weight: bold;
+  color: white;
   
-background: -webkit-gradient(linear, center top, center bottom, from(#aaaaaa), color-stop(18%,#555555), to(#555555));
-background: -moz-linear-gradient(top, #aaaaaa 0%,#555555 18%,#555555 100%);
-background: -o-linear-gradient(top, #aaaaaa 0%,#555555 18%,#555555 100%);
-background: -ms-linear-gradient(top, #aaaaaa 0%,#555555 18%,#555555 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aaaaaa', endColorstr='#555555',GradientType=0);
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+}
+html.WMApp body .ButtonList .wmlist-item {
+background: -webkit-gradient(linear, center top, center bottom, from(#4f8ddb), color-stop(50%,#0fa1e7), to(#4f8ddb));
+background: -moz-linear-gradient(top, #4f8ddb 0%,#0fa1e7 42%,#0fa1e7 58%,#4f8ddb 100%);
+background: -o-linear-gradient(top, #4f8ddb 0%,#0fa1e7 42%,#0fa1e7 58%,#4f8ddb 100%);
+background: -ms-linear-gradient(top, #4f8ddb 0%,#0fa1e7 42%,#0fa1e7 58%,#4f8ddb 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f8ddb', endColorstr='#0fa1e7',GradientType=0);
 
 }
+html.WMApp body .ButtonList .wmlist-item-selected {
+    background: -webkit-gradient(linear, center top, center bottom, from(#0fa1e7), color-stop(50%,#4f8ddb), to(#0fa1e7));
+background: -moz-linear-gradient(top, #0fa1e7 0%,#4f8ddb 42%,#4f8ddb 58%,#0fa1e7 100%);
+background: -o-linear-gradient(top, #0fa1e7 0%,#4f8ddb 42%,#4f8ddb 58%,#0fa1e7 100%);
+background: -ms-linear-gradient(top, #0fa1e7 0%,#4f8ddb 42%,#4f8ddb 58%,#0fa1e7 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f8ddb', endColorstr='#0fa1e7',GradientType=0);
 
+border-color: #333333;
+color: white !important;
+}
 
+.Question {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;   
+  background: -webkit-gradient(linear, center top, center bottom, from(#e6e6e6), color-stop(20%,#f8f8f8), to(#f8f8f8));
+background: -moz-linear-gradient(top, #e6e6e6 0%,#f8f8f8 20%,#f8f8f8 100%);
+background: -o-linear-gradient(top, #e6e6e6 0%,#f8f8f8 20%,#f8f8f8 100%);
+background: -ms-linear-gradient(top, #e6e6e6 0%,#f8f8f8 20%,#f8f8f8 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6e6e6', endColorstr='#f8f8f8',GradientType=0);
+   
+   -moz-box-shadow: 2px 4px 4px #888;
+    -webkit-box-shadow: 2px 4px 4px #888;
+	box-shadow: 2px 4px 4px #888;
+      
+      font-size: 16pt;
+  font-weight: bold;
+}
+
+/*
 .curvedlist .wmlist-item, .inputPanel, .Question, .Answer {
     color: black !important;
     background: -webkit-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
@@ -34,6 +72,7 @@ div .Answer {
 .wmlist .Question, .wmlist .Answer {
        padding: 10px 15px;   
 }
+*/
 .NoSizeNode .wmSizeNode {
      display: block;
 }
@@ -44,7 +83,7 @@ html.WMApp body .BottomButton img {
 margin-bottom:8px;
 height: 40%;
 }
-html.WMApp body .BottomButton {
+html.WMApp body div .wmtogglebuttonpanel .wmbutton.BottomButton {
 font-size: 11px;
 color: #a7a7a7;
 background: -webkit-gradient(linear, center top, center bottom, from(#434343), color-stop(89%,#19191a), to(#19191a));
@@ -53,10 +92,20 @@ background: -o-linear-gradient(top, #434343 0%,#19191a 89%,#19191a 100%);
 background: -ms-linear-gradient(top, #434343 0%,#19191a 89%,#19191a 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#434343', endColorstr='#19191a',GradientType=0);
 
+-webkit-border-radius: 0px !important;
+border-radius: 0px !important;
+    -webkit-border-top-left-radius: 0px !important; 
+    -webkit-border-bottom-left-radius: 0px !important;
+
+    -moz-border-radius-topleft: 0px !important; 
+    -moz-border-radius-bottomleft: 0px !important;
+
+    border-top-left-radius: 0px !important; 
+    border-bottom-left-radius: 0px !important;
 }
 
+html.WMApp body div .wmtogglebuttonpanel .wmbutton.BottomButton.toggleButtonDown {
 
-html.WMApp body div .BottomButton.toggleButtonDown {
     color: white;
 background: -webkit-gradient(linear, center top, center bottom, from(#2d2d2d), color-stop(89%,#444444), to(#444444));
 background: -moz-linear-gradient(top, #2d2d2d 0%,#444444 89%,#444444 100%);
@@ -72,4 +121,104 @@ html.WMApp body .NoRadius {
 -ms-border-radius: 0px !important;
 -o-border-radius: 0px !important;
 border-radius: 0px !important;
+}html.WMApp body .BackAndForthToggleButtonPanel {
+   -webkit-border-radius: 16px;
+   -moz-border-radius: 16px;
+   border-radius: 16px;
+   border-color: rgb(14,14,14) rgb(79,79,79) #6e6e6e rgb(79,79,79);
+}
+
+html.WMApp body .BackAndForthToggleButtonPanel {
+   -webkit-border-radius: 16px;
+   -moz-border-radius: 16px;
+   border-radius: 16px;
+   border-color: rgb(14,14,14) rgb(79,79,79) #6e6e6e rgb(79,79,79);
+}   
+html.WMApp body .BackAndForthToggleButtonPanel .wmbutton {   
+background: -webkit-gradient(linear, center top, center bottom, from(#727272), color-stop(60%,#010101), to(#010101));
+background: -moz-linear-gradient(top, #727272 0%,#010101 60%,#010101 100%);
+background: -o-linear-gradient(top, #727272 0%,#010101 60%,#010101 100%);
+background: -ms-linear-gradient(top, #727272 0%,#010101 60%,#010101 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#727272', endColorstr='#010101',GradientType=0);
+}
+html.WMApp body div div .StrongLeftRadius,
+html.WMApp body div div  .wmbutton.StrongLeftRadius:first-child {
+    -webkit-border-top-left-radius: 14px !important; 
+	-webkit-border-bottom-left-radius: 14px !important;
+
+    -moz-border-radius-topleft: 14px !important; 
+    -moz-border-radius-bottomleft: 14px !important;
+
+    border-top-left-radius: 14px !important; 
+    border-bottom-left-radius: 14px !important;
+    
+        -webkit-border-top-right-radius: 0px !important; 
+    -webkit-border-bottom-right-radius: 0px !important;
+
+    -moz-border-radius-topright: 0px !important; 
+    -moz-border-radius-bottomright: 0px !important;
+
+    border-top-right-radius: 0px !important; 
+    border-bottom-right-radius: 0px !important;
+    }
+    html.WMApp body div div .StrongRightRadius,
+html.WMApp body div div  .wmbutton.StrongRightRadius:last-child {
+    -webkit-border-top-right-radius: 14px !important; 
+    -webkit-border-bottom-right-radius: 14px !important;
+
+    -moz-border-radius-topright: 14px !important; 
+    -moz-border-radius-bottomright: 14px !important;
+
+    border-top-right-radius: 14px !important; 
+    border-bottom-right-radius: 14px !important;
+    
+    -webkit-border-top-left-radius: 0px !important; 
+    -webkit-border-bottom-left-radius: 0px !important;
+
+    -moz-border-radius-topleft: 0px !important; 
+    -moz-border-radius-bottomleft: 0px !important;
+
+    border-top-left-radius: 0px !important; 
+    border-bottom-left-radius: 0px !important;
+    
+    
+    }
+
+
+html.WMApp body .responseList {
+background: -webkit-gradient(linear, center top, center bottom, from(#cdeffd), color-stop(20%,#e2f6fe), to(#e2f6fe));
+background: -moz-linear-gradient(top, #cdeffd 0%,#e2f6fe 20%,#e2f6fe 100%);
+background: -o-linear-gradient(top, #cdeffd 0%,#e2f6fe 20%,#e2f6fe 100%);
+background: -ms-linear-gradient(top, #cdeffd 0%,#e2f6fe 20%,#e2f6fe 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeffd', endColorstr='#e2f6fe',GradientType=0);
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+webkit-border-radius: 8px;
+
+   -moz-box-shadow: 2px 4px 4px #888;
+    -webkit-box-shadow: 2px 4px 4px #888;
+    box-shadow: 2px 4px 4px #888;
+}
+html.WMApp body .responseList .wmlist-item-selected,
+html.WMApp body .responseList .wmlist-item {
+    font-size: 10pt;
+}
+html.WMApp body .rounded {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px
+    border-radius: 8px;
+}html.WMApp body .OverflowNotHidden {
+    overflow: visible !important;
+}
+
+html.WMApp body .OverflowNotHidden a {
+    position: relative;
+    z-index: 100;
+}
+html.WMApp body .OverflowNotHidden.ShiftLeft a {
+    left: -1px;
+}
+html.WMApp body .OverflowNotHidden.ShiftRight a {
+    right: -1px;
 }

@@ -2,7 +2,9 @@
     margin: 10px;
     font-size: 1.2Em;
 }
-
+.Diagnosis {
+    padding-bottom: 20px !important;
+}
 .Main-endHtml .wmSizeNode {
     position: relative;
 	top: 0px;

@@ -10,7 +10,7 @@ dojo.declare("DecisionTree", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha10", 
+	"projectSubVersion": "Alpha13", 
 	"projectVersion": 1, 
 	"showIOSPhoneGapBackButton": false, 
 	"studioVersion": "6.5.0.RC1", 
