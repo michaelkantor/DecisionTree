@@ -1,0 +1,19 @@
+
+.OneQuestionPage .curvedlist .wmlist-item, .OneQuestionPage .inputPanel, .OneQuestionPage  .wmlabel {
+    font-size: 10pt;
+}
+
+.OneQuestionPage-historyList.wmlist.MobileListStyle .wmlist-item {
+    padding: 0px;   
+}
+.AnswerRow .Answer {
+    margin-left: 25% !important;
+    margin-right: 40px;
+}
+.AnswerRow .Avatar {
+    height: 40px;
+    float: right;
+}
+.inputPanel.Disabled {
+    opacity: 0.5;
+}
