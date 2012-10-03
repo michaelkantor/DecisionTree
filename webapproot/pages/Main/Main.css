@@ -8,4 +8,14 @@
 .Main-endHtml .wmSizeNode {
     position: relative;
 	top: 0px;
+    font-size: 10pt;
+}
+
+.ComplaintHeading {
+ font-size: 1.2Em;
+ color: #7b7b7b;
+}
+.ComplaintName {
+ font-size: 1.2Em;
+ color: #d00017;
 }

@@ -1,11 +1,12 @@
 {
 	"xhrpaths": [
+		"http://10.0.1.5:8094/DecisionTree", 
 		"http://10.0.1.5:8080/DecisionTree", 
 		"http://DecisionTree.cloudfoundry.com"
 	], 
-	"appName": "DecisionTree", 
+	"appName": "Genus Health", 
 	"appId": "KWR92347HU", 
-	"appVersion": "1.7", 
+	"appVersion": "1.16", 
 	"xhrPath": "http://10.0.1.5:8080/DecisionTree", 
 	"iosIconListVar": [
 		{
@@ -19,7 +20,7 @@
 		}, 
 		{
 			"imageId": 2, 
-			"src": "resources/images/logos/IOS/wavemaker_72x72.png", 
+			"src": "resources/images/logos/tree200x200.png", 
 			"imageType": "Icon", 
 			"width": 72, 
 			"height": 72, 
@@ -55,7 +56,7 @@
 		}, 
 		{
 			"imageId": 6, 
-			"src": "resources/images/logos/IOS/wavemaker_640x960.png", 
+			"src": "resources/images/iphonesplash.png", 
 			"imageType": "Splash Screen", 
 			"width": 640, 
 			"height": 960, 

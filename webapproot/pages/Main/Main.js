@@ -11,7 +11,9 @@ dojo.declare("Main", wm.Page, {
       app.phonegapCredentialsVar.setData(null);
       this.pageContainer1.setPageName("LoginPage");
     },
-
+restoreLoginSession: function() {
+    this.mainMenuLayer.activate();
+},
   registerButtonClick: function(inSender) {
       var page = wm.Page.getPage("LoginPage");
       if (page) page.showRegistrationForm();
@@ -34,12 +36,14 @@ dojo.declare("Main", wm.Page, {
             diagnosisId = app.historyVar.getItem(i).getValue("actionCode");
         }
         var item = app.diagnosisVar.query({name: diagnosisId});
-        this.endHtml.setHtml("<div class='Complaint'>Complaint: " + this.mainMenuList.selectedItem.getValue("name") + "</div><hr/><div class='Diagnosis'>" + item.getValue("dataValue") + "</div>");
+        this.dispositionLabel.setCaption("<span class='ComplaintHeading'>Disposition:</span> <span class='ComplaintName'>" + diagnosisId.replace(/Disposition/,"").replace(/([A-Z])/g," $1") + "</span>");
+        this.endHtml.setHtml(item.getValue("dataValue") );
     },
     mainMenuListSelect: function(inSender, inItem) {
         var json = wm.load("resources/data/" + inSender.selectedItem.getValue("dataValue") + ".js");
         app.decisionTreeVar.setData(dojo.fromJson(json));
         this.questionsLayer.update();
+        this._disposition = inSender.selectedItem.getValue("name");
     },
     _end: 0
 });

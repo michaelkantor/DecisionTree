@@ -9,6 +9,9 @@ logoutButtonClick: function(inSender) {
 app.phonegapCredentialsVar.setData(null);
 this.pageContainer1.setPageName("LoginPage");
 },
+restoreLoginSession: function() {
+this.mainMenuLayer.activate();
+},
 registerButtonClick: function(inSender) {
 var page = wm.Page.getPage("LoginPage");
 if (page) page.showRegistrationForm();
@@ -31,12 +34,14 @@ for (var i = app.historyVar.getCount() -1; !diagnosisId && i >= 0; i--) {
 diagnosisId = app.historyVar.getItem(i).getValue("actionCode");
 }
 var item = app.diagnosisVar.query({name: diagnosisId});
-this.endHtml.setHtml("<div class='Complaint'>Complaint: " + this.mainMenuList.selectedItem.getValue("name") + "</div><hr/><div class='Diagnosis'>" + item.getValue("dataValue") + "</div>");
+this.dispositionLabel.setCaption("<span class='ComplaintHeading'>Disposition:</span> <span class='ComplaintName'>" + diagnosisId.replace(/Disposition/,"").replace(/([A-Z])/g," $1") + "</span>");
+this.endHtml.setHtml(item.getValue("dataValue") );
 },
 mainMenuListSelect: function(inSender, inItem) {
 var json = wm.load("resources/data/" + inSender.selectedItem.getValue("dataValue") + ".js");
 app.decisionTreeVar.setData(dojo.fromJson(json));
 this.questionsLayer.update();
+this._disposition = inSender.selectedItem.getValue("name");
 },
 _end: 0
 });
@@ -46,7 +51,7 @@ mainMenuVar: ["wm.Variable", {"isList":true,"json":"[{\"name\":\"Cough\",\"dataV
 layoutBox1: ["wm.Layout", {"_classes":{"domNode":["layoutBox1"]},"horizontalAlign":"left","styles":{},"verticalAlign":"top"}, {}, {
 headerPanel: ["wm.Panel", {"height":"48px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{"backgroundGradient":{"direction":"vertical","startColor":"#525252","endColor":"#1d1d1d","colorStop":76},"backgroundColor":""},"verticalAlign":"top","width":"100%"}, {}, {
 spacer3: ["wm.Spacer", {"height":"1px","width":"100%"}, {}],
-titleLabel: ["wm.Label", {"align":"center","caption":"Exam Room","height":"100%","padding":"4","styles":{"color":"#ffffff","fontWeight":"bold","fontSize":"12px"},"width":"100px"}, {}],
+titleLabel: ["wm.Label", {"align":"center","caption":"Exam Room","height":"100%","padding":"4","styles":{"color":"#ffffff","fontWeight":"bold","fontSize":"13px"},"width":"100px"}, {}],
 panel1: ["wm.Panel", {"height":"100%","horizontalAlign":"right","layoutKind":"left-to-right","padding":"0,10","verticalAlign":"middle","width":"100%"}, {}, {
 backAndForthPanel: ["wm.Panel", {"_classes":{"domNode":["BackAndForthToggleButtonPanel","backAndForthTogglePanel"]},"border":"1","borderColor":"","height":"35px","horizontalAlign":"left","layoutKind":"left-to-right","styles":{"backgroundGradient":""},"verticalAlign":"top","width":"100px"}, {}, {
 binding: ["wm.Binding", {}, {}, {
@@ -57,7 +62,7 @@ togglePanelButton1: ["wm.Button", {"_classes":{"domNode":["StrongRightRadius"]},
 }]
 }]
 }],
-layers1: ["wm.Layers", {"styles":{"backgroundColor":"#bed7e9"}}, {"onchange":"layers1Change"}, {
+layers1: ["wm.Layers", {"styles":{"backgroundColor":"","backgroundImage":"url(resources/images/pattern.png)","backgroundRepeat":"repeat"}}, {"onchange":"layers1Change"}, {
 loginLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}, {
 pageContainer2: ["wm.PageContainer", {"deferLoad":true,"pageName":"LoginPage","subpageEventlist":{"onParseLoginSVarSuccess":"parseLoginSVar.onSuccess"},"subpageMethodlist":{},"subpageProplist":{}}, {"onParseLoginSVarSuccess":"mainMenuLayer"}]
 }],
@@ -72,9 +77,17 @@ questionsLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAli
 pageContainer1: ["wm.PageContainer", {"deferLoad":true,"margin":"4","pageName":"OneQuestionPage","subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {"onPageChanged":"pageContainer1PageChanged"}]
 }],
 endLayer: ["wm.Layer", {"autoScroll":true,"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {"onShow":"endLayerShow"}, {
-picture1: ["wm.Picture", {"height":"59px","source":"resources/images/doctorcroppedsmall.png","width":"55px"}, {}],
-endHtmlPanel: ["wm.Panel", {"fitToContentHeight":true,"height":"79px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"10","verticalAlign":"top","width":"100%"}, {}, {
-endHtml: ["wm.Html", {"_classes":{"domNode":["Question","curvedlist","NoSizeNode"]},"autoScroll":false,"autoSizeHeight":true,"height":"59px","html":"You suck\n<hr/>\nI suck more","minDesktopHeight":15}, {}]
+panel: ["wm.Panel", {"autoScroll":true,"borderColor":"","height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
+drGenusPicturePanel: ["wm.Panel", {"_classes":{"domNode":["drgenus"]},"height":"76px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"10","styles":{"backgroundGradient":""},"verticalAlign":"top","width":"100%"}, {}, {
+drGenusPicture: ["wm.Picture", {"aspect":"h","height":"56px","source":"resources/images/drgenus.png","width":"100%"}, {}]
+}],
+questionLabelPanel: ["wm.Panel", {"fitToContentHeight":true,"height":"95px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
+questionLabelPanel1: ["wm.Panel", {"borderColor":"","fitToContentHeight":true,"height":"95px","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
+upArrowBubblePicture: ["wm.Picture", {"_classes":{"domNode":["OverflowNotHidden","ShiftDown"]},"height":"21px","margin":"0,0,0,15","source":"resources/images/bubblearrowup.png","width":"36px"}, {}],
+dispositionLabel: ["wm.Label", {"_classes":{"domNode":["Question","curvedlist","NoSizeNode"]},"border":"1","borderColor":"#cccccc","caption":"","margin":"0,10,10,10","padding":"12","width":"100%"}, {}],
+endHtml: ["wm.Html", {"_classes":{"domNode":["NoSizeNode"]},"autoScroll":false,"autoSizeHeight":true,"borderColor":"#cccccc","height":"50px","html":"Synopsis","margin":"0,10,10,10","minDesktopHeight":15,"padding":"12","styles":{"color":"#036fad"}}, {}]
+}]
+}]
 }]
 }]
 }],
@@ -101,6 +114,15 @@ padding-bottom: 20px !important;\
 .Main-endHtml .wmSizeNode {\
 position: relative;\
 top: 0px;\
+font-size: 10pt;\
+}\
+.ComplaintHeading {\
+font-size: 1.2Em;\
+color: #7b7b7b;\
+}\
+.ComplaintName {\
+font-size: 1.2Em;\
+color: #d00017;\
 }\
 ';
 Main.prototype._htmlText = '';

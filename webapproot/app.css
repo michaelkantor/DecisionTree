@@ -29,48 +29,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f8ddb', end
 border-color: #333333;
 color: white !important;
 }
-
-.Question {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;   
-  background: -webkit-gradient(linear, center top, center bottom, from(#e6e6e6), color-stop(20%,#f8f8f8), to(#f8f8f8));
-background: -moz-linear-gradient(top, #e6e6e6 0%,#f8f8f8 20%,#f8f8f8 100%);
-background: -o-linear-gradient(top, #e6e6e6 0%,#f8f8f8 20%,#f8f8f8 100%);
-background: -ms-linear-gradient(top, #e6e6e6 0%,#f8f8f8 20%,#f8f8f8 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6e6e6', endColorstr='#f8f8f8',GradientType=0);
-   
-   -moz-box-shadow: 2px 4px 4px #888;
-    -webkit-box-shadow: 2px 4px 4px #888;
-	box-shadow: 2px 4px 4px #888;
-      
-      font-size: 16pt;
-  font-weight: bold;
-}
-
-/*
-.curvedlist .wmlist-item, .inputPanel, .Question, .Answer {
-    color: black !important;
-    background: -webkit-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
-    background: -webkit-gradient(linear, left top, left bottom, from(#dcdbcf), to(#b2b2aa));
-    background: -moz-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
-    background: -ms-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
-    background: -o-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
-}
 div .Answer {
     background: -webkit-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);
     background: -webkit-gradient(linear, left top, left bottom, from(#F8F8A5), to(#D1CA76));    
     background: -moz-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);
     background: -ms-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);
     background: -o-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);
-}
-.Question, .Answer {
-   border: solid 1px #333;
-   border-radius: 4px;
-   -webkit-border-radius: 4px;
-} 
-.wmlist .Question, .wmlist .Answer {
-       padding: 10px 15px;   
 }
 */
 .NoSizeNode .wmSizeNode {
@@ -219,6 +183,56 @@ html.WMApp body .OverflowNotHidden a {
 html.WMApp body .OverflowNotHidden.ShiftLeft a {
     left: -1px;
 }
-html.WMApp body .OverflowNotHidden.ShiftRight a {
-    right: -1px;
+html.WMApp body .OverflowNotHidden.ShiftDown a {
+    bottom: -1px;
+}
+
+
+html.WMApp body .drgenus {
+background: -webkit-gradient(linear, center top, center bottom, from(#5597da), color-stop(20%,#03a5dc), color-stop(80%,#03a5dc),to(#5597da));
+background: -moz-linear-gradient(top, #5597da 0%,#03a5dc 20%,#03a5dc 80%,#5597da 100%);
+background: -o-linear-gradient(top, #5597da 0%,#03a5dc 20%,#03a5dc 80%,#5597da 100%);
+background: -ms-linear-gradient(top, #5597da 0%,#03a5dc 20%,#03a5dc 80%,#5597da 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5597da', endColorstr='#03a5dc',GradientType=0);
+
+}
+
+
+
+.Question {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;   
+  background: -webkit-gradient(linear, center top, center bottom, from(#f8f8f8), color-stop(20%,#f8f8f8), to(#e6e6e6));
+background: -moz-linear-gradient(top, #f8f8f8 0%,#f8f8f8 20%,#e6e6e6 100%);
+background: -o-linear-gradient(top, #f8f8f8 0%,#f8f8f8 20%,#e6e6e6 100%);
+background: -ms-linear-gradient(top, #f8f8f8 0%,#f8f8f8 20%,#e6e6e6 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#e6e6e6',GradientType=0);
+   
+   -moz-box-shadow: 2px 4px 4px #888;
+    -webkit-box-shadow: 2px 4px 4px #888;
+	box-shadow: 2px 4px 4px #888;
+      
+  font-weight: bold;
+}
+
+
+/*
+.curvedlist .wmlist-item, .inputPanel, .Question, .Answer {
+    color: black !important;
+    background: -webkit-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#dcdbcf), to(#b2b2aa));
+    background: -moz-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
+    background: -ms-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
+    background: -o-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);
+}
+
+.Question, .Answer {
+   border: solid 1px #333;
+   border-radius: 4px;
+   -webkit-border-radius: 4px;
+}
+ 
+.wmlist .Question, .wmlist .Answer {
+       padding: 10px 15px;   
 }
