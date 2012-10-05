@@ -4,10 +4,7 @@ start: function() {
 var data = app.phonegapCredentialsVar.getData();
 if (data && data.name) {
 app.toastSuccess("Welcome back " + data.name);
-wm.onidle(this, function() {
-main.pageContainer1.setPageName("QuestionPage");
-this.usernameEditor.focus();
-});
+main.restoreLoginSession();
 }
 },
 parseLoginSVarSuccess: function(inSender, inDeprecated) {

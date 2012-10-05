@@ -220,14 +220,16 @@ wire1: ["wm.Wire", {"expression":"\"AddRelation\"","targetProperty":"dataSet.__o
 messageRelationshipsObjectsVar: ["wm.Variable", {"isList":true,"type":"parse.com.AddRelationshipType.objects"}, {}],
 layoutBox1: ["wm.Layout", {"autoScroll":false,"horizontalAlign":"left","styles":{"backgroundGradient":""},"verticalAlign":"top"}, {}, {
 panel: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
-questionLabelPanel: ["wm.Panel", {"fitToContentHeight":true,"height":"75px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
-picture3Panel: ["wm.Panel", {"_classes":{"domNode":["OverflowNotHidden"]},"height":"75px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"72px"}, {}, {
-picture3: ["wm.Picture", {"height":"54px","source":"resources/images/doctorcroppedsmall.png","width":"100%"}, {}],
-picture5: ["wm.Picture", {"_classes":{"domNode":["OverflowNotHidden","ShiftRight"]},"height":"36px","margin":"15,0,0,0","source":"resources/images/bubblearrowleft.png","width":"21px"}, {}]
+drGenusPicturePanel: ["wm.Panel", {"_classes":{"domNode":["drgenus"]},"height":"76px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"10","styles":{"backgroundGradient":""},"verticalAlign":"top","width":"100%"}, {}, {
+drGenusPicture: ["wm.Picture", {"aspect":"h","height":"56px","source":"resources/images/drgenus.png","width":"100%"}, {}]
 }],
-questionLabel: ["wm.Label", {"_classes":{"domNode":["Question"]},"autoSizeHeight":true,"border":"1","borderColor":"#cccccc","height":"44px","margin":"10,10,10,0","padding":"12","singleLine":false,"styles":{"backgroundColor":"#f8f8f8"},"width":"100%"}, {}, {
+questionLabelPanel: ["wm.Panel", {"fitToContentHeight":true,"height":"57px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
+questionLabelPanel1: ["wm.Panel", {"fitToContentHeight":true,"height":"57px","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
+upArrowBubblePicture: ["wm.Picture", {"_classes":{"domNode":["OverflowNotHidden","ShiftDown"]},"height":"21px","margin":"0,0,0,15","source":"resources/images/bubblearrowup.png","width":"36px"}, {}],
+questionLabel: ["wm.Label", {"_classes":{"domNode":["Question"]},"autoSizeHeight":true,"border":"1","borderColor":"#cccccc","height":"36px","margin":"0,10,10,10","padding":"12","singleLine":false,"styles":{"backgroundColor":"#f8f8f8"},"width":"100%"}, {}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"currentQuestionVar.question","targetProperty":"caption"}, {}]
+}]
 }]
 }]
 }],

@@ -427,7 +427,7 @@ dojo.declare("DecisionTree", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha9", 
+	"projectSubVersion": "Alpha15", 
 	"projectVersion": 1, 
 	"showIOSPhoneGapBackButton": false, 
 	"studioVersion": "6.5.0.RC1", 
@@ -500,7 +500,8 @@ dojo.declare("DecisionTree", wm.Application, {
 				"parse.com.RegistrationResponse.sessionToken": ["wm.TypeDefinitionField", {"fieldName":"sessionToken","fieldType":"string"}, {}]
 			}]
 		}], 
-		decisionTreeVar: ["wm.Variable", {"json":"{\"question\":\"When did the laceration occur?\",\"responses\":[{\"answer\":\"<3hours\",\"question\":\"Human or animal bite\",\"responses\":[{\"answer\":\"No\",\"question\":\"Location of injury?\",\"responses\":[{\"answer\":\"Head / Face \"},{\"answer\":\"Arm \",\"responses\":null,\"actionCode\":\"DispositionHomeCare\"},{\"answer\":\"Leg \",\"responses\":null,\"actionCode\":\"DispositionHomeCare\"},{\"answer\":\"Multiple Locations\",\"question\":\"Does the part work as before \",\"responses\":[{\"answer\":\"Yes\",\"responses\":null,\"actionCode\":\"DispositionHomeCare\"},{\"answer\":\"No \",\"responses\":null,\"actionCode\":\"DispositionHomeCare\"}]},{\"answer\":\"Hand\",\"question\":\"Does the part work as before \",\"responses\":[{\"answer\":\"Yes\",\"question\":\"Is there Numbness ? \",\"responses\":[{\"answer\":\"Yes\",\"question\":\"Is there a Foreign Body ? \",\"responses\":[{\"answer\":\"Yes\"},{\"answer\":\"No \"}]},{\"answer\":\"No \"}]},{\"answer\":\"No \"}],\"actionCode\":\"DispositionHomeCare\"}]},{\"answer\":\"Yes\",\"responses\":null,\"actionCode\":\"DispositionHomeCare\"}]},{\"answer\":\"=>24 hours\",\"responses\":null,\"actionCode\":\"DispositionUrgentCare\"},{\"answer\":\"13-24 hours\",\"question\":\"Location ?\",\"responses\":[{\"answer\":\"Arm\",\"responses\":null,\"actionCode\":\"DispositionUrgentCare\"},{\"answer\":\"Leg\",\"responses\":null,\"actionCode\":\"DispositionUrgentCare\"},{\"answer\":\"Hand\",\"responses\":null,\"actionCode\":\"DispositionUrgentCare\"},{\"answer\":\"Foot\",\"question\":\"Foreign Body\",\"responses\":[{\"answer\":\"Yes \",\"responses\":null,\"actionCode\":\"DispositionUrgentCare\"},{\"answer\":\"No \",\"question\":\"Numbness\",\"responses\":[{\"answer\":\"yes\",\"responses\":null,\"actionCode\":\"DispositionUrgentCare\"},{\"answer\":\"no\",\"responses\":null,\"actionCode\":\"DispositionUrgentCare\"}]}]}]},{\"answer\":\"3-12 hours\",\"question\":\"Human or animal bite?\",\"responses\":[{\"answer\":\"Yes\",\"responses\":null,\"actionCode\":\"DispositionNextDay\"},{\"answer\":\"No\",\"question\":\"Does the part work as before\",\"responses\":[{\"answer\":\"No\",\"responses\":null,\"actionCode\":\"DispositionNextDay\"},{\"answer\":\"Yes\",\"responses\":null,\"actionCode\":\"DispositionNextDay\"}]}]}]}","type":"QueryResponse"}, {}], 
+		decisionTreeVar: ["wm.Variable", {"json":"{\n    \"question\": \"When did you get cut?\",\n\t\"responses\": [{\n\t\t\"answer\": \"Less than 3 hours ago\",\n\t\t\"question\": \"Is this related to a human or animal bite?\",\n\t\t\"responses\": [{\n\t\t\t\"answer\": \"No\",\n\t\t\t\"question\": \"Where on the body is the cut?\",\n\t\t\t\"responses\": [{\n\t\t\t\t\"answer\": \"Head or Face \",\n\t\t\t\t\"responses\": null,\n\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t}, {\n\t\t\t\t\"answer\": \"Arm \",\n\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\"responses\": [{\n\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t}]\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t}]\n\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"Leg \",\n\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}]\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"Multiple Locations\",\n\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, ]\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"Hand\",\n\t\t\t\t\t\t\"question\": \"Does the part where the cut is work as before? \",\n\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t},\n\n\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutHomeCare\"\n\t\t\t\t\t}]\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\"actionCode\": \"DispositionCutBiteNoSuturesUrgentCare\"\n\t\t\t\t}, ]\n\t\t\t}, {\n\t\t\t\t\"answer\": \"Over 24 hours ago\",\n\t\t\t\t\"question\": \"Is this related to a human or animal bite?\",\n\t\t\t\t\"responses\": [{\n\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\"actionCode\": \"DispositionCutBiteNoSutureUrgentCare\"\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"No\",\n\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\"actionCode\": \"DispositionCutHomeCare\"\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"About 13 to 24 hours ago\",\n\t\t\t\t\t\"question\": \"Where on the body is the cut?\",\n\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\"answer\": \"Head or Face \",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\t\t\t\t\t},\n\n\t\t\t\t\t{\n\t\t\t\t\t\t\"answer\": \"Arm\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"Leg\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"Hand\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutHomeCare\"\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"Foot\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutHomeCare\"\n\t\t\t\t\t}, ]\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"About 3 to 12 hours ago\",\n\t\t\t\t\t\"question\": \"Is this related to a human or animal bite?\",\n\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutBiteNoSutureUrgentCare\"\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"No\",\n\t\t\t\t\t\t\"question\": \"Where on the body is the cut?\",\n\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\"answer\": \"Head or Face \",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\"answer\": \"Arm \",\n\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\"answer\": \"Leg \",\n\t\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"Multiple Locations\",\n\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"Hand\",\n\t\t\t\t\t\t\t\t\t\"question\": \"Does the part where the cut is work as before? \",\n\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t\t},\n\n\n\t\t\t\t\t\t\t\t\t]\n\t\t\t\t\t\t\t\t}]\n\t\t\t\t\t\t\t}]\n\t\t\t\t\t\t}]\n\t\t\t\t\t}]\n\t\t\t\t}]\n\t\t\t}]\n\t\t}]\n\t}]\n\n\n\t\t\t}","type":"QueryResponse"}, {}], 
+		diagnosisVar: ["wm.Variable", {"isList":true,"json":"[\n    {\n\t\t\"name\": \"DispositionCutUrgentCare\", \n\t\t\"dataValue\": \"<p>Wounds like yours typically need stitches. You should go to your nearest ER or urgent care (hyperlink ER and Urgent Care so when you click on it - it shows a Google Map with closest ER and Urgent Care)</p><p>Call 911 if:</p><ul><li>The bleeding is severe, spurting, or cannot be stopped (for example, after 10 minutes of pressure).</li><li>There is impaired function or feeling from the cut.</li><li>The person is seriously injured.</li></ul><p><a href='http://www.nlm.nih.gov/medlineplus/ency/article/000043.htm'>Click to learn more</a></p>\"\n\t}, \n\t{\n\t\t\"name\": \"DispositionCutHomeCare\", \n\t\t\"dataValue\": \"<p>Wounds like your typically do not need stitches.</p><p>Minor cuts and puncture wounds can be treated at home. Take the following steps.FOR MINOR CUTS - Click <a href='http://www.nlm.nih.gov/medlineplus/tutorials/burns/htm/_yes_50_no_0.htm'>here</a> to watch a video.</p><ol><li>Wash your hands with soap or antibacterial cleanser to prevent infection.</li><li>Wash the cut thoroughly with mild soap and water.</li><li>Use direct pressure to stop the bleeding.</li><li>Apply antibacterial ointment and a clean bandage that will not stick to the wound.</li></ol><p>FOR MINOR PUNCTURES - Click <a href='http://www.nlm.nih.gov/medlineplus/tutorials/burns/htm/_yes_50_no_0.htm'>here</a> to watch a video.</p><ol><li>Wash your hands with soap or antibacterial cleanser to prevent infection.</li><li>Use a stream of water for at least 5 minutes to rinse the puncture wound, then wash with soap.</li><li>Look (but do NOT probe) for objects inside the wound. If found, DO NOT remove -- go to the Emergency Department. If you cannot see anything inside the wound, but a piece of the object that caused the injury is missing, also seek medical attention.</li><li>Apply antibacterial ointment and a clean bandage that will not stick to the wound.</li></ol><p>If the wound gets infected (white with pus), see a doctor within the next 24 hours.</p><p><a href='http://www.nlm.nih.gov/medlineplus/ency/article/000043.htm'>Click to learn more</a>.</p>\"\n\t}, \n\t{\n\t\t\"name\": \"DispositionCutBiteNoSuturesUrgentCare\", \n\t\t\"dataValue\": \"Wounds like yours typically need do not need stitches. However, you should go to your nearest ER or urgent care (hyperlink ER and Urgent Care so when you click on it - it shows a Google Map with closest ER and Urgent Care) as there is a risk of an infection.\"\n\t}, \n\t{\n\t\t\"name\": \"DispositionCoughHomeCare\", \n\t\t\"dataValue\": \"<p>Your cough is likely due to viral illness or cold - you can try home remedies to improve symptoms.</p><p>To learn more about coughs you can watch <a href='http://www.nlm.nih.gov/medlineplus/ency/anatomyvideos/000039.htm'>this video</a></p><p>To ease your cough, try these tips:</p><ol><li>Suck cough drops or hard candies. They may ease a dry cough and soothe an irritated throat. Don't give them to a child under age 3, however, because they can cause choking.</li><li>Moisturize the air. Use a vaporizer or take a hot, steamy shower.</li><li>Drink fluids. Liquid helps thin the mucus in your throat. Warm liquids, such as broth or tea, can soothe your throat.</li></ol><p>If your cough does not improve in the next 3 days, please see a doctor.</p><p>Click <a href='http://www.nlm.nih.gov/medlineplus/cough.html'>here</a> to learn more.</p>\"\n\t}, \n\t{\n\t\t\"name\": \"DispositionCoughNextDayVisit\", \n\t\t\"dataValue\": \"<p>your cough is not an emergency, but your symptoms suggest if could be a problem that needs treatment. Please call your doctor on the next business day for earliest available appointment.</p><p>If you do not have a doctor consider going to a Urgent Care or Pharmacy Clinic in the area.</p><p><a href='http://www.minuteclinic.com/'>CVC Minute Clinic</a></p><p><a href='http://takecarehealth.com/'>Walgreens Take Care Health Clinic</a></p><p>You can also try the online tool ZOCDOC to find a doctor.  www.zocdoc.com </p><p>To learn more about coughs you can watch <a href='http://www.nlm.nih.gov/medlineplus/ency/anatomyvideos/000039.htm'>this video</a></p><p>Call your doctor if you or your child is:</p><ul><li>Coughing up thick, greenish-yellow phlegm</li><li>Wheezing</li><li>Experiencing a fever over 100 F (38 C)</li><li>Experiencing shortness of breath</li></ol><p>Click <a href='http://www.nlm.nih.gov/medlineplus/cough.html'>here<a/> to learn more </p>\"\n\t}, \n\t{\n\t\t\"name\": \"DispositionCoughUrgentCare\", \n\t\t\"dataValue\": \"<p>The symptoms of your cough are concerning and should be evaluated as soon as possible - You should go to your nearest ER or urgent care (hyperlink ER and Urgent Care so when you click on it - it shows a Google Map with closest ER and Urgent Care)</p><p><b>Seek emergency care</b></p><p>Seek emergency care if you or your child is:</p><ul><li>Having difficulty breathing or swallowing</li><li>Coughing up bloody or pink-tinged phlegm</li></ul><p>Click <a href='http://www.nlm.nih.gov/medlineplus/cough.html'>here</a> to learn more </p>\"\n\t}\n]","type":"EntryData"}, {}], 
 		historyVar: ["wm.Variable", {"isList":true,"type":"QueryResponse"}, {}], 
 		phonegapCredentialsVar: ["wm.Variable", {"saveInPhonegap":true,"type":"EntryData"}, {}]
 	},
@@ -536,22 +537,33 @@ DecisionTree.extend({
     },
   _end: 0
 });
-DecisionTree.prototype._css = 'html.WMApp body .AnswersMenu .wmlist-item {\
-border: solid 1px black;\
+DecisionTree.prototype._css = 'html.WMApp body .ButtonList .wmlist-item,\
+html.WMApp body .ButtonList .wmlist-item-selected {\
+border: solid 3px rgb(108,176,205);\
 text-align: center;\
-background: -webkit-gradient(linear, center top, center bottom, from(#aaaaaa), color-stop(18%,#555555), to(#555555));\
-background: -moz-linear-gradient(top, #aaaaaa 0%,#555555 18%,#555555 100%);\
-background: -o-linear-gradient(top, #aaaaaa 0%,#555555 18%,#555555 100%);\
-background: -ms-linear-gradient(top, #aaaaaa 0%,#555555 18%,#555555 100%);\
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#aaaaaa", endColorstr="#555555",GradientType=0);\
+padding: 0px;\
+font-size: 14pt;\
+font-weight: bold;\
+color: white;\
+-webkit-border-radius: 16px;\
+-moz-border-radius: 16px;\
+border-radius: 16px;\
 }\
-.curvedlist .wmlist-item, .inputPanel, .Question, .Answer {\
-color: black !important;\
-background: -webkit-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
-background: -webkit-gradient(linear, left top, left bottom, from(#dcdbcf), to(#b2b2aa));\
-background: -moz-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
-background: -ms-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
-background: -o-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
+html.WMApp body .ButtonList .wmlist-item {\
+background: -webkit-gradient(linear, center top, center bottom, from(#4f8ddb), color-stop(50%,#0fa1e7), to(#4f8ddb));\
+background: -moz-linear-gradient(top, #4f8ddb 0%,#0fa1e7 42%,#0fa1e7 58%,#4f8ddb 100%);\
+background: -o-linear-gradient(top, #4f8ddb 0%,#0fa1e7 42%,#0fa1e7 58%,#4f8ddb 100%);\
+background: -ms-linear-gradient(top, #4f8ddb 0%,#0fa1e7 42%,#0fa1e7 58%,#4f8ddb 100%);\
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#4f8ddb", endColorstr="#0fa1e7",GradientType=0);\
+}\
+html.WMApp body .ButtonList .wmlist-item-selected {\
+background: -webkit-gradient(linear, center top, center bottom, from(#0fa1e7), color-stop(50%,#4f8ddb), to(#0fa1e7));\
+background: -moz-linear-gradient(top, #0fa1e7 0%,#4f8ddb 42%,#4f8ddb 58%,#0fa1e7 100%);\
+background: -o-linear-gradient(top, #0fa1e7 0%,#4f8ddb 42%,#4f8ddb 58%,#0fa1e7 100%);\
+background: -ms-linear-gradient(top, #0fa1e7 0%,#4f8ddb 42%,#4f8ddb 58%,#0fa1e7 100%);\
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#4f8ddb", endColorstr="#0fa1e7",GradientType=0);\
+border-color: #333333;\
+color: white !important;\
 }\
 div .Answer {\
 background: -webkit-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);\
@@ -560,14 +572,168 @@ background: -moz-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);\
 background: -ms-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);\
 background: -o-linear-gradient(top, #F8F8A5 0%,#D1CA76 20%,#D1CA76 100%);\
 }\
+*/\
+.NoSizeNode .wmSizeNode {\
+display: block;\
+}\
+.NoSizeNode .wmSizeNode {\
+display: block;\
+}\
+html.WMApp body .BottomButton img {\
+margin-bottom:8px;\
+height: 40%;\
+}\
+html.WMApp body div .wmtogglebuttonpanel .wmbutton.BottomButton {\
+font-size: 11px;\
+color: #a7a7a7;\
+background: -webkit-gradient(linear, center top, center bottom, from(#434343), color-stop(89%,#19191a), to(#19191a));\
+background: -moz-linear-gradient(top, #434343 0%,#19191a 89%,#19191a 100%);\
+background: -o-linear-gradient(top, #434343 0%,#19191a 89%,#19191a 100%);\
+background: -ms-linear-gradient(top, #434343 0%,#19191a 89%,#19191a 100%);\
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#434343", endColorstr="#19191a",GradientType=0);\
+-webkit-border-radius: 0px !important;\
+border-radius: 0px !important;\
+-webkit-border-top-left-radius: 0px !important;\
+-webkit-border-bottom-left-radius: 0px !important;\
+-moz-border-radius-topleft: 0px !important;\
+-moz-border-radius-bottomleft: 0px !important;\
+border-top-left-radius: 0px !important;\
+border-bottom-left-radius: 0px !important;\
+}\
+html.WMApp body div .wmtogglebuttonpanel .wmbutton.BottomButton.toggleButtonDown {\
+color: white;\
+background: -webkit-gradient(linear, center top, center bottom, from(#2d2d2d), color-stop(89%,#444444), to(#444444));\
+background: -moz-linear-gradient(top, #2d2d2d 0%,#444444 89%,#444444 100%);\
+background: -o-linear-gradient(top, #2d2d2d 0%,#444444 89%,#444444 100%);\
+background: -ms-linear-gradient(top, #2d2d2d 0%,#444444 89%,#444444 100%);\
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#2d2d2d", endColorstr="#444444",GradientType=0);\
+}\
+html.WMApp body .NoRadius {\
+-webkit-border-radius: 0px !important;\
+-moz-border-radius: 0px !important;\
+-ms-border-radius: 0px !important;\
+-o-border-radius: 0px !important;\
+border-radius: 0px !important;\
+}html.WMApp body .BackAndForthToggleButtonPanel {\
+-webkit-border-radius: 16px;\
+-moz-border-radius: 16px;\
+border-radius: 16px;\
+border-color: rgb(14,14,14) rgb(79,79,79) #6e6e6e rgb(79,79,79);\
+}\
+html.WMApp body .BackAndForthToggleButtonPanel {\
+-webkit-border-radius: 16px;\
+-moz-border-radius: 16px;\
+border-radius: 16px;\
+border-color: rgb(14,14,14) rgb(79,79,79) #6e6e6e rgb(79,79,79);\
+}\
+html.WMApp body .BackAndForthToggleButtonPanel .wmbutton {\
+background: -webkit-gradient(linear, center top, center bottom, from(#727272), color-stop(60%,#010101), to(#010101));\
+background: -moz-linear-gradient(top, #727272 0%,#010101 60%,#010101 100%);\
+background: -o-linear-gradient(top, #727272 0%,#010101 60%,#010101 100%);\
+background: -ms-linear-gradient(top, #727272 0%,#010101 60%,#010101 100%);\
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#727272", endColorstr="#010101",GradientType=0);\
+}\
+html.WMApp body div div .StrongLeftRadius,\
+html.WMApp body div div  .wmbutton.StrongLeftRadius:first-child {\
+-webkit-border-top-left-radius: 14px !important;\
+-webkit-border-bottom-left-radius: 14px !important;\
+-moz-border-radius-topleft: 14px !important;\
+-moz-border-radius-bottomleft: 14px !important;\
+border-top-left-radius: 14px !important;\
+border-bottom-left-radius: 14px !important;\
+-webkit-border-top-right-radius: 0px !important;\
+-webkit-border-bottom-right-radius: 0px !important;\
+-moz-border-radius-topright: 0px !important;\
+-moz-border-radius-bottomright: 0px !important;\
+border-top-right-radius: 0px !important;\
+border-bottom-right-radius: 0px !important;\
+}\
+html.WMApp body div div .StrongRightRadius,\
+html.WMApp body div div  .wmbutton.StrongRightRadius:last-child {\
+-webkit-border-top-right-radius: 14px !important;\
+-webkit-border-bottom-right-radius: 14px !important;\
+-moz-border-radius-topright: 14px !important;\
+-moz-border-radius-bottomright: 14px !important;\
+border-top-right-radius: 14px !important;\
+border-bottom-right-radius: 14px !important;\
+-webkit-border-top-left-radius: 0px !important;\
+-webkit-border-bottom-left-radius: 0px !important;\
+-moz-border-radius-topleft: 0px !important;\
+-moz-border-radius-bottomleft: 0px !important;\
+border-top-left-radius: 0px !important;\
+border-bottom-left-radius: 0px !important;\
+}\
+html.WMApp body .responseList {\
+background: -webkit-gradient(linear, center top, center bottom, from(#cdeffd), color-stop(20%,#e2f6fe), to(#e2f6fe));\
+background: -moz-linear-gradient(top, #cdeffd 0%,#e2f6fe 20%,#e2f6fe 100%);\
+background: -o-linear-gradient(top, #cdeffd 0%,#e2f6fe 20%,#e2f6fe 100%);\
+background: -ms-linear-gradient(top, #cdeffd 0%,#e2f6fe 20%,#e2f6fe 100%);\
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#cdeffd", endColorstr="#e2f6fe",GradientType=0);\
+-webkit-border-radius: 8px;\
+-moz-border-radius: 8px;\
+webkit-border-radius: 8px;\
+-moz-box-shadow: 2px 4px 4px #888;\
+-webkit-box-shadow: 2px 4px 4px #888;\
+box-shadow: 2px 4px 4px #888;\
+}\
+html.WMApp body .responseList .wmlist-item-selected,\
+html.WMApp body .responseList .wmlist-item {\
+font-size: 10pt;\
+}\
+html.WMApp body .rounded {\
+-webkit-border-radius: 8px;\
+-moz-border-radius: 8px;\
+-ms-border-radius: 8px\
+border-radius: 8px;\
+}html.WMApp body .OverflowNotHidden {\
+overflow: visible !important;\
+}\
+html.WMApp body .OverflowNotHidden a {\
+position: relative;\
+z-index: 100;\
+}\
+html.WMApp body .OverflowNotHidden.ShiftLeft a {\
+left: -1px;\
+}\
+html.WMApp body .OverflowNotHidden.ShiftDown a {\
+bottom: -1px;\
+}\
+html.WMApp body .drgenus {\
+background: -webkit-gradient(linear, center top, center bottom, from(#5597da), color-stop(20%,#03a5dc), color-stop(80%,#03a5dc),to(#5597da));\
+background: -moz-linear-gradient(top, #5597da 0%,#03a5dc 20%,#03a5dc 80%,#5597da 100%);\
+background: -o-linear-gradient(top, #5597da 0%,#03a5dc 20%,#03a5dc 80%,#5597da 100%);\
+background: -ms-linear-gradient(top, #5597da 0%,#03a5dc 20%,#03a5dc 80%,#5597da 100%);\
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#5597da", endColorstr="#03a5dc",GradientType=0);\
+}\
+.Question {\
+-webkit-border-radius: 6px;\
+-moz-border-radius: 6px;\
+border-radius: 6px;\
+background: -webkit-gradient(linear, center top, center bottom, from(#f8f8f8), color-stop(20%,#f8f8f8), to(#e6e6e6));\
+background: -moz-linear-gradient(top, #f8f8f8 0%,#f8f8f8 20%,#e6e6e6 100%);\
+background: -o-linear-gradient(top, #f8f8f8 0%,#f8f8f8 20%,#e6e6e6 100%);\
+background: -ms-linear-gradient(top, #f8f8f8 0%,#f8f8f8 20%,#e6e6e6 100%);\
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f8f8f8", endColorstr="#e6e6e6",GradientType=0);\
+-moz-box-shadow: 2px 4px 4px #888;\
+-webkit-box-shadow: 2px 4px 4px #888;\
+box-shadow: 2px 4px 4px #888;\
+font-weight: bold;\
+}\
+/*\
+.curvedlist .wmlist-item, .inputPanel, .Question, .Answer {\
+color: black !important;\
+background: -webkit-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
+background: -webkit-gradient(linear, left top, left bottom, from(#dcdbcf), to(#b2b2aa));\
+background: -moz-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
+background: -ms-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
+background: -o-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
+}\
 .Question, .Answer {\
-padding: 10px 15px;\
 border: solid 1px #333;\
 border-radius: 4px;\
 -webkit-border-radius: 4px;\
-} .NoSizeNode .wmSizeNode {\
-display: block;\
-} .NoSizeNode .wmSizeNode {\
-display: block;\
+}\
+.wmlist .Question, .wmlist .Answer {\
+padding: 10px 15px;\
 }\
 ';
