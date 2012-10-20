@@ -1,0 +1,13 @@
+{
+	"methods": [{
+		"name": "getMessagesById",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "com.genushealthdb.data.Messages"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "GenusHealthDB.json"
+}

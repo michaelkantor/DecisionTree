@@ -19,6 +19,7 @@ start: function() {
 onShow: function() {
 this.currentQuestionVar.setData(app.decisionTreeVar);
 this.responseList.setDataSet(this.currentQuestionVar.getValue("responses"));
+this.createSessionLVar.update();
 },
 responseListSelect: function(inSender, inItem) {
 var data = inSender.selectedItem.getData();
@@ -135,26 +136,40 @@ inRow.customClasses += " wmbutton";
 },
 questionsDone: function() {
 app.announcePath();
-this.createSessionSVar.update();
+var actionCode = app.historyVar.getItem(app.historyVar.getCount()-2).getValue('actionCode');
+this.updateSessionLVar.sourceData.setValue("modelDiagnosis", actionCode);
+this.updateSessionLVar.update();
 },
-createSessionSVarSuccess: function(inSender, inDeprecated) {
+updateSessionLVarSuccess: function(inSender, inDeprecated) {
 //alert(dojo.toJson(inSender.getData()));
 var historyCount = app.historyVar.getCount();
 for (var i = 0; i < historyCount; i++) {
 var from, text;
 var currentItem = app.historyVar.getItem(i);
-this.createMessageSVar.input.setData({from: "autodoctor", message: currentItem.getValue("question")});
-this.createMessageSVar.update();
-this.createMessageSVar.input.setData({from: "user", message: currentItem.getValue("answer")});
-this.createMessageSVar.update();
+this.createMessageLVar.sourceData.setData({
+sender: "autodoctor",
+text: currentItem.getValue("question"),
+createdAt: new Date().getTime(),
+userSessions: this.createSessionLVar});
+this.createMessageLVar.update();
+this.createMessageLVar.sourceData.setData({
+sender: "user",
+text: currentItem.getValue("answer"),
+createdAt: new Date().getTime(),
+userSessions: this.createSessionLVar
+});
+this.createMessageLVar.update();
 }
 },
-createMessageSVarSuccess: function(inSender, inDeprecated) {
+/*createMessageSVarSuccess: function(inSender, inDeprecated) {
 this.messageRelationshipsObjectsVar.addItem({__type: "Pointer", "className": "Message", objectId: inSender.getValue("objectId")});
 if (inSender._inFlightBacklog.length == 0) {
 this.addMessagesToSessionSVar.update();
 }
 },
+updateSessionSVarSuccess: function(inSender, inDeprecated) {
+this.createSessionSVarSuccess(inSender, inDeprecated);
+},*/
 _end: 0
 });
 
@@ -172,44 +187,12 @@ wire: ["wm.Wire", {"expression":"\"Camera\"","targetProperty":"sourceType"}, {}]
 }]
 }]
 }],
-createSessionSVar: ["wm.ServiceVariable", {"operation":"parse.com.CreateSession","service":"xhrService"}, {"onSuccess":"createSessionSVarSuccess"}, {
-input: ["wm.ServiceInput", {"type":"parse.com.CreateSessionInputs"}, {}, {
-binding: ["wm.Binding", {}, {}, {
-wire: ["wm.Wire", {"expression":"\"QS1yDzKQNakBesD2zm8QbYKZKNcCHhF3II7IFBhr\"","targetProperty":"X-Parse-Application-Id"}, {}],
-wire1: ["wm.Wire", {"expression":"\"nkRl8lPEzOH3jtZVJJE2AA0oZVj6t1jZclZSYRyC\"","targetProperty":"X-Parse-REST-API-Key"}, {}],
-wire2: ["wm.Wire", {"expression":undefined,"source":"app.phonegapCredentialsVar.dataValue","targetProperty":"patient.objectId"}, {}],
-wire3: ["wm.Wire", {"expression":"\"Pointer\"","targetProperty":"patient.__type"}, {}],
-wire4: ["wm.Wire", {"expression":"\"_User\"","targetProperty":"patient.className"}, {}],
-wire5: ["wm.Wire", {"expression":undefined,"source":"parseUserPointer","targetProperty":"patient"}, {}],
-wire6: ["wm.Wire", {"expression":"\"test\"","targetProperty":"notes"}, {}],
-wire7: ["wm.Wire", {"expression":"\"none\"","targetProperty":"modelDiagnosis"}, {}],
-wire8: ["wm.Wire", {"expression":"\"none\"","targetProperty":"intermediateDiagnosis"}, {}],
-wire9: ["wm.Wire", {"expression":"\"none\"","targetProperty":"finalDiagnosis"}, {}],
-wire10: ["wm.Wire", {"expression":"1","targetProperty":"score"}, {}]
-}]
-}]
-}],
-addMessagesToSessionSVar: ["wm.ServiceVariable", {"inFlightBehavior":"executeAll","operation":"parse.com.AddMessageToSession","service":"xhrService"}, {}, {
-input: ["wm.ServiceInput", {"type":"parse.com.AddMessageToSessionInputs"}, {}, {
-binding: ["wm.Binding", {}, {}, {
-wire: ["wm.Wire", {"expression":"\"QS1yDzKQNakBesD2zm8QbYKZKNcCHhF3II7IFBhr\"","targetProperty":"X-Parse-Application-Id"}, {}],
-wire1: ["wm.Wire", {"expression":"\"nkRl8lPEzOH3jtZVJJE2AA0oZVj6t1jZclZSYRyC\"","targetProperty":"X-Parse-REST-API-Key"}, {}],
-wire2: ["wm.Wire", {"expression":undefined,"source":"createSessionSVar.objectId","targetProperty":"objectId"}, {}],
-wire3: ["wm.Wire", {"expression":undefined,"source":"createSessionSVar.objectId","targetProperty":"GameScore"}, {}],
-wire4: ["wm.Wire", {"expression":undefined,"source":"messageRelationshipVar","targetProperty":"messages"}, {}],
-wire5: ["wm.Wire", {"expression":undefined,"source":"createSessionSVar.objectId","targetProperty":"Session"}, {}]
-}]
-}]
-}],
 parseUserPointer: ["wm.Variable", {"type":"parse.com.Pointer"}, {}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":"\"Pointer\"","targetProperty":"dataSet.__type"}, {}],
 wire1: ["wm.Wire", {"expression":"\"_User\"","targetProperty":"dataSet.className"}, {}],
 wire2: ["wm.Wire", {"expression":undefined,"source":"app.phonegapCredentialsVar.dataValue","targetProperty":"dataSet.objectId"}, {}]
 }]
-}],
-createMessageSVar: ["wm.ServiceVariable", {"inFlightBehavior":"executeAll","operation":"parse.com.CreateMessage","service":"xhrService"}, {"onSuccess":"createMessageSVarSuccess"}, {
-input: ["wm.ServiceInput", {"type":"parse.com.CreateMessageInputs"}, {}]
 }],
 messageRelationshipVar: ["wm.Variable", {"type":"parse.com.AddRelationshipType"}, {}, {
 binding: ["wm.Binding", {}, {}, {
@@ -218,6 +201,25 @@ wire1: ["wm.Wire", {"expression":"\"AddRelation\"","targetProperty":"dataSet.__o
 }]
 }],
 messageRelationshipsObjectsVar: ["wm.Variable", {"isList":true,"type":"parse.com.AddRelationshipType.objects"}, {}],
+createSessionLVar: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","operation":"insert","startUpdate":false,"type":"com.genushealthdb.data.UserSessions"}, {}, {
+binding: ["wm.Binding", {}, {}, {
+wire: ["wm.Wire", {"expression":undefined,"source":"parseUserPointer.objectId","targetProperty":"sourceData.patientId"}, {}],
+wire1: ["wm.Wire", {"expression":"new Date()","targetProperty":"sourceData.createdAt"}, {}],
+wire2: ["wm.Wire", {"expression":undefined,"source":"[main].mainMenuList.selectedItem.name","targetProperty":"sourceData.conditionType"}, {}],
+wire3: ["wm.Wire", {"expression":"new Date()","targetProperty":"sourceData.updatedAt"}, {}]
+}],
+liveView: ["wm.LiveView", {"dataType":"com.genushealthdb.data.UserSessions","view":[{"caption":"SessionId","sortable":true,"dataIndex":"sessionId","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":1000,"subType":null,"widthUnits":"px"},{"caption":"ConditionType","sortable":true,"dataIndex":"conditionType","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1001,"subType":null,"widthUnits":"px"},{"caption":"ModelDiagnosis","sortable":true,"dataIndex":"modelDiagnosis","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1002,"subType":null,"widthUnits":"px"},{"caption":"PatientId","sortable":true,"dataIndex":"patientId","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1003,"subType":null,"widthUnits":"px"},{"caption":"CreatedAt","sortable":true,"dataIndex":"createdAt","type":"java.util.Date","displayType":"Date","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1004,"subType":null,"widthUnits":"px"},{"caption":"UpdatedAt","sortable":true,"dataIndex":"updatedAt","type":"java.util.Date","displayType":"Date","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1005,"subType":null,"widthUnits":"px"}]}, {}]
+}],
+updateSessionLVar: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","operation":"update","startUpdate":false,"type":"com.genushealthdb.data.UserSessions"}, {"onSuccess":"updateSessionLVarSuccess"}, {
+binding: ["wm.Binding", {}, {}, {
+wire3: ["wm.Wire", {"expression":"new Date()","targetProperty":"sourceData.updatedAt"}, {}],
+wire: ["wm.Wire", {"expression":undefined,"source":"createSessionLVar.sessionId","targetProperty":"sourceData.sessionId"}, {}]
+}],
+liveView: ["wm.LiveView", {"dataType":"com.genushealthdb.data.UserSessions","view":[{"caption":"SessionId","sortable":true,"dataIndex":"sessionId","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":1000,"subType":null,"widthUnits":"px"},{"caption":"ConditionType","sortable":true,"dataIndex":"conditionType","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1001,"subType":null,"widthUnits":"px"},{"caption":"ModelDiagnosis","sortable":true,"dataIndex":"modelDiagnosis","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":1002,"subType":null,"widthUnits":"px"},{"caption":"PatientId","sortable":true,"dataIndex":"patientId","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1003,"subType":null,"widthUnits":"px"},{"caption":"CreatedAt","sortable":true,"dataIndex":"createdAt","type":"java.util.Date","displayType":"Date","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1004,"subType":null,"widthUnits":"px"},{"caption":"UpdatedAt","sortable":true,"dataIndex":"updatedAt","type":"java.util.Date","displayType":"Date","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1005,"subType":null,"widthUnits":"px"}]}, {}]
+}],
+createMessageLVar: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeAll","operation":"insert","startUpdate":false,"type":"com.genushealthdb.data.Messages"}, {}, {
+liveView: ["wm.LiveView", {"dataType":"com.genushealthdb.data.Messages","view":[{"caption":"MessageId","sortable":true,"dataIndex":"messageId","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},{"caption":"Sender","sortable":true,"dataIndex":"sender","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1,"subType":null},{"caption":"Text","sortable":true,"dataIndex":"text","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":2,"subType":null},{"caption":"CreatedAt","sortable":true,"dataIndex":"createdAt","type":"java.util.Date","displayType":"Date","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":3,"subType":null}]}, {}]
+}],
 layoutBox1: ["wm.Layout", {"autoScroll":false,"horizontalAlign":"left","styles":{"backgroundGradient":""},"verticalAlign":"top"}, {}, {
 panel: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
 drGenusPicturePanel: ["wm.Panel", {"_classes":{"domNode":["drgenus"]},"height":"76px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"10","styles":{"backgroundGradient":""},"verticalAlign":"top","width":"100%"}, {}, {

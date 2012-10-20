@@ -13,7 +13,7 @@ dojo.declare("DecisionTree", wm.Application, {
 	"projectSubVersion": "Alpha16", 
 	"projectVersion": 1, 
 	"showIOSPhoneGapBackButton": false, 
-	"studioVersion": "6.5.0.RC1", 
+	"studioVersion": "6.5.0.RELEASE", 
 	"tabletMain": "", 
 	"theme": "wm_default", 
 	"toastPosition": "br", 

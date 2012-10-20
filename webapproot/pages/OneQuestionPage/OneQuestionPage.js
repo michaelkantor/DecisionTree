@@ -19,7 +19,8 @@ dojo.declare("OneQuestionPage", wm.Page, {
     },    
     onShow: function() {
         this.currentQuestionVar.setData(app.decisionTreeVar);
-        this.responseList.setDataSet(this.currentQuestionVar.getValue("responses"));    
+        this.responseList.setDataSet(this.currentQuestionVar.getValue("responses"));
+        this.createSessionLVar.update();
         
     },
   responseListSelect: function(inSender, inItem) {
@@ -147,26 +148,41 @@ historyListSelect: function(inSender, inItem) {
     },
     questionsDone: function() {
         app.announcePath();
-        this.createSessionSVar.update();
+        var actionCode = app.historyVar.getItem(app.historyVar.getCount()-2).getValue('actionCode');
+        this.updateSessionLVar.sourceData.setValue("modelDiagnosis", actionCode);
+        this.updateSessionLVar.update();
+        
     },
-  createSessionSVarSuccess: function(inSender, inDeprecated) {
+  updateSessionLVarSuccess: function(inSender, inDeprecated) {
       //alert(dojo.toJson(inSender.getData()));
           var historyCount = app.historyVar.getCount();
           for (var i = 0; i < historyCount; i++) {
               var from, text;
               var currentItem = app.historyVar.getItem(i);
-              this.createMessageSVar.input.setData({from: "autodoctor", message: currentItem.getValue("question")});
-              this.createMessageSVar.update();
+              this.createMessageLVar.sourceData.setData({
+                  sender: "autodoctor", 
+                  text: currentItem.getValue("question"),
+                  createdAt: new Date().getTime(),
+                  userSessions: this.createSessionLVar});
+              this.createMessageLVar.update();
 
-              this.createMessageSVar.input.setData({from: "user", message: currentItem.getValue("answer")});
-              this.createMessageSVar.update();
+              this.createMessageLVar.sourceData.setData({
+                  sender: "user", 
+                  text: currentItem.getValue("answer"),
+                  createdAt: new Date().getTime(),
+                  userSessions: this.createSessionLVar
+                  });
+              this.createMessageLVar.update();
           }                      
     },
-  createMessageSVarSuccess: function(inSender, inDeprecated) {
+  /*createMessageSVarSuccess: function(inSender, inDeprecated) {
         this.messageRelationshipsObjectsVar.addItem({__type: "Pointer", "className": "Message", objectId: inSender.getValue("objectId")});
         if (inSender._inFlightBacklog.length == 0) {
             this.addMessagesToSessionSVar.update();   
         }
     },
-    _end: 0
+    updateSessionSVarSuccess: function(inSender, inDeprecated) {
+	  this.createSessionSVarSuccess(inSender, inDeprecated);
+	},*/
+  _end: 0
 });     

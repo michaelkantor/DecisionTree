@@ -328,6 +328,140 @@ wm.types = {
 			"internal": true,
 			"primitiveType": "String"
 		},
+		"com.genushealthdb.data.Messages": {
+			"fields": {
+				"createdAt": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.util.Date"
+				},
+				"messageId": {
+					"exclude": ["insert"],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": ["delete", "read", "update"],
+					"isList": false,
+					"noChange": ["delete", "read", "update"],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"sender": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"text": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"userSessions": {
+					"exclude": [],
+					"fieldOrder": 4,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "com.genushealthdb.data.UserSessions"
+				}
+			},
+			"internal": false,
+			"liveService": true,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.UserSessions": {
+			"fields": {
+				"conditionType": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				},
+				"createdAt": {
+					"exclude": [],
+					"fieldOrder": 4,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.util.Date"
+				},
+				"messageses": {
+					"exclude": [],
+					"fieldOrder": 6,
+					"fieldSubType": null,
+					"include": [],
+					"isList": true,
+					"noChange": [],
+					"required": false,
+					"type": "com.genushealthdb.data.Messages"
+				},
+				"modelDiagnosis": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				},
+				"patientId": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"sessionId": {
+					"exclude": ["insert"],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": ["delete", "read", "update"],
+					"isList": false,
+					"noChange": ["delete", "read", "update"],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"updatedAt": {
+					"exclude": [],
+					"fieldOrder": 5,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.util.Date"
+				}
+			},
+			"internal": false,
+			"liveService": true,
+			"service": "GenusHealthDB"
+		},
 		"double": {
 			"internal": true,
 			"primitiveType": "Number"
@@ -427,10 +561,10 @@ dojo.declare("DecisionTree", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha15", 
+	"projectSubVersion": "Alpha16", 
 	"projectVersion": 1, 
 	"showIOSPhoneGapBackButton": false, 
-	"studioVersion": "6.5.0.RC1", 
+	"studioVersion": "6.5.0.RELEASE", 
 	"tabletMain": "", 
 	"theme": "wm_default", 
 	"toastPosition": "br", 

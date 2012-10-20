@@ -35,7 +35,7 @@ wm.relativeLibPath = "../wavemaker/lib/";
 wm.images = wm.libPath + "wm/base/widget/themes/default/images/";
 wm.logging = (location.search.indexOf("logging") >= 0);
 wm.checkGoogleFrame = false;
-wm.xhrPath = 'http://192.168.1.136:8080/DecisionTree/';
+
 /*
  *  Copyright (C) 2008-2012 VMware, Inc. All rights reserved.
  *
