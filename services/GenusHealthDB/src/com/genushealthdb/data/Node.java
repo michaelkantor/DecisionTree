@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  GenusHealthDB.Node
- *  11/20/2012 21:55:17
+ *  12/16/2012 23:38:20
  * 
  */
 public class Node {
@@ -18,10 +18,10 @@ public class Node {
     private String question;
     private Date createdAt;
     private Date updatedAt;
-    private com.genushealthdb.data.Node node;
+    private com.genushealthdb.data.Node parent;
     private Set<com.genushealthdb.data.Node> nodes = new HashSet<com.genushealthdb.data.Node>();
-    private Set<com.genushealthdb.data.NodeGroup> nodeGroups = new HashSet<com.genushealthdb.data.NodeGroup>();
-    private Set<com.genushealthdb.data.UserSessions> userSessionses = new HashSet<com.genushealthdb.data.UserSessions>();
+    private Set<com.genushealthdb.data.UserSessions> usersessionss = new HashSet<com.genushealthdb.data.UserSessions>();
+    private Set<com.genushealthdb.data.NodeGroup> nodegroups = new HashSet<com.genushealthdb.data.NodeGroup>();
 
     public Integer getNodeId() {
         return nodeId;
@@ -63,12 +63,12 @@ public class Node {
         this.updatedAt = updatedAt;
     }
 
-    public com.genushealthdb.data.Node getNode() {
-        return node;
+    public com.genushealthdb.data.Node getParent() {
+        return parent;
     }
 
-    public void setNode(com.genushealthdb.data.Node node) {
-        this.node = node;
+    public void setParent(com.genushealthdb.data.Node parent) {
+        this.parent = parent;
     }
 
     public Set<com.genushealthdb.data.Node> getNodes() {
@@ -79,20 +79,20 @@ public class Node {
         this.nodes = nodes;
     }
 
-    public Set<com.genushealthdb.data.NodeGroup> getNodeGroups() {
-        return nodeGroups;
+    public Set<com.genushealthdb.data.UserSessions> getUsersessionss() {
+        return usersessionss;
     }
 
-    public void setNodeGroups(Set<com.genushealthdb.data.NodeGroup> nodeGroups) {
-        this.nodeGroups = nodeGroups;
+    public void setUsersessionss(Set<com.genushealthdb.data.UserSessions> usersessionss) {
+        this.usersessionss = usersessionss;
     }
 
-    public Set<com.genushealthdb.data.UserSessions> getUserSessionses() {
-        return userSessionses;
+    public Set<com.genushealthdb.data.NodeGroup> getNodegroups() {
+        return nodegroups;
     }
 
-    public void setUserSessionses(Set<com.genushealthdb.data.UserSessions> userSessionses) {
-        this.userSessionses = userSessionses;
+    public void setNodegroups(Set<com.genushealthdb.data.NodeGroup> nodegroups) {
+        this.nodegroups = nodegroups;
     }
 
 }

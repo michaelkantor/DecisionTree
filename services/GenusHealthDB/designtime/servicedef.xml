@@ -23,7 +23,36 @@
             <element name="text" typeRef="java.lang.String" isList="false" allowNull="true"/>
             <element name="createdAt" typeRef="java.util.Date" isList="false" allowNull="false"/>
             <element name="modifiedAt" typeRef="java.util.Date" isList="false" allowNull="false"/>
-            <element name="display_name" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="displayName" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="feedbackquestionss" typeRef="com.genushealthdb.data.Feedbackquestions" isList="true" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.genushealthdb.data.Feedbackquestions" supportsQuickData="true">
+            <element name="feedbackquestionid" typeRef="java.lang.Integer" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+                <exclude>insert</exclude>
+            </element>
+            <element name="question" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="ordernumber" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="disposition" typeRef="com.genushealthdb.data.Dispositions" isList="false" allowNull="false"/>
+            <element name="feedbackresponsess" typeRef="com.genushealthdb.data.Feedbackresponses" isList="true" allowNull="true"/>
+        </dataobject>
+        <dataobject javaType="com.genushealthdb.data.Feedbackresponses" supportsQuickData="true">
+            <element name="feedbackresponseid" typeRef="java.lang.Integer" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+                <exclude>insert</exclude>
+            </element>
+            <element name="answer" typeRef="java.lang.String" isList="false" allowNull="false"/>
+            <element name="feedbackquestion" typeRef="com.genushealthdb.data.Feedbackquestions" isList="false" allowNull="false"/>
         </dataobject>
         <dataobject javaType="com.genushealthdb.data.Jsonfiles" supportsQuickData="true">
             <element name="fileId" typeRef="java.lang.Integer" isList="false" allowNull="false">
@@ -69,10 +98,10 @@
             <element name="question" typeRef="java.lang.String" isList="false" allowNull="true"/>
             <element name="createdAt" typeRef="java.util.Date" isList="false" allowNull="false"/>
             <element name="updatedAt" typeRef="java.util.Date" isList="false" allowNull="false"/>
-            <element name="node" typeRef="com.genushealthdb.data.Node" isList="false" allowNull="true"/>
+            <element name="parent" typeRef="com.genushealthdb.data.Node" isList="false" allowNull="true"/>
             <element name="nodes" typeRef="com.genushealthdb.data.Node" isList="true" allowNull="true"/>
-            <element name="nodeGroups" typeRef="com.genushealthdb.data.NodeGroup" isList="true" allowNull="true"/>
-            <element name="userSessionses" typeRef="com.genushealthdb.data.UserSessions" isList="true" allowNull="true"/>
+            <element name="usersessionss" typeRef="com.genushealthdb.data.UserSessions" isList="true" allowNull="true"/>
+            <element name="nodegroups" typeRef="com.genushealthdb.data.NodeGroup" isList="true" allowNull="true"/>
         </dataobject>
         <dataobject javaType="com.genushealthdb.data.NodeGroup" supportsQuickData="true">
             <element name="nodegroupId" typeRef="java.lang.Integer" isList="false" allowNull="false">
@@ -105,7 +134,7 @@
             <element name="updatedAt" typeRef="java.util.Date" isList="false" allowNull="false"/>
             <element name="feedback" typeRef="java.lang.String" isList="false" allowNull="true"/>
             <element name="node" typeRef="com.genushealthdb.data.Node" isList="false" allowNull="true"/>
-            <element name="messageses" typeRef="com.genushealthdb.data.Messages" isList="true" allowNull="true"/>
+            <element name="messagess" typeRef="com.genushealthdb.data.Messages" isList="true" allowNull="true"/>
         </dataobject>
     </dataobjects>
 </service>

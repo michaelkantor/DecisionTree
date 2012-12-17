@@ -9,7 +9,7 @@
             <column name="sender" not-null="true"/>
         </property>
         <property name="text" type="string">
-            <column name="text"/>
+            <column name="text" length="65535"/>
         </property>
         <property name="createdAt" type="timestamp">
             <column name="created_at" length="19" not-null="true"/>

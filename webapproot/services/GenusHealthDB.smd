@@ -1,5 +1,13 @@
 {
 	"methods": [{
+		"name": "getConditionsQuery",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "status",
+			"type": "java.lang.Byte"
+		}],
+		"returnType": "[com.genushealthdb.data.NodeGroup]"
+	}, {
 		"name": "getMessagesById",
 		"operationType": "hqlquery",
 		"parameters": [{

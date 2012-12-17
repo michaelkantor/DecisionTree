@@ -6,10 +6,10 @@
             <generator class="identity"/>
         </id>
         <property name="name" type="string">
-            <column name="name" length="63"/>
+            <column name="name" length="127"/>
         </property>
         <property name="text" type="string">
-            <column name="text"/>
+            <column name="text" length="65535"/>
         </property>
         <property name="createdAt" type="timestamp">
             <column name="created_at" length="19" not-null="true"/>
@@ -17,8 +17,14 @@
         <property name="modifiedAt" type="timestamp">
             <column name="modified_at" length="19" not-null="true"/>
         </property>
-        <property name="display_name" type="string">
+        <property name="displayName" type="string">
             <column name="display_name" length="31"/>
         </property>
+        <set name="feedbackquestionss" inverse="true" cascade="">
+            <key>
+                <column name="dispositionid" not-null="true"/>
+            </key>
+            <one-to-many class="com.genushealthdb.data.Feedbackquestions"/>
+        </set>
     </class>
 </hibernate-mapping>

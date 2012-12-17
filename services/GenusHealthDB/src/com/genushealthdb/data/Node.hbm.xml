@@ -17,7 +17,7 @@
         <property name="updatedAt" type="timestamp">
             <column name="updated_at" length="19" not-null="true"/>
         </property>
-        <many-to-one name="node" class="com.genushealthdb.data.Node">
+        <many-to-one name="parent" class="com.genushealthdb.data.Node" cascade="none">
             <column name="parent_id"/>
         </many-to-one>
         <set name="nodes" inverse="true" cascade="">
@@ -26,17 +26,17 @@
             </key>
             <one-to-many class="com.genushealthdb.data.Node"/>
         </set>
-        <set name="nodeGroups" inverse="true" cascade="">
-            <key>
-                <column name="root_node_id" not-null="true"/>
-            </key>
-            <one-to-many class="com.genushealthdb.data.NodeGroup"/>
-        </set>
-        <set name="userSessionses" inverse="true" cascade="">
+        <set name="usersessionss" inverse="true" cascade="">
             <key>
                 <column name="final_node_id"/>
             </key>
             <one-to-many class="com.genushealthdb.data.UserSessions"/>
+        </set>
+        <set name="nodegroups" inverse="true" cascade="">
+            <key>
+                <column name="root_node_id" not-null="true"/>
+            </key>
+            <one-to-many class="com.genushealthdb.data.NodeGroup"/>
         </set>
     </class>
 </hibernate-mapping>

@@ -23,10 +23,10 @@
         <property name="feedback" type="string">
             <column name="feedback"/>
         </property>
-        <many-to-one name="node" class="com.genushealthdb.data.Node">
+        <many-to-one name="node" class="com.genushealthdb.data.Node" cascade="none">
             <column name="final_node_id"/>
         </many-to-one>
-        <set name="messageses" inverse="true" cascade="">
+        <set name="messagess" inverse="true" cascade="">
             <key>
                 <column name="session_id" not-null="true"/>
             </key>

@@ -5,7 +5,7 @@ package com.genushealthdb.data;
 
 /**
  *  GenusHealthDB.NodeGroup
- *  11/20/2012 21:55:17
+ *  12/16/2012 23:38:20
  * 
  */
 public class NodeGroup {
