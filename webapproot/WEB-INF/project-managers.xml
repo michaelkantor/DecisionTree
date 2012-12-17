@@ -5,7 +5,13 @@
             <map merge="true">
                 <entry key="GenusHealthDB">
                     <list>
+                        <value>com.genushealthdb.data.Dispositions</value>
+                        <value>com.genushealthdb.data.Feedbackquestions</value>
+                        <value>com.genushealthdb.data.Feedbackresponses</value>
+                        <value>com.genushealthdb.data.Jsonfiles</value>
                         <value>com.genushealthdb.data.Messages</value>
+                        <value>com.genushealthdb.data.Node</value>
+                        <value>com.genushealthdb.data.NodeGroup</value>
                         <value>com.genushealthdb.data.UserSessions</value>
                     </list>
                 </entry>

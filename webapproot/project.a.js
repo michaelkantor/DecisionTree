@@ -203,11 +203,6 @@ wm.JsonRpcService.smdCache['wavemakerService.smd'] = {
 		}],
 		"returnType": "com.wavemaker.runtime.server.DownloadResponse"
 	}, {
-		"name": "getInternalRuntime",
-		"operationType": null,
-		"parameters": null,
-		"returnType": "com.wavemaker.runtime.server.InternalRuntime"
-	}, {
 		"name": "getLocalHostIP",
 		"operationType": null,
 		"parameters": null,
@@ -218,36 +213,10 @@ wm.JsonRpcService.smdCache['wavemakerService.smd'] = {
 		"parameters": null,
 		"returnType": "int"
 	}, {
-		"name": "getServiceEventNotifier",
-		"operationType": null,
-		"parameters": null,
-		"returnType": "com.wavemaker.runtime.service.events.ServiceEventNotifier"
-	}, {
-		"name": "getServiceManager",
-		"operationType": null,
-		"parameters": null,
-		"returnType": "com.wavemaker.runtime.service.ServiceManager"
-	}, {
-		"name": "getServiceWire",
-		"operationType": null,
-		"parameters": [{
-			"name": "serviceName",
-			"type": "java.lang.String"
-		}, {
-			"name": "typeName",
-			"type": "java.lang.String"
-		}],
-		"returnType": "com.wavemaker.runtime.service.ServiceWire"
-	}, {
 		"name": "getSessionId",
 		"operationType": null,
 		"parameters": null,
 		"returnType": "java.lang.String"
-	}, {
-		"name": "getTypeManager",
-		"operationType": null,
-		"parameters": null,
-		"returnType": "com.wavemaker.runtime.service.TypeManager"
 	}, {
 		"name": "hostToDomain",
 		"operationType": null,
@@ -278,38 +247,6 @@ wm.JsonRpcService.smdCache['wavemakerService.smd'] = {
 			"type": "java.lang.String"
 		}],
 		"returnType": "java.lang.String"
-	}, {
-		"name": "setInternalRuntime",
-		"operationType": null,
-		"parameters": [{
-			"name": "internalRuntime",
-			"type": "com.wavemaker.runtime.server.InternalRuntime"
-		}],
-		"returnType": null
-	}, {
-		"name": "setServiceEventNotifier",
-		"operationType": null,
-		"parameters": [{
-			"name": "serviceEventNotifier",
-			"type": "com.wavemaker.runtime.service.events.ServiceEventNotifier"
-		}],
-		"returnType": null
-	}, {
-		"name": "setServiceManager",
-		"operationType": null,
-		"parameters": [{
-			"name": "serviceManager",
-			"type": "com.wavemaker.runtime.service.ServiceManager"
-		}],
-		"returnType": null
-	}, {
-		"name": "setTypeManager",
-		"operationType": null,
-		"parameters": [{
-			"name": "typeManager",
-			"type": "com.wavemaker.runtime.service.TypeManager"
-		}],
-		"returnType": null
 	}],
 	"serviceType": "JSON-RPC",
 	"serviceURL": "waveMakerService.json"
@@ -327,6 +264,234 @@ wm.types = {
 		"char": {
 			"internal": true,
 			"primitiveType": "String"
+		},
+		"com.genushealthdb.data.Dispositions": {
+			"fields": {
+				"createdAt": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.util.Date"
+				},
+				"displayName": {
+					"exclude": [],
+					"fieldOrder": 5,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				},
+				"dispositionId": {
+					"exclude": ["insert"],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": ["delete", "read", "update"],
+					"isList": false,
+					"noChange": ["delete", "read", "update"],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"feedbackquestionss": {
+					"exclude": [],
+					"fieldOrder": 6,
+					"fieldSubType": null,
+					"include": [],
+					"isList": true,
+					"noChange": [],
+					"required": false,
+					"type": "com.genushealthdb.data.Feedbackquestions"
+				},
+				"modifiedAt": {
+					"exclude": [],
+					"fieldOrder": 4,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.util.Date"
+				},
+				"name": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				},
+				"text": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": true,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.Feedbackquestions": {
+			"fields": {
+				"disposition": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "com.genushealthdb.data.Dispositions"
+				},
+				"feedbackquestionid": {
+					"exclude": ["insert"],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": ["delete", "read", "update"],
+					"isList": false,
+					"noChange": ["delete", "read", "update"],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"feedbackresponsess": {
+					"exclude": [],
+					"fieldOrder": 4,
+					"fieldSubType": null,
+					"include": [],
+					"isList": true,
+					"noChange": [],
+					"required": false,
+					"type": "com.genushealthdb.data.Feedbackresponses"
+				},
+				"ordernumber": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"question": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": true,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.Feedbackresponses": {
+			"fields": {
+				"answer": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"feedbackquestion": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "com.genushealthdb.data.Feedbackquestions"
+				},
+				"feedbackresponseid": {
+					"exclude": ["insert"],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": ["delete", "read", "update"],
+					"isList": false,
+					"noChange": ["delete", "read", "update"],
+					"required": true,
+					"type": "java.lang.Integer"
+				}
+			},
+			"internal": false,
+			"liveService": true,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.Jsonfiles": {
+			"fields": {
+				"createdAt": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.util.Date"
+				},
+				"fileId": {
+					"exclude": ["insert"],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": ["delete", "read", "update"],
+					"isList": false,
+					"noChange": ["delete", "read", "update"],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"modifiedAt": {
+					"exclude": [],
+					"fieldOrder": 4,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.util.Date"
+				},
+				"name": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				},
+				"text": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": true,
+			"service": "GenusHealthDB"
 		},
 		"com.genushealthdb.data.Messages": {
 			"fields": {
@@ -367,7 +532,7 @@ wm.types = {
 					"include": [],
 					"isList": false,
 					"noChange": [],
-					"required": true,
+					"required": false,
 					"type": "java.lang.String"
 				},
 				"userSessions": {
@@ -379,6 +544,150 @@ wm.types = {
 					"noChange": [],
 					"required": true,
 					"type": "com.genushealthdb.data.UserSessions"
+				}
+			},
+			"internal": false,
+			"liveService": true,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.Node": {
+			"fields": {
+				"answer": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				},
+				"createdAt": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.util.Date"
+				},
+				"nodeId": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": ["delete", "read", "update", "insert"],
+					"isList": false,
+					"noChange": ["delete", "read", "update"],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"nodegroups": {
+					"exclude": [],
+					"fieldOrder": 8,
+					"fieldSubType": null,
+					"include": [],
+					"isList": true,
+					"noChange": [],
+					"required": false,
+					"type": "com.genushealthdb.data.NodeGroup"
+				},
+				"nodes": {
+					"exclude": [],
+					"fieldOrder": 6,
+					"fieldSubType": null,
+					"include": [],
+					"isList": true,
+					"noChange": [],
+					"required": false,
+					"type": "com.genushealthdb.data.Node"
+				},
+				"parent": {
+					"exclude": [],
+					"fieldOrder": 5,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "com.genushealthdb.data.Node"
+				},
+				"question": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				},
+				"updatedAt": {
+					"exclude": [],
+					"fieldOrder": 4,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.util.Date"
+				},
+				"usersessionss": {
+					"exclude": [],
+					"fieldOrder": 7,
+					"fieldSubType": null,
+					"include": [],
+					"isList": true,
+					"noChange": [],
+					"required": false,
+					"type": "com.genushealthdb.data.UserSessions"
+				}
+			},
+			"internal": false,
+			"liveService": true,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.NodeGroup": {
+			"fields": {
+				"name": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"node": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "com.genushealthdb.data.Node"
+				},
+				"nodegroupId": {
+					"exclude": ["insert"],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": ["delete", "read", "update"],
+					"isList": false,
+					"noChange": ["delete", "read", "update"],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"status": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Byte"
 				}
 			},
 			"internal": false,
@@ -407,9 +716,19 @@ wm.types = {
 					"required": true,
 					"type": "java.util.Date"
 				},
-				"messageses": {
+				"feedback": {
 					"exclude": [],
 					"fieldOrder": 6,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
+				},
+				"messagess": {
+					"exclude": [],
+					"fieldOrder": 8,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -426,6 +745,16 @@ wm.types = {
 					"noChange": [],
 					"required": false,
 					"type": "java.lang.String"
+				},
+				"node": {
+					"exclude": [],
+					"fieldOrder": 7,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "com.genushealthdb.data.Node"
 				},
 				"patientId": {
 					"exclude": [],
@@ -548,8 +877,8 @@ wm.types = {
 		}
 	}
 };
-wm.Application.themeData['wm_default'] = {"wm.ToggleButton":{"border":"1","borderColor":"#333333"},"wm.ToggleButtonPanel":{"border":"1","borderColor":"#333333"},"wm.Button":{"border":"1","borderColor":"#333333","height":"32px"},"wm.Layout":{"border":"0","borderColor":"#333333"},"wm.Bevel":{"bevelSize":"10","border":"1","borderColor":"#333333"},"wm.Splitter":{"bevelSize":"4","border":"1","borderColor":"#333333"},"wm.AccordionDecorator":{"captionBorder":"1","captionBorderColor":"#333333"},"wm.AccordionLayers":{"border":"0","borderColor":"#333333","captionBorder":"2","layerBorder":"1","captionHeight":"30"},"wm.FancyPanel":{"margin":"2","border":"0","borderColor":"#999999","innerBorder":"2","labelHeight":"24"},"wm.TabLayers":{"layersType":"Tabs","margin":"0,2,0,2","clientBorder":"1","border":"0","clientBorderColor":"#999999","headerHeight":"29px","borderColor":"#999999","mobileHeaderHeight":"38px"},"wm.WizardLayers":{"margin":"0,2,0,2","border":"0","clientBorder":"1","clientBorderColor":"#333333"},"wm.Layer":{},"wm.Dialog":{"border":"1","borderColor":"#333333","titlebarBorder":"0,0,1,0","titlebarBorderColor":"#333333","containerClass":"MainContent","titlebarHeight":"22"},"wm.GenericDialog":{"border":"1","borderColor":"#333333","titlebarBorder":"0,0,1,0","titlebarBorderColor":"#333333","footerBorder":"1,0,0,0","footerBorderColor":"#333333","containerClass":"MainContent"},"wm.RichTextDialog":{"border":"1","borderColor":"#333333","titlebarBorder":"0,0,1,0","titlebarBorderColor":"#333333","footerBorder":"1,0,0,0","footerBorderColor":"#333333","containerClass":"MainContent"},"wm.PageDialog":{"border":"1","borderColor":"#333333","titlebarBorder":"0,0,1,0","titlebarBorderColor":"#333333","footerBorder":"1,0,0,0","footerBorderColor":"#333333","noBevel":true,"containerClass":"MainContent"},"wm.DesignableDialog":{"border":"1","borderColor":"#333333","titlebarBorder":"0,0,1,0","titlebarBorderColor":"#333333","footerBorder":"1,0,0,0","footerBorderColor":"#333333","containerClass":"MainContent"},"wm.DojoMenu":{"padding":"0","border":"0","borderColor":"#333333"},"wm.List":{"margin":"0,2,0,2","border":"2","borderColor":"#333333"},"wm.dijit.ProgressBar":{"border":"0","borderColor":"#333333"},"wm.RichText":{"border":"0","borderColor":"#333333"},"wm.RoundedButton":{"border":"0","borderColor":"#333333"},"wm.DataGrid":{"border":"2","borderColor":"#333333"},"wm.Label":{},"wm.Picture":{},"wm.Spacer":{},"wm.Layers":{"border":"0"},"wm.PageContainer":{},"wm.Panel":{"borderColor":"#333333","border":"0"},"wm.CheckBoxEditor":{},"wm.CurrencyEditor":{},"wm.Text":{"border":"0"},"wm.SelectMenu":{"border":"0"},"wm.dijit.Calendar":{},"wm.DojoGrid":{"border":"1","borderColor":"#999999"},"wm.Control":{"borderColor":"#333333"},"wm.BusyButton":{"border":"1","borderColor":"#333333"},"wm.Checkbox":{"border":"0"},"wm.ColorPicker":{"border":"0"},"wm.Currency":{"border":"0"},"wm.Date":{"border":"0"},"wm.Number":{"border":"0"},"wm.RadioButton":{"border":"0"},"wm.Slider":{"border":"0"},"wm.LargeTextArea":{"border":"0"},"wm.Time":{"border":"0"},"wm.WidgetsJsDialog":{"containerClass":"MainContent","border":"1","borderColor":"#333333"},"wm.FileUploadDialog":{"containerClass":"MainContent","border":"1","borderColor":"#333333"},"wm.ColorPickerDialog":{"border":"1","borderColor":"#333333"},"wm.MainContentPanel":{"border":"1","borderColor":"#ffffff"},"wm.HeaderContentPanel":{"border":"1","borderColor":"#888888"},"wm.EmphasizedContentPanel":{"border":"1","borderColor":"#333333"},"wm.WidgetList":{},"wm.PopupMenuButton":{}};
-dojo.declare("DecisionTree", wm.Application, {
+wm.Application.themeData['wm_default'] = {"wm.ToggleButton":{"border":"1","borderColor":"#333333"},"wm.ToggleButtonPanel":{"border":"1","borderColor":"#333333"},"wm.Button":{"border":"1","borderColor":"#333333","height":"32px"},"wm.Layout":{"border":"0","borderColor":"#333333"},"wm.Bevel":{"bevelSize":"10","border":"1","borderColor":"#333333"},"wm.Splitter":{"bevelSize":"4","border":"1","borderColor":"#333333"},"wm.AccordionDecorator":{"captionBorder":"1","captionBorderColor":"#333333"},"wm.AccordionLayers":{"border":"0","borderColor":"#333333","captionBorder":"2","layerBorder":"1","captionHeight":"30"},"wm.FancyPanel":{"margin":"2","border":"0","borderColor":"#999999","innerBorder":"2","labelHeight":"24"},"wm.TabLayers":{"layersType":"Tabs","margin":"0,2,0,2","clientBorder":"1","border":"0","clientBorderColor":"#999999","headerHeight":"29px","borderColor":"#999999","mobileHeaderHeight":"38px"},"wm.WizardLayers":{"margin":"0,2,0,2","border":"0","clientBorder":"1","clientBorderColor":"#333333"},"wm.Layer":{},"wm.Dialog":{"border":"1","borderColor":"#333333","titlebarBorder":"0,0,1,0","titlebarBorderColor":"#333333","containerClass":"MainContent","titlebarHeight":"22"},"wm.GenericDialog":{"border":"1","borderColor":"#333333","titlebarBorder":"0,0,1,0","titlebarBorderColor":"#333333","footerBorder":"1,0,0,0","footerBorderColor":"#333333","containerClass":"MainContent"},"wm.RichTextDialog":{"border":"1","borderColor":"#333333","titlebarBorder":"0,0,1,0","titlebarBorderColor":"#333333","footerBorder":"1,0,0,0","footerBorderColor":"#333333","containerClass":"MainContent"},"wm.PageDialog":{"border":"1","borderColor":"#333333","titlebarBorder":"0,0,1,0","titlebarBorderColor":"#333333","footerBorder":"1,0,0,0","footerBorderColor":"#333333","noBevel":true,"containerClass":"MainContent"},"wm.DesignableDialog":{"border":"1","borderColor":"#333333","titlebarBorder":"0,0,1,0","titlebarBorderColor":"#333333","footerBorder":"1,0,0,0","footerBorderColor":"#333333","containerClass":"MainContent"},"wm.DojoMenu":{"padding":"0","border":"0","borderColor":"#333333"},"wm.List":{"margin":"0,2,0,2","border":"2","borderColor":"#333333"},"wm.dijit.ProgressBar":{"border":"0","borderColor":"#333333"},"wm.RichText":{"border":"0","borderColor":"#333333"},"wm.RoundedButton":{"border":"0","borderColor":"#333333"},"wm.DataGrid":{"border":"2","borderColor":"#333333"},"wm.Label":{},"wm.Picture":{},"wm.Spacer":{},"wm.Layers":{"border":"0"},"wm.PageContainer":{},"wm.Panel":{"borderColor":"#333333","border":"0"},"wm.CheckBoxEditor":{},"wm.CurrencyEditor":{},"wm.Text":{"border":"0"},"wm.SelectMenu":{"border":"0"},"wm.dijit.Calendar":{},"wm.DojoGrid":{"border":"1","borderColor":"#999999"},"wm.Control":{"borderColor":"#333333"},"wm.BusyButton":{"border":"1","borderColor":"#333333"},"wm.Checkbox":{"border":"0"},"wm.ColorPicker":{"border":"0"},"wm.Currency":{"border":"0"},"wm.Date":{"border":"0"},"wm.Number":{"border":"0"},"wm.RadioButton":{"border":"0"},"wm.Slider":{"border":"0"},"wm.LargeTextArea":{"border":"0"},"wm.Time":{"border":"0"},"wm.WidgetsJsDialog":{"containerClass":"MainContent","border":"1","borderColor":"#333333"},"wm.FileUploadDialog":{"containerClass":"MainContent","border":"1","borderColor":"#333333"},"wm.MainContentPanel":{"border":"1","borderColor":"#ffffff"},"wm.HeaderContentPanel":{"border":"1","borderColor":"#888888"},"wm.EmphasizedContentPanel":{"border":"1","borderColor":"#333333"},"wm.WidgetList":{},"wm.PopupMenuButton":{}};
+dojo.declare("GenusHealthClient", wm.Application, {
 	"dialogAnimationTime": 350, 
 	"disableDirtyEditorTracking": false, 
 	"eventDelay": 0, 
@@ -561,10 +890,11 @@ dojo.declare("DecisionTree", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha16", 
+	"projectSubVersion": "Alpha34", 
 	"projectVersion": 1, 
+	"sessionExpirationHandler": "nothing", 
 	"showIOSPhoneGapBackButton": false, 
-	"studioVersion": "6.5.0.RELEASE", 
+	"studioVersion": "6.5.1.Release", 
 	"tabletMain": "", 
 	"theme": "wm_default", 
 	"toastPosition": "br", 
@@ -612,7 +942,8 @@ dojo.declare("DecisionTree", wm.Application, {
 			answer: ["wm.TypeDefinitionField", {"fieldName":"answer"}, {}],
 			question: ["wm.TypeDefinitionField", {"fieldName":"question"}, {}],
 			response: ["wm.TypeDefinitionField", {"fieldName":"responses","fieldType":"QueryResponse","isList":true}, {}],
-			field1: ["wm.TypeDefinitionField", {"fieldName":"actionCode"}, {}]
+			field1: ["wm.TypeDefinitionField", {"fieldName":"actionCode"}, {}],
+			field2: ["wm.TypeDefinitionField", {"fieldName":"nodeId","fieldType":"Number"}, {}]
 		}], 
 		"parse.com.AddMessageToSession": ["wm.XhrDefinition", {"contentType":"application/json","headers":{"X-Parse-REST-API-Key":"nkRl8lPEzOH3jtZVJJE2AA0oZVj6t1jZclZSYRyC","X-Parse-Application-Id":"QS1yDzKQNakBesD2zm8QbYKZKNcCHhF3II7IFBhr"},"parameters":{"messages":{"transmitType":0,"type":"parse.com.AddRelationshipType"},"Session":{"transmitType":"path","type":"String"}},"requestType":"PUT","returnType":"parse.com.AddRelationshipType","url":"https://api.parse.com/1/classes/","useProxy":false}, {}], 
 		"parse.com.CreateMessage": ["wm.XhrDefinition", {"contentType":"application/json","headers":{"X-Parse-REST-API-Key":"nkRl8lPEzOH3jtZVJJE2AA0oZVj6t1jZclZSYRyC","X-Parse-Application-Id":"QS1yDzKQNakBesD2zm8QbYKZKNcCHhF3II7IFBhr"},"parameters":{"from":{"transmitType":0,"type":"String"},"message":{"transmitType":0,"type":"String"}},"requestType":"POST","returnType":"parse.com.CreateSessionResponse","url":"https://api.parse.com/1/classes/Message","useProxy":false}, {}], 
@@ -634,17 +965,26 @@ dojo.declare("DecisionTree", wm.Application, {
 				"parse.com.RegistrationResponse.sessionToken": ["wm.TypeDefinitionField", {"fieldName":"sessionToken","fieldType":"string"}, {}]
 			}]
 		}], 
+		currentSessionVar: ["wm.Variable", {"type":"com.genushealthdb.data.UserSessions"}, {}, {
+			binding: ["wm.Binding", {}, {}, {
+				wire: ["wm.Wire", {"expression":undefined,"source":"[oneQuestionPage].createSessionLVar","targetProperty":"dataSet"}, {}]
+			}]
+		}], 
 		decisionTreeVar: ["wm.Variable", {"json":"{\n    \"question\": \"When did you get cut?\",\n\t\"responses\": [{\n\t\t\"answer\": \"Less than 3 hours ago\",\n\t\t\"question\": \"Is this related to a human or animal bite?\",\n\t\t\"responses\": [{\n\t\t\t\"answer\": \"No\",\n\t\t\t\"question\": \"Where on the body is the cut?\",\n\t\t\t\"responses\": [{\n\t\t\t\t\"answer\": \"Head or Face \",\n\t\t\t\t\"responses\": null,\n\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t}, {\n\t\t\t\t\"answer\": \"Arm \",\n\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\"responses\": [{\n\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t}]\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t}]\n\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"Leg \",\n\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}]\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"Multiple Locations\",\n\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, ]\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"Hand\",\n\t\t\t\t\t\t\"question\": \"Does the part where the cut is work as before? \",\n\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t},\n\n\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutHomeCare\"\n\t\t\t\t\t}]\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\"actionCode\": \"DispositionCutBiteNoSuturesUrgentCare\"\n\t\t\t\t}, ]\n\t\t\t}, {\n\t\t\t\t\"answer\": \"Over 24 hours ago\",\n\t\t\t\t\"question\": \"Is this related to a human or animal bite?\",\n\t\t\t\t\"responses\": [{\n\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\"actionCode\": \"DispositionCutBiteNoSutureUrgentCare\"\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"No\",\n\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\"actionCode\": \"DispositionCutHomeCare\"\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"About 13 to 24 hours ago\",\n\t\t\t\t\t\"question\": \"Where on the body is the cut?\",\n\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\"answer\": \"Head or Face \",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\t\t\t\t\t},\n\n\t\t\t\t\t{\n\t\t\t\t\t\t\"answer\": \"Arm\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"Leg\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"Hand\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutHomeCare\"\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"Foot\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutHomeCare\"\n\t\t\t\t\t}, ]\n\t\t\t\t}, {\n\t\t\t\t\t\"answer\": \"About 3 to 12 hours ago\",\n\t\t\t\t\t\"question\": \"Is this related to a human or animal bite?\",\n\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\"actionCode\": \"DispositionCutBiteNoSutureUrgentCare\"\n\t\t\t\t\t}, {\n\t\t\t\t\t\t\"answer\": \"No\",\n\t\t\t\t\t\t\"question\": \"Where on the body is the cut?\",\n\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\"answer\": \"Head or Face \",\n\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\"answer\": \"Arm \",\n\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\"answer\": \"Leg \",\n\t\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"Multiple Locations\",\n\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\"answer\": \"Hand\",\n\t\t\t\t\t\t\t\t\t\"question\": \"Does the part where the cut is work as before? \",\n\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\"question\": \"Is there any numbness beyond the cut? \",\n\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\"question\": \"Do you think there is any type of foreign body (gravel, dirt, glass, etc) in the cut? \",\n\t\t\t\t\t\t\t\t\t\t\t\"responses\": [{\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"Yes\",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, {\n\t\t\t\t\t\t\t\t\t\t\t\t\"answer\": \"No \",\n\t\t\t\t\t\t\t\t\t\t\t\t\"responses\": null,\n\t\t\t\t\t\t\t\t\t\t\t\t\"actionCode\": \"DispositionCutUrgentCare\"\n\n\t\t\t\t\t\t\t\t\t\t\t}, ]\n\n\t\t\t\t\t\t\t\t\t\t}, ]\n\t\t\t\t\t\t\t\t\t},\n\n\n\t\t\t\t\t\t\t\t\t]\n\t\t\t\t\t\t\t\t}]\n\t\t\t\t\t\t\t}]\n\t\t\t\t\t\t}]\n\t\t\t\t\t}]\n\t\t\t\t}]\n\t\t\t}]\n\t\t}]\n\t}]\n\n\n\t\t\t}","type":"QueryResponse"}, {}], 
 		diagnosisVar: ["wm.Variable", {"isList":true,"json":"[\n    {\n\t\t\"name\": \"DispositionCutUrgentCare\", \n\t\t\"dataValue\": \"<p>Wounds like yours typically need stitches. You should go to your nearest ER or urgent care (hyperlink ER and Urgent Care so when you click on it - it shows a Google Map with closest ER and Urgent Care)</p><p>Call 911 if:</p><ul><li>The bleeding is severe, spurting, or cannot be stopped (for example, after 10 minutes of pressure).</li><li>There is impaired function or feeling from the cut.</li><li>The person is seriously injured.</li></ul><p><a href='http://www.nlm.nih.gov/medlineplus/ency/article/000043.htm'>Click to learn more</a></p>\"\n\t}, \n\t{\n\t\t\"name\": \"DispositionCutHomeCare\", \n\t\t\"dataValue\": \"<p>Wounds like your typically do not need stitches.</p><p>Minor cuts and puncture wounds can be treated at home. Take the following steps.FOR MINOR CUTS - Click <a href='http://www.nlm.nih.gov/medlineplus/tutorials/burns/htm/_yes_50_no_0.htm'>here</a> to watch a video.</p><ol><li>Wash your hands with soap or antibacterial cleanser to prevent infection.</li><li>Wash the cut thoroughly with mild soap and water.</li><li>Use direct pressure to stop the bleeding.</li><li>Apply antibacterial ointment and a clean bandage that will not stick to the wound.</li></ol><p>FOR MINOR PUNCTURES - Click <a href='http://www.nlm.nih.gov/medlineplus/tutorials/burns/htm/_yes_50_no_0.htm'>here</a> to watch a video.</p><ol><li>Wash your hands with soap or antibacterial cleanser to prevent infection.</li><li>Use a stream of water for at least 5 minutes to rinse the puncture wound, then wash with soap.</li><li>Look (but do NOT probe) for objects inside the wound. If found, DO NOT remove -- go to the Emergency Department. If you cannot see anything inside the wound, but a piece of the object that caused the injury is missing, also seek medical attention.</li><li>Apply antibacterial ointment and a clean bandage that will not stick to the wound.</li></ol><p>If the wound gets infected (white with pus), see a doctor within the next 24 hours.</p><p><a href='http://www.nlm.nih.gov/medlineplus/ency/article/000043.htm'>Click to learn more</a>.</p>\"\n\t}, \n\t{\n\t\t\"name\": \"DispositionCutBiteNoSuturesUrgentCare\", \n\t\t\"dataValue\": \"Wounds like yours typically need do not need stitches. However, you should go to your nearest ER or urgent care (hyperlink ER and Urgent Care so when you click on it - it shows a Google Map with closest ER and Urgent Care) as there is a risk of an infection.\"\n\t}, \n\t{\n\t\t\"name\": \"DispositionCoughHomeCare\", \n\t\t\"dataValue\": \"<p>Your cough is likely due to viral illness or cold - you can try home remedies to improve symptoms.</p><p>To learn more about coughs you can watch <a href='http://www.nlm.nih.gov/medlineplus/ency/anatomyvideos/000039.htm'>this video</a></p><p>To ease your cough, try these tips:</p><ol><li>Suck cough drops or hard candies. They may ease a dry cough and soothe an irritated throat. Don't give them to a child under age 3, however, because they can cause choking.</li><li>Moisturize the air. Use a vaporizer or take a hot, steamy shower.</li><li>Drink fluids. Liquid helps thin the mucus in your throat. Warm liquids, such as broth or tea, can soothe your throat.</li></ol><p>If your cough does not improve in the next 3 days, please see a doctor.</p><p>Click <a href='http://www.nlm.nih.gov/medlineplus/cough.html'>here</a> to learn more.</p>\"\n\t}, \n\t{\n\t\t\"name\": \"DispositionCoughNextDayVisit\", \n\t\t\"dataValue\": \"<p>your cough is not an emergency, but your symptoms suggest if could be a problem that needs treatment. Please call your doctor on the next business day for earliest available appointment.</p><p>If you do not have a doctor consider going to a Urgent Care or Pharmacy Clinic in the area.</p><p><a href='http://www.minuteclinic.com/'>CVC Minute Clinic</a></p><p><a href='http://takecarehealth.com/'>Walgreens Take Care Health Clinic</a></p><p>You can also try the online tool ZOCDOC to find a doctor.  www.zocdoc.com </p><p>To learn more about coughs you can watch <a href='http://www.nlm.nih.gov/medlineplus/ency/anatomyvideos/000039.htm'>this video</a></p><p>Call your doctor if you or your child is:</p><ul><li>Coughing up thick, greenish-yellow phlegm</li><li>Wheezing</li><li>Experiencing a fever over 100 F (38 C)</li><li>Experiencing shortness of breath</li></ol><p>Click <a href='http://www.nlm.nih.gov/medlineplus/cough.html'>here<a/> to learn more </p>\"\n\t}, \n\t{\n\t\t\"name\": \"DispositionCoughUrgentCare\", \n\t\t\"dataValue\": \"<p>The symptoms of your cough are concerning and should be evaluated as soon as possible - You should go to your nearest ER or urgent care (hyperlink ER and Urgent Care so when you click on it - it shows a Google Map with closest ER and Urgent Care)</p><p><b>Seek emergency care</b></p><p>Seek emergency care if you or your child is:</p><ul><li>Having difficulty breathing or swallowing</li><li>Coughing up bloody or pink-tinged phlegm</li></ul><p>Click <a href='http://www.nlm.nih.gov/medlineplus/cough.html'>here</a> to learn more </p>\"\n\t}\n]","type":"EntryData"}, {}], 
+		dispositionsLiveVariable: ["wm.LiveVariable", {"autoUpdate":false,"saveInPhonegap":true,"type":"com.genushealthdb.data.Dispositions"}, {}, {
+			liveView: ["wm.LiveView", {"dataType":"com.genushealthdb.data.Dispositions","view":[{"caption":"DispositionId","sortable":true,"dataIndex":"dispositionId","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},{"caption":"Name","sortable":true,"dataIndex":"name","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1,"subType":null},{"caption":"Text","sortable":true,"dataIndex":"text","type":"java.sql.Clob","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":2,"subType":null},{"caption":"CreatedAt","sortable":true,"dataIndex":"createdAt","type":"java.util.Date","displayType":"Date","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":3,"subType":null},{"caption":"ModifiedAt","sortable":true,"dataIndex":"modifiedAt","type":"java.util.Date","displayType":"Date","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":4,"subType":null},{"caption":"DisplayName","sortable":true,"dataIndex":"displayName","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":5,"subType":null}]}, {}]
+		}], 
 		historyVar: ["wm.Variable", {"isList":true,"type":"QueryResponse"}, {}], 
 		phonegapCredentialsVar: ["wm.Variable", {"saveInPhonegap":true,"type":"EntryData"}, {}]
 	},
 	_end: 0
 });
 
-DecisionTree.extend({
+GenusHealthClient.extend({
+    isTestVersion: true,
      announcePath: function() {
-         main.endLayer.activate();
+         main.diagnosisLayer.activate();
          return;
          var path = [];
           var historyCount = app.historyVar.getCount();
@@ -668,20 +1008,34 @@ DecisionTree.extend({
     },
 	takePictureSVarSuccess: function(inSender, inDeprecated) {
       this.announcePath(inSender.getValue("dataValue"));
-    },
+    },    
   _end: 0
 });
-DecisionTree.prototype._css = 'html.WMApp body .ButtonList .wmlist-item,\
+GenusHealthClient.prototype._css = 'html.WMApp body .ButtonList {\
+-webkit-border-radius: 8px;\
+-moz-border-radius: 8px;\
+border-radius: 8px;\
+background: -webkit-gradient(linear, center top, center bottom, from(#CEEFFF), color-stop(30%,#FDFEFE), to(#FDFEFE));\
+background: -moz-linear-gradient(top, #CEEFFF 0%,#FDFEFE 30%,#FDFEFE 100%);\
+background: -o-linear-gradient(top, #CEEFFF 0%,#FDFEFE 30%,#FDFEFE 100%);\
+background: -ms-linear-gradient(top, #CEEFFF 0%,#FDFEFE 30%,#FDFEFE 100%);\
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#CEEFFF", endColorstr="#FDFEFE",GradientType=0);\
+}\
+html.WMApp body .ButtonList .wmlist-item,\
 html.WMApp body .ButtonList .wmlist-item-selected {\
-border: solid 3px rgb(108,176,205);\
+border: solid 1px #4a89d8;\
 text-align: center;\
 padding: 0px;\
 font-size: 14pt;\
 font-weight: bold;\
 color: white;\
--webkit-border-radius: 16px;\
--moz-border-radius: 16px;\
-border-radius: 16px;\
+margin-bottom: 15px !important;\
+-webkit-border-radius: 4px;\
+-moz-border-radius: 4px;\
+border-radius: 4px;\
+-moz-box-shadow: 2px 6px 8px #888;\
+-webkit-box-shadow: 2px 6px 8px #888;\
+box-shadow: 2px 6px 8px #888;\
 }\
 html.WMApp body .ButtonList .wmlist-item {\
 background: -webkit-gradient(linear, center top, center bottom, from(#4f8ddb), color-stop(50%,#0fa1e7), to(#4f8ddb));\
@@ -715,7 +1069,7 @@ display: block;\
 }\
 html.WMApp body .BottomButton img {\
 margin-bottom:8px;\
-height: 40%;\
+height: 40px;\
 }\
 html.WMApp body div .wmtogglebuttonpanel .wmbutton.BottomButton {\
 font-size: 11px;\
@@ -833,11 +1187,13 @@ html.WMApp body .OverflowNotHidden.ShiftDown a {\
 bottom: -1px;\
 }\
 html.WMApp body .drgenus {\
-background: -webkit-gradient(linear, center top, center bottom, from(#5597da), color-stop(20%,#03a5dc), color-stop(80%,#03a5dc),to(#5597da));\
-background: -moz-linear-gradient(top, #5597da 0%,#03a5dc 20%,#03a5dc 80%,#5597da 100%);\
-background: -o-linear-gradient(top, #5597da 0%,#03a5dc 20%,#03a5dc 80%,#5597da 100%);\
-background: -ms-linear-gradient(top, #5597da 0%,#03a5dc 20%,#03a5dc 80%,#5597da 100%);\
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#5597da", endColorstr="#03a5dc",GradientType=0);\
+background-image: url(resources/images/drgenus_background.png);\
+background-repeat: repeat-x;\
+background-position-y: -70px;\
+border-radius: 8px;\
+-webkit-box-shadow: 4px 4px 15px #222;\
+-moz-box-shadow: 4px 4px 15px #222;\
+box-shadow: 4px 4px 15px #222;\
 }\
 .Question {\
 -webkit-border-radius: 6px;\
@@ -853,21 +1209,129 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f8f8f8", end
 box-shadow: 2px 4px 4px #888;\
 font-weight: bold;\
 }\
-/*\
-.curvedlist .wmlist-item, .inputPanel, .Question, .Answer {\
-color: black !important;\
-background: -webkit-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
-background: -webkit-gradient(linear, left top, left bottom, from(#dcdbcf), to(#b2b2aa));\
-background: -moz-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
-background: -ms-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
-background: -o-linear-gradient(top, #dcdbcf 0%,#b2b2aa 20%,#b2b2aa 100%);\
-}\
-.Question, .Answer {\
-border: solid 1px #333;\
-border-radius: 4px;\
--webkit-border-radius: 4px;\
-}\
-.wmlist .Question, .wmlist .Answer {\
-padding: 10px 15px;\
+html.WMApp body .topArrow .wmSizeNode {\
+background-color: #323232;\
+-webkit-transform: rotate(45deg);\
+-moz-transform: rotate(45deg);\
+transform: rotate(45deg);\
+width: 100%;\
+height: 100%;\
+position: relative;\
+top: 12px;\
 }\
 ';
+wm.Page.extend({
+    loadComponent: function(inName, inParent, inType, inProps, inEvents, inChildren, isSecond) {
+    	if (!this._isDesignLoaded && inProps.deviceType && wm.device && dojo.indexOf(inProps.deviceType, wm.device) == -1) {
+			if (djConfig.isDebug) this.warnDroppedWidgets(inName, inProps.deviceType.join(","), inChildren);
+			return;
+		}
+		// Some code for debugging performance; normally skipped
+		if (wm.debugPerformance) {
+			if (inType == "wm.Layout") {
+				if (dojo.isFF) console.groupCollapsed("LOAD COMPONENT " + inType + ": " + inName);
+				else console.group("LOAD COMPONENT " + inType + ": " + inName);
+			}
+
+			this.startTimerWithName("LoadComponent", inType);
+			this.startTimerWithName("LoadPage", inType);
+		}
+
+		var ctor = wm.getObject(inType);
+		if (!ctor) {
+			try {
+				wm.getComponentStructure(inType);
+				ctor = dojo.getObject(inType);
+			} catch (e) {
+				console.info('Error : Page.js trying to get component dynamically-------------> ' + e);
+			}
+
+			if (!ctor) {
+				console.debug('Component type "' + inType + '" is not available.');
+				ctor = wm.Box;
+			}
+		}
+
+
+		// FIXME: this check really needs to go
+		// yuk
+		var props = {};
+		isWidget = (ctor.prototype instanceof wm.Control || ctor.prototype instanceof dijit._Widget);
+		if (isWidget) {
+			var parentNode = (inParent ? inParent.containerNode || inParent.domNode : this.domNode);
+			props = {
+				owner: this,
+				parent: inParent,
+				domNode: parentNode ? null : document.body,
+				parentNode: parentNode
+			};
+		}
+
+
+		// props.name should overwrite getUniqueName(inName), which should overwrite inProps.
+		if (!props.owner) {
+			if (inParent && inParent instanceof wm.Layout) props.owner = inParent.owner;
+			else if (inParent) props.owner = inParent;
+			else props.owner = this;
+		}
+	    if (this[inName] instanceof wm.Component) {
+		c = this[inName];
+	    } else {
+		props = dojo.mixin({}, inProps, {
+		        name: inName,
+			_designer: this._designer,
+			_loading: true
+		}, props);
+	    }
+	    if (!c) {
+        /* Special case where a Composite being designed opens a PageDialog at designtime where the PageDialog 
+         * is itself not being designed but is in fact a wizard
+         */
+        if (inProps._isDesignLoaded === false) delete props._designer;
+
+		if (this.isRelativePositioned && inType == "wm.Layout") {
+			props.isRelativePositioned = true;
+		}
+
+		// All custom methods should be page methods; page methods have not been evaled, so
+		// can not be defined nor invoked at design time
+		if (!this.isDesignLoaded()) {
+			for (var p in props) {
+				if (p.indexOf("custom") == 0 && dojo.isFunction(ctor.prototype[p])) {
+					var owner = props.owner;
+					props[p] = dojo.hitch(owner, owner[props[p]]);
+				}
+			}
+		}
+
+
+
+		// Calls Component.create, which calls prepare, build, init and postInit
+		var c = this._create(ctor, props);
+
+
+		// FIXME: this initialization should be in Component
+		// to remove the distinction between 'loading' and 'creating'
+		if (!inParent && isWidget) {
+			c.moveable = false;
+			this.root = c;
+		}
+	    }
+		this.makeEvents(inEvents, c);
+		//if (!(c instanceof wm.Layer) || !c.deferLoading)
+		if (inChildren) this.loadComponents(inChildren, c);
+
+		c.loaded(); // Component.loaded calls postInit
+		var timeToLoad = this.stopTimerWithName("LoadComponent", inType);
+		if (wm.debugPerformance) {
+			if (inType == "wm.Layout") {
+				console.log(inType + ": " + inName + " TOOK " + timeToLoad + " ms");
+				console.groupEnd();
+				this.printPagePerformanceData();
+				console.log(inType + ": " + inName + " TOOK " + timeToLoad + " ms");
+			}
+		}
+
+		return c;
+	}
+});

@@ -20,9 +20,9 @@ var wmChromeFramePath = "http://google.com/chrome";
 <link rel="apple-touch-startup-image" href="resources/images/logos/tree200x200.png" />
 <meta content="yes" name="apple-mobile-web-app-capable" />
 
-<title>DecisionTree</title>
+<title>GenusHealthClient</title>
 <link rel="shortcut icon" href="resources/images/logos/favicon.ico" />
-<script>var wmThemeUrl = "/wavemaker/lib/wm/base/widget/themes/wm_default/theme.css";</script>
+<script>var wmThemeUrl = "lib/wm/base/widget/themes/wm_default/theme.css";</script>
 <style type="text/css">
 	#wavemakerNode {
 		height: 100%;
@@ -90,7 +90,7 @@ var wmChromeFramePath = "http://google.com/chrome";
 			CFInstall.check({node:'googleChromeFrameDiv', preventPrompt:false, onmissing: dojo.hitch(window, 'promptGoogleFrame')});
 		}
 
-		new DecisionTree({domNode: "wavemakerNode"}).run();
+		new GenusHealthClient({domNode: "wavemakerNode"}).run();
 	</script>
 
 	<!-- End DecisionTree -->

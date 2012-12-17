@@ -1,13 +1,14 @@
 {
 	"xhrpaths": [
+		"http://genushealth.cloudfoundry.com", 
 		"http://10.0.1.5:8094/DecisionTree", 
 		"http://10.0.1.5:8080/DecisionTree", 
 		"http://DecisionTree.cloudfoundry.com"
 	], 
 	"appName": "Genus Health", 
 	"appId": "KWR92347HU", 
-	"appVersion": "1.16", 
-	"xhrPath": "http://10.0.1.5:8080/DecisionTree", 
+	"appVersion": "1.26", 
+	"xhrPath": "http://genushealth.cloudfoundry.com", 
 	"iosIconListVar": [
 		{
 			"imageId": 1, 
@@ -199,7 +200,8 @@
 		"http://api.phonegap.com/1.0/notification", 
 		"http://api.phonegap.com/1.0/geolocation", 
 		"http://api.phonegap.com/1.0/camera", 
-		"http://api.phonegap.com/1.0/contacts"
+		"http://api.phonegap.com/1.0/contacts", 
+		"http://api.phonegap.com/1.0/file"
 	], 
 	"appDescription": "", 
 	"appAuthorUrl": "", 

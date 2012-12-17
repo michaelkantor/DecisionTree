@@ -1,16 +1,7 @@
 /* TODO: 
 DECISION TREE:
-1. Fix Registration (Change GET TO POST)
-2. Move Icons out of bubbles, put arrows on bubbles
-3. Provide option to hide input editor and camera prompt
-4. Provide option to disable only camera prompt
-5. Create session in parse
-6. Post all messages to parse
-7. Build a simple nurse app that shows all users, all sessions for
-each user, all messages for each session, lets nurse edit session and
-save it back to parse.
-8. Find The Tree icon Jayesh sent
-9. Use the Dr and Patient pictures
+1. Fix Registration 
+
 */
 
 dojo.declare("OneQuestionPage", wm.Page, {
@@ -29,10 +20,26 @@ dojo.declare("OneQuestionPage", wm.Page, {
                               responses: this.currentQuestionVar.getValue('responses'),
                               answer: inSender.selectedItem.getValue("answer"),
                               actionCode: data.actionCode,
-                              queryResponse:  this.currentQuestionVar.getData()});                              
-            
+                              queryResponse:  this.currentQuestionVar.getData(),
+                              nodeId: data.nodeId});                              
+      if (data.nodeId) {
+            this.updateSessionLVar.sourceData.setValue("node.nodeId", data.nodeId);
+            this.updateSessionLVar.update();          
+      }
+      
+
+              this.createMessageLVar.sourceData.setData({
+                  messageId: 0,
+                  sender: "user", 
+                  text: data.answer,
+                  createdAt: new Date().getTime(),
+                  userSessions: {sessionId: this.createSessionLVar.getValue("sessionId")}
+                  });
+              this.createMessageLVar.update();
+
       if (data.question) {      
-                    this.nextQuestion(data);
+          
+            this.nextQuestion(data);
                     /*
           var nextHistoryItem = dojo.clone(data);
           nextHistoryItem.answer = ""; 
@@ -42,16 +49,24 @@ dojo.declare("OneQuestionPage", wm.Page, {
            this.priorQuestion(); */
       } else if (app.historyVar.getItem(app.historyVar.getCount()-1).getValue("question") == this.cameraQuestion.getValue("question")) {
             if (data.answer == this.cameraQuestion.getValue("responses").getItem(0).getValue("answer")) {
-                this.cameraSVar.update();
+                if (window["PhoneGap"]) {
+                    this.cameraSVar.update();
+                } else {
+                    this.cameraSVar.setValue('dataValue', "sample image");
+                    this.cameraSVarSuccess(this.cameraSVar);
+                }
             } else {
                 this.questionsDone();                
                 this.showInputPanel();
             }
-      } else {
+      } else if (wm.isPhonegap) {
           var data = this.cameraQuestion.getData();
           var nextHistoryItem = dojo.clone(data);
           nextHistoryItem.answer = ""; 
           this.nextQuestion(data,nextHistoryItem);
+      } else {
+           this.questionsDone();                
+           this.showInputPanel();
       }
     },  
     priorQuestion: function() {
@@ -71,30 +86,21 @@ dojo.declare("OneQuestionPage", wm.Page, {
 },
 updateAnswerList: function() {
         this.responseList.setDataSet(this.currentQuestionVar.getValue("responses"));
+     
+     this.createMessageLVar.sourceData.setData({
+          messageId: 0,
+          sender: "autodoctor", 
+          text: this.currentQuestionVar.getValue("question"),
+          createdAt: new Date().getTime(),
+          userSessions: {sessionId: this.createSessionLVar.getValue("sessionId")}
+      });
+      this.createMessageLVar.update();
 
     
 },
 
-/*
-historyListSelect: function(inSender, inItem) {
-      this.setQAShowing(true);      
-    this.currentQuestionVar.setData(inSender.selectedItem.getValue("queryResponse"));
-        var index = dojo.indexOf(inSender.items, inItem);
-      while (app.historyVar.getCount() > index && app.historyVar.getCount()) {
-            app.historyVar.removeItem(index);
-      }      
-      
-    },*/
-  takePictureMenuSelect: function(inSender, inItem) {
-      var takePicture = Number(inSender.selectedItem.getValue("dataValue"));
-      if (takePicture) {
-          app.takePictureSVar.update();
-      } else {
-          this.questionsDone();        
-            this.showInputPanel();
-      }
-    },
   currentQuestionVarSetData: function(inSender) {
+      if (inSender.isEmpty()) return;
     var responses = inSender.getValue("responses");
     this.updateScrollTop();
     /*
@@ -110,11 +116,20 @@ historyListSelect: function(inSender, inItem) {
             app.historyVar.addItem({question: "",//this.currentQuestionVar.getValue("question"),
                               answer: "<img style='width:100%' src='" + inSender.getValue('dataValue') + "'/>",
                               queryResponse: ""}); //this.currentQuestionVar.getData()});               
+
             app.announcePath();
+            this.questionsDone();                
             this.showInputPanel();
-            
+            this.createMessageLVar.sourceData.setData({
+          messageId: 0,
+          sender: "user", 
+          text: inSender.getValue("dataValue"),
+          createdAt: new Date().getTime(),
+          userSessions: {sessionId: this.createSessionLVar.getValue("sessionId")}
+      });
+      this.createMessageLVar.update();
+      
             // takes a refresh to properly handle the new photo
-            this.historyList.renderDojoObj();
             this.panel.domNode.scrollTop = this.panel.domNode.scrollHeight;
 
     },
@@ -148,32 +163,15 @@ historyListSelect: function(inSender, inItem) {
     },
     questionsDone: function() {
         app.announcePath();
-        var actionCode = app.historyVar.getItem(app.historyVar.getCount()-2).getValue('actionCode');
-        this.updateSessionLVar.sourceData.setValue("modelDiagnosis", actionCode);
-        this.updateSessionLVar.update();
-        
-    },
-  updateSessionLVarSuccess: function(inSender, inDeprecated) {
-      //alert(dojo.toJson(inSender.getData()));
-          var historyCount = app.historyVar.getCount();
-          for (var i = 0; i < historyCount; i++) {
-              var from, text;
-              var currentItem = app.historyVar.getItem(i);
-              this.createMessageLVar.sourceData.setData({
-                  sender: "autodoctor", 
-                  text: currentItem.getValue("question"),
-                  createdAt: new Date().getTime(),
-                  userSessions: this.createSessionLVar});
-              this.createMessageLVar.update();
-
-              this.createMessageLVar.sourceData.setData({
-                  sender: "user", 
-                  text: currentItem.getValue("answer"),
-                  createdAt: new Date().getTime(),
-                  userSessions: this.createSessionLVar
-                  });
-              this.createMessageLVar.update();
-          }                      
+        var actionCode ;
+        for (var i =  app.historyVar.getCount() -1; i >= 0; i--) {
+            actionCode = app.historyVar.getItem(i).getValue("actionCode");
+            if (actionCode) {
+                this.updateSessionLVar.sourceData.setValue("modelDiagnosis", actionCode);                
+                this.updateSessionLVar.update();
+                break;
+            }
+        }                        
     },
   /*createMessageSVarSuccess: function(inSender, inDeprecated) {
         this.messageRelationshipsObjectsVar.addItem({__type: "Pointer", "className": "Message", objectId: inSender.getValue("objectId")});
@@ -184,5 +182,6 @@ historyListSelect: function(inSender, inItem) {
     updateSessionSVarSuccess: function(inSender, inDeprecated) {
 	  this.createSessionSVarSuccess(inSender, inDeprecated);
 	},*/
-  _end: 0
+  
+	_end: 0
 });     
