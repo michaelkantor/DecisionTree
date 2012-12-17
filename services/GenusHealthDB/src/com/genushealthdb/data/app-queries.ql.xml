@@ -1,16 +1,8 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC 
-	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
-<!-- 
-
-@design.default-queries: Marks this file as default file for user queries.
-
--->
-
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
     <meta attribute="@design.default-queries"/>
-
+    <query name="getConditionsQuery">
+        <query-param name="status" type="java.lang.Byte"/>
+        FROM NodeGroup WHERE status &gt;= :status GROUP BY name
+    </query>
 </hibernate-mapping>

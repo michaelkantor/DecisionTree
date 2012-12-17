@@ -2,6 +2,7 @@
 package com.genushealthdb;
 
 import java.util.List;
+import com.genushealthdb.data.NodeGroup;
 import com.wavemaker.json.type.TypeDefinition;
 import com.wavemaker.runtime.data.DataServiceManager;
 import com.wavemaker.runtime.data.DataServiceManagerAccess;
@@ -14,7 +15,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "GenusHealthDB"
- *  10/20/2012 09:37:56
+ *  11/20/2012 21:55:21
  * 
  */
 @SuppressWarnings("unchecked")
@@ -24,6 +25,10 @@ public class GenusHealthDB
 
     private DataServiceManager dsMgr;
     private TaskManager taskMgr;
+
+    public List<NodeGroup> getConditionsQuery(Byte status, PagingOptions pagingOptions) {
+        return ((List<NodeGroup> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.getConditionsQueryQueryName), status, pagingOptions));
+    }
 
     public com.genushealthdb.data.Messages getMessagesById(Integer id, PagingOptions pagingOptions) {
         List<com.genushealthdb.data.Messages> rtn = ((List<com.genushealthdb.data.Messages> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.getMessagesByIdQueryName), id, pagingOptions));

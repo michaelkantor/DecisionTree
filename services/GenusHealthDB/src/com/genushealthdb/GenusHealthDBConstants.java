@@ -5,11 +5,12 @@ package com.genushealthdb;
 
 /**
  *  Query names for service "GenusHealthDB"
- *  10/20/2012 09:37:56
+ *  11/20/2012 21:55:21
  * 
  */
 public class GenusHealthDBConstants {
 
+    public final static String getConditionsQueryQueryName = "getConditionsQuery";
     public final static String getMessagesByIdQueryName = "getMessagesById";
 
 }

@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  GenusHealthDB.UserSessions
- *  10/10/2012 21:38:03
+ *  11/20/2012 21:55:17
  * 
  */
 public class UserSessions {
@@ -19,6 +19,8 @@ public class UserSessions {
     private String patientId;
     private Date createdAt;
     private Date updatedAt;
+    private String feedback;
+    private Node node;
     private Set<com.genushealthdb.data.Messages> messageses = new HashSet<com.genushealthdb.data.Messages>();
 
     public Integer getSessionId() {
@@ -67,6 +69,22 @@ public class UserSessions {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
+
+    public Node getNode() {
+        return node;
+    }
+
+    public void setNode(Node node) {
+        this.node = node;
     }
 
     public Set<com.genushealthdb.data.Messages> getMessageses() {

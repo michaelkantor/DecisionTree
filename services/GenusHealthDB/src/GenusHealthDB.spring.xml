@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Generated 10/10/2012 21:38:01
+<!-- Generated 11/20/2012 21:44:03
 
 Configuration for 'GenusHealthDB' database service
 
@@ -91,7 +91,11 @@ Configuration for 'GenusHealthDB' database service
             <list>
 
 <value>com/genushealthdb/data/Messages.hbm.xml</value>
+<value>com/genushealthdb/data/Dispositions.hbm.xml</value>
+<value>com/genushealthdb/data/Jsonfiles.hbm.xml</value>
+<value>com/genushealthdb/data/Node.hbm.xml</value>
 <value>com/genushealthdb/data/UserSessions.hbm.xml</value>
+<value>com/genushealthdb/data/NodeGroup.hbm.xml</value>
 
 <value>com/genushealthdb/data/Messages.ql.xml</value>
 <value>com/genushealthdb/data/app-queries.ql.xml</value>
