@@ -2,7 +2,12 @@
 package com.genushealthdb;
 
 import java.util.List;
-import com.genushealthdb.data.NodeGroup;
+import com.genushealthdb.data.output.GetJsonFilesByConditionTypeRtnType;
+import com.genushealthdb.data.output.GetMaxNodeIdRtnType;
+import com.genushealthdb.data.output.GroupByConditionTypeQueryRtnType;
+import com.genushealthdb.data.output.GroupByDiagnosisRtnType;
+import com.genushealthdb.data.output.GroupByNodeIdRtnType;
+import com.genushealthdb.data.output.SynopsisQueryRtnType;
 import com.wavemaker.json.type.TypeDefinition;
 import com.wavemaker.runtime.data.DataServiceManager;
 import com.wavemaker.runtime.data.DataServiceManagerAccess;
@@ -15,7 +20,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "GenusHealthDB"
- *  12/16/2012 23:38:26
+ *  12/26/2012 16:43:20
  * 
  */
 @SuppressWarnings("unchecked")
@@ -26,17 +31,36 @@ public class GenusHealthDB
     private DataServiceManager dsMgr;
     private TaskManager taskMgr;
 
-    public List<NodeGroup> getConditionsQuery(Byte status, PagingOptions pagingOptions) {
-        return ((List<NodeGroup> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.getConditionsQueryQueryName), status, pagingOptions));
+    public List<GroupByConditionTypeQueryRtnType> groupByConditionTypeQuery(PagingOptions pagingOptions) {
+        return ((List<GroupByConditionTypeQueryRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.groupByConditionTypeQueryQueryName), pagingOptions));
     }
 
-    public com.genushealthdb.data.Messages getMessagesById(Integer id, PagingOptions pagingOptions) {
-        List<com.genushealthdb.data.Messages> rtn = ((List<com.genushealthdb.data.Messages> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.getMessagesByIdQueryName), id, pagingOptions));
-        if (rtn.isEmpty()) {
-            return null;
-        } else {
-            return rtn.get(0);
-        }
+    public List<com.genushealthdb.data.NodeGroup> getConditionsQuery(Byte status, PagingOptions pagingOptions) {
+        return ((List<com.genushealthdb.data.NodeGroup> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.getConditionsQueryQueryName), status, pagingOptions));
+    }
+
+    public List<SynopsisQueryRtnType> synopsisQuery(PagingOptions pagingOptions) {
+        return ((List<SynopsisQueryRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.synopsisQueryQueryName), pagingOptions));
+    }
+
+    public List<GetJsonFilesByConditionTypeRtnType> getJsonFilesByConditionType(String conditionType, PagingOptions pagingOptions) {
+        return ((List<GetJsonFilesByConditionTypeRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.getJsonFilesByConditionTypeQueryName), conditionType, pagingOptions));
+    }
+
+    public List<GroupByNodeIdRtnType> groupByNodeId(String conditionType, String modelDiagnosis, PagingOptions pagingOptions) {
+        return ((List<GroupByNodeIdRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.groupByNodeIdQueryName), conditionType, modelDiagnosis, pagingOptions));
+    }
+
+    public List<GroupByDiagnosisRtnType> groupByDiagnosis(String conditionType, PagingOptions pagingOptions) {
+        return ((List<GroupByDiagnosisRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.groupByDiagnosisQueryName), conditionType, pagingOptions));
+    }
+
+    public List<GetMaxNodeIdRtnType> getMaxNodeId(PagingOptions pagingOptions) {
+        return ((List<GetMaxNodeIdRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.getMaxNodeIdQueryName), pagingOptions));
+    }
+
+    public List<com.genushealthdb.data.NodeGroup> getConditionList(PagingOptions pagingOptions) {
+        return ((List<com.genushealthdb.data.NodeGroup> ) dsMgr.invoke(taskMgr.getQueryTask(), (GenusHealthDBConstants.getConditionListQueryName), pagingOptions));
     }
 
     public Object insert(Object o) {

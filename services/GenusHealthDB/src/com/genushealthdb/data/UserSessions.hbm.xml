@@ -12,10 +12,10 @@
             <column name="model_diagnosis"/>
         </property>
         <property name="patientId" type="string">
-            <column name="patient_id" not-null="true"/>
+            <column name="patient_id"/>
         </property>
         <property name="createdAt" type="timestamp">
-            <column name="created_at" length="19" not-null="true"/>
+            <column name="created_at" length="19"/>
         </property>
         <property name="updatedAt" type="timestamp">
             <column name="updated_at" length="19" not-null="true"/>
@@ -26,11 +26,5 @@
         <many-to-one name="node" class="com.genushealthdb.data.Node" cascade="none">
             <column name="final_node_id"/>
         </many-to-one>
-        <set name="messagess" inverse="true" cascade="">
-            <key>
-                <column name="session_id" not-null="true"/>
-            </key>
-            <one-to-many class="com.genushealthdb.data.Messages"/>
-        </set>
     </class>
 </hibernate-mapping>

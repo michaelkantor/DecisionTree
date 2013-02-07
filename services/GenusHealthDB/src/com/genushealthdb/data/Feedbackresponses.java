@@ -5,14 +5,14 @@ package com.genushealthdb.data;
 
 /**
  *  GenusHealthDB.Feedbackresponses
- *  12/16/2012 23:38:20
+ *  12/26/2012 13:46:00
  * 
  */
 public class Feedbackresponses {
 
     private Integer feedbackresponseid;
     private String answer;
-    private Feedbackquestions feedbackquestion;
+    private Feedbackquestions feedbackquestions;
 
     public Integer getFeedbackresponseid() {
         return feedbackresponseid;
@@ -30,12 +30,12 @@ public class Feedbackresponses {
         this.answer = answer;
     }
 
-    public Feedbackquestions getFeedbackquestion() {
-        return feedbackquestion;
+    public Feedbackquestions getFeedbackquestions() {
+        return feedbackquestions;
     }
 
-    public void setFeedbackquestion(Feedbackquestions feedbackquestion) {
-        this.feedbackquestion = feedbackquestion;
+    public void setFeedbackquestions(Feedbackquestions feedbackquestions) {
+        this.feedbackquestions = feedbackquestions;
     }
 
 }

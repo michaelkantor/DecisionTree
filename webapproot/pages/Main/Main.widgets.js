@@ -32,7 +32,7 @@ Main.widgets = {
 				pageContainer2: ["wm.PageContainer", {"deferLoad":true,"pageName":"LoginPage","subpageEventlist":{"onParseLoginSVarSuccess":"parseLoginSVar.onSuccess"},"subpageMethodlist":{},"subpageProplist":{}}, {"onParseLoginSVarSuccess":"mainMenuLayer"}]
 			}],
 			mainMenuLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}, {
-				mainMenuList: ["wm.List", {"_classes":{"domNode":["MobileListStyle","ButtonList"]},"border":"0","columns":[{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","editorProps":{"restrictValues":true},"expression":"\"<div class='MobileRowTitle'>Name: \" + ${name} + \"</div>\"\n","mobileColumn":false},{"show":false,"field":"nodegroupId","title":"NodegroupId","width":"80px","align":"left","formatFunc":"","mobileColumn":false},{"show":true,"field":"name","title":"Name","width":"100%","align":"left","formatFunc":"","mobileColumn":false},{"show":false,"field":"status","title":"Status","width":"80px","align":"left","formatFunc":"","mobileColumn":false}],"headerVisible":false,"height":"100%","isNavigationMenu":true,"margin":"10","minDesktopHeight":60,"padding":"4","styleAsGrid":false,"styles":{"backgroundGradient":""}}, {"onSelect":"mainMenuListSelect"}, {
+				mainMenuList: ["wm.List", {"_classes":{"domNode":["MobileListStyle","ButtonList"]},"border":"0","columns":[{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","editorProps":{"restrictValues":true},"expression":"\"<div class='MobileRowTitle'>Name: \" + ${name} + \"</div>\"\n","mobileColumn":false},{"show":false,"field":"nodegroupId","title":"NodegroupId","width":"80px","align":"left","formatFunc":"","mobileColumn":false},{"show":true,"field":"name","title":"Name","width":"100%","align":"left","formatFunc":"","mobileColumn":false},{"show":false,"field":"status","title":"Status","width":"80px","align":"left","formatFunc":"","mobileColumn":false},{"show":false,"field":"rootNodeId","title":"RootNodeId","width":"80px","displayType":"Number","align":"left","formatFunc":""}],"headerVisible":false,"height":"100%","isNavigationMenu":true,"margin":"10","minDesktopHeight":60,"padding":"4","styleAsGrid":false,"styles":{"backgroundGradient":""}}, {"onSelect":"mainMenuListSelect"}, {
 					binding: ["wm.Binding", {}, {}, {
 						wire: ["wm.Wire", {"expression":undefined,"source":"getConditionsQuerySVar","targetProperty":"dataSet"}, {}]
 					}]
@@ -55,28 +55,8 @@ Main.widgets = {
 					endHtml: ["wm.Html", {"_classes":{"domNode":["NoSizeNode"]},"autoScroll":false,"autoSizeHeight":true,"borderColor":"#cccccc","height":"52px","html":"Synopsis","margin":"0,10,10,10","minDesktopHeight":15,"padding":"12","styles":{"color":"#036fad"}}, {}],
 					chatWithDrButton: ["wm.Button", {"caption":"Talk to Nurse Online","height":"40px","margin":"4","showing":false,"width":"151px"}, {"onclick":"chatLayer"}],
 					wrapupLabel: ["wm.Label", {"_classes":{"domNode":["Question","curvedlist"]},"autoSizeHeight":true,"border":"1","borderColor":"#cccccc","caption":"Feedback helps us improve our service: was this information helpful?","height":"62px","margin":"0,10,10,10","padding":"12","singleLine":false,"width":"100%"}, {}],
-					feedbackUseAgainEditorPanel: ["wm.Panel", {"desktopHeight":"91px","enableTouchHeight":true,"height":"100px","horizontalAlign":"left","layoutKind":"left-to-right","mobileHeight":"100px","verticalAlign":"top","width":"346px"}, {}, {
-						label1: ["wm.Label", {"caption":"Did this save you a trip to the doctor?","height":"100%","padding":"30,0,0,5","singleLine":false}, {}],
-						feedbackUseAgainEditor: ["wm.RadioSet", {"caption":undefined,"captionSize":"60%","dataField":"dataValue","dataValue":undefined,"displayField":"dataValue","displayValue":"","editorBorder":false,"height":"100%","options":"Yes,No","width":"114px"}, {"onchange":"saveFeedback"}]
-					}],
-					feedbackUseAgainEditorPanel1: ["wm.Panel", {"desktopHeight":"91px","enableTouchHeight":true,"height":"100px","horizontalAlign":"left","layoutKind":"left-to-right","mobileHeight":"100px","verticalAlign":"top","width":"316px"}, {}, {
-						label2: ["wm.Label", {"caption":"Would you use this service again?","height":"100%","padding":"30,0,0,5","singleLine":false}, {}],
-						feedbackSaveTripEditor: ["wm.RadioSet", {"caption":undefined,"captionSize":"60%","dataField":"dataValue","dataValue":undefined,"displayField":"dataValue","displayValue":"","editorBorder":false,"height":"100%","options":"Yes,No","width":"114px"}, {"onchange":"saveFeedback"}]
-					}],
-					facebookLikeButton: ["wm.gadget.FacebookLikeButton", {"action":"recommend","font":"segoe ui","href":"http://genushealth.cloudfoundry.com"}, {}]
-				}]
-			}],
-			endLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}, {
-				panel2: ["wm.Panel", {"autoScroll":true,"borderColor":"","height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
-					drGenusPicturePanel1: ["wm.Panel", {"_classes":{"domNode":["drgenus"]},"border":"2","borderColor":"#808385","height":"76px","horizontalAlign":"left","layoutKind":"left-to-right","margin":"2,10","padding":"10","styles":{"backgroundGradient":""},"verticalAlign":"top","width":"100%"}, {}, {
-						drGenusPicture1: ["wm.Picture", {"aspect":"h","borderColor":"","height":"45px","source":"resources/images/drgenus.png","width":"100%"}, {}]
-					}],
-					questionLabelPanel2: ["wm.Panel", {"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
-						questionLabelPanel5: ["wm.Panel", {"fitToContentHeight":true,"height":"89px","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
-							upArrow1: ["wm.Label", {"_classes":{"domNode":["topArrow"]},"caption":"","margin":"0,0,0,60","padding":"4","styles":{"backgroundColor":""},"width":"84px"}, {}],
-							dispositionLabel2: ["wm.Label", {"_classes":{"domNode":["Question"]},"autoSizeHeight":true,"border":"8","borderColor":"#323232","caption":"Thank you for your feedback!","height":"63px","margin":"0,10,10,10","padding":"12","singleLine":false,"styles":{"backgroundColor":"#f8f8f8"},"width":"100%"}, {}]
-						}]
-					}]
+					feedbackButton: ["wm.Button", {"caption":"Quick Feedback Questions","height":"73px","margin":"4","mobileHeight":"73px","width":"160px"}, {"onclick":"feedbackLayer"}],
+					facebookLikeButton: ["wm.gadget.FacebookLikeButton", {"action":"recommend","font":"segoe ui","height":"120px","href":"http://genushealth.cloudfoundry.com","margin":"20,0,0,0"}, {}]
 				}]
 			}],
 			carePackLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}, {
@@ -90,6 +70,9 @@ Main.widgets = {
 			}],
 			chatLayer: ["wm.Layer", {"borderColor":"","caption":"Chat","horizontalAlign":"left","showing":false,"themeStyleType":"","verticalAlign":"top"}, {}, {
 				pageContainer5: ["wm.PageContainer", {"deferLoad":true,"subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {}]
+			}],
+			feedbackLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}, {
+				pageContainer6: ["wm.PageContainer", {"deferLoad":true,"pageName":"FeedbackPage","subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {}]
 			}]
 		}],
 		toggleButtonPanel1: ["wm.ToggleButtonPanel", {"_classes":{"domNode":["NoRadius"]},"desktopHeight":"68px","height":"68px","horizontalAlign":"left","mobileHeight":"68px","styles":{"fontSize":""},"verticalAlign":"top"}, {"onChange":"toggleButtonPanel1Change"}, {

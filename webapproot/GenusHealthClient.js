@@ -10,11 +10,11 @@ dojo.declare("GenusHealthClient", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha35", 
+	"projectSubVersion": "Alpha36", 
 	"projectVersion": 1, 
 	"sessionExpirationHandler": "nothing", 
 	"showIOSPhoneGapBackButton": false, 
-	"studioVersion": "6.5.1.Release", 
+	"studioVersion": "6.5.2.Release", 
 	"tabletMain": "", 
 	"theme": "wm_default", 
 	"toastPosition": "br", 
@@ -85,6 +85,7 @@ dojo.declare("GenusHealthClient", wm.Application, {
 				"parse.com.RegistrationResponse.sessionToken": ["wm.TypeDefinitionField", {"fieldName":"sessionToken","fieldType":"string"}, {}]
 			}]
 		}], 
+		currentDispositionVar: ["wm.Variable", {"type":"com.genushealthdb.data.Dispositions"}, {}], 
 		currentSessionVar: ["wm.Variable", {"type":"com.genushealthdb.data.UserSessions"}, {}, {
 			binding: ["wm.Binding", {}, {}, {
 				wire: ["wm.Wire", {"expression":undefined,"source":"[oneQuestionPage].createSessionLVar","targetProperty":"dataSet"}, {}]

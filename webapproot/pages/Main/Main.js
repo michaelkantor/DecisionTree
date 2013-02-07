@@ -40,13 +40,12 @@ backButtonClick: function(inSender) {
             diagnosisId = app.historyVar.getItem(i).getValue("actionCode");
         }
         if (!diagnosisId) diagnosisId = "Not set in json file";
-        var item = app.dispositionsLiveVariable.query({name: diagnosisId});
+        var item = app.dispositionsLiveVariable.query({name: diagnosisId}).getItem(0);
+        app.currentDispositionVar.setData(item);
         var displayName = item.getValue("displayName") || item.getValue("name");
         this.dispositionLabel.setCaption("<span class='ComplaintHeading'>Disposition:</span> <span class='ComplaintName'>" + displayName + "</span>");
         this.endHtml.setHtml(item.getValue("text") );
-        this.diagnosisPanel.domNode.scrollTop = 0;
-        this.feedbackUseAgainEditor.setDataValue(null);
-        this.feedbackSaveTripEditor.setDataValue(null);
+        this.diagnosisPanel.domNode.scrollTop = 0;        
     },
     mainMenuListSelect: function(inSender, inItem) {
         var json;
@@ -74,10 +73,6 @@ backButtonClick: function(inSender) {
                 if (b.borderColor != "#333333") b.setBorderColor("#333333");
             }
         });
-    },
-    saveFeedback: function() {
-        this.questionsPageContainer.page.updateSessionLVar.sourceData.setValue("feedback", "{'useAgain': " + (this.feedbackUseAgainEditor.getDataValue() == "Yes") + ",'saveVisit':" + (this.feedbackSaveTripEditor.getDataValue() == "Yes") + "}");
-        this.questionsPageContainer.page.updateSessionLVar.update();
     },
     examRoomTglBtnClick: function(inSender) {
         if (!app.phonegapCredentialsVar.isEmpty()) {

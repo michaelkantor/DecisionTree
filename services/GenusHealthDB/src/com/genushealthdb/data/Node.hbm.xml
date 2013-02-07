@@ -5,6 +5,9 @@
             <column name="node_id"/>
             <generator class="assigned"/>
         </id>
+        <property name="parentId" type="integer">
+            <column name="parent_id"/>
+        </property>
         <property name="answer" type="string">
             <column name="answer"/>
         </property>
@@ -17,26 +20,11 @@
         <property name="updatedAt" type="timestamp">
             <column name="updated_at" length="19" not-null="true"/>
         </property>
-        <many-to-one name="parent" class="com.genushealthdb.data.Node" cascade="none">
-            <column name="parent_id"/>
-        </many-to-one>
-        <set name="nodes" inverse="true" cascade="">
-            <key>
-                <column name="parent_id"/>
-            </key>
-            <one-to-many class="com.genushealthdb.data.Node"/>
-        </set>
         <set name="usersessionss" inverse="true" cascade="">
             <key>
                 <column name="final_node_id"/>
             </key>
             <one-to-many class="com.genushealthdb.data.UserSessions"/>
-        </set>
-        <set name="nodegroups" inverse="true" cascade="">
-            <key>
-                <column name="root_node_id" not-null="true"/>
-            </key>
-            <one-to-many class="com.genushealthdb.data.NodeGroup"/>
         </set>
     </class>
 </hibernate-mapping>

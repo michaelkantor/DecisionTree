@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  *  GenusHealthDB.Feedbackquestions
- *  12/16/2012 23:38:20
+ *  12/26/2012 13:46:00
  * 
  */
 public class Feedbackquestions {
@@ -15,7 +15,7 @@ public class Feedbackquestions {
     private Integer feedbackquestionid;
     private String question;
     private Integer ordernumber;
-    private Dispositions disposition;
+    private Feedbackquestionset feedbackquestionset;
     private Set<com.genushealthdb.data.Feedbackresponses> feedbackresponsess = new HashSet<com.genushealthdb.data.Feedbackresponses>();
 
     public Integer getFeedbackquestionid() {
@@ -42,12 +42,12 @@ public class Feedbackquestions {
         this.ordernumber = ordernumber;
     }
 
-    public Dispositions getDisposition() {
-        return disposition;
+    public Feedbackquestionset getFeedbackquestionset() {
+        return feedbackquestionset;
     }
 
-    public void setDisposition(Dispositions disposition) {
-        this.disposition = disposition;
+    public void setFeedbackquestionset(Feedbackquestionset feedbackquestionset) {
+        this.feedbackquestionset = feedbackquestionset;
     }
 
     public Set<com.genushealthdb.data.Feedbackresponses> getFeedbackresponsess() {

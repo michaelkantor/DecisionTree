@@ -7,12 +7,19 @@
                     <list>
                         <value>com.genushealthdb.data.Dispositions</value>
                         <value>com.genushealthdb.data.Feedbackquestions</value>
+                        <value>com.genushealthdb.data.Feedbackquestionset</value>
                         <value>com.genushealthdb.data.Feedbackresponses</value>
                         <value>com.genushealthdb.data.Jsonfiles</value>
                         <value>com.genushealthdb.data.Messages</value>
                         <value>com.genushealthdb.data.Node</value>
                         <value>com.genushealthdb.data.NodeGroup</value>
                         <value>com.genushealthdb.data.UserSessions</value>
+                        <value>com.genushealthdb.data.output.GroupByDiagnosisRtnType</value>
+                        <value>com.genushealthdb.data.output.GetMaxNodeIdRtnType</value>
+                        <value>com.genushealthdb.data.output.GroupByConditionTypeQueryRtnType</value>
+                        <value>com.genushealthdb.data.output.GetJsonFilesByConditionTypeRtnType</value>
+                        <value>com.genushealthdb.data.output.SynopsisQueryRtnType</value>
+                        <value>com.genushealthdb.data.output.GroupByNodeIdRtnType</value>
                     </list>
                 </entry>
             </map>

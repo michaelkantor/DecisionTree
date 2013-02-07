@@ -187,7 +187,7 @@ wm.JsonRpcService.smdCache['runtimeService.smd'] = {
 	"serviceType": "JSON-RPC",
 	"serviceURL": "runtimeService.json"
 };
-wm.JsonRpcService.smdCache['wavemakerService.smd'] = {
+wm.JsonRpcService.smdCache['waveMakerService.smd'] = {
 	"methods": [{
 		"name": "echo",
 		"operationType": null,
@@ -297,15 +297,15 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.Integer"
 				},
-				"feedbackquestionss": {
+				"feedbackquestionset": {
 					"exclude": [],
 					"fieldOrder": 6,
 					"fieldSubType": null,
 					"include": [],
-					"isList": true,
+					"isList": false,
 					"noChange": [],
 					"required": false,
-					"type": "com.genushealthdb.data.Feedbackquestions"
+					"type": "com.genushealthdb.data.Feedbackquestionset"
 				},
 				"modifiedAt": {
 					"exclude": [],
@@ -344,16 +344,6 @@ wm.types = {
 		},
 		"com.genushealthdb.data.Feedbackquestions": {
 			"fields": {
-				"disposition": {
-					"exclude": [],
-					"fieldOrder": 3,
-					"fieldSubType": null,
-					"include": [],
-					"isList": false,
-					"noChange": [],
-					"required": true,
-					"type": "com.genushealthdb.data.Dispositions"
-				},
 				"feedbackquestionid": {
 					"exclude": ["insert"],
 					"fieldOrder": 0,
@@ -364,9 +354,19 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.Integer"
 				},
-				"feedbackresponsess": {
+				"feedbackquestionset": {
 					"exclude": [],
 					"fieldOrder": 4,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "com.genushealthdb.data.Feedbackquestionset"
+				},
+				"feedbackresponsess": {
+					"exclude": [],
+					"fieldOrder": 3,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -399,6 +399,53 @@ wm.types = {
 			"liveService": true,
 			"service": "GenusHealthDB"
 		},
+		"com.genushealthdb.data.Feedbackquestionset": {
+			"fields": {
+				"dispositionss": {
+					"exclude": [],
+					"fieldOrder": 3,
+					"fieldSubType": null,
+					"include": [],
+					"isList": true,
+					"noChange": [],
+					"required": false,
+					"type": "com.genushealthdb.data.Dispositions"
+				},
+				"feedbackquestionsetid": {
+					"exclude": ["insert"],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": ["delete", "read", "update"],
+					"isList": false,
+					"noChange": ["delete", "read", "update"],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"feedbackquestionss": {
+					"exclude": [],
+					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": true,
+					"noChange": [],
+					"required": false,
+					"type": "com.genushealthdb.data.Feedbackquestions"
+				},
+				"name": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": true,
+			"service": "GenusHealthDB"
+		},
 		"com.genushealthdb.data.Feedbackresponses": {
 			"fields": {
 				"answer": {
@@ -411,7 +458,7 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.String"
 				},
-				"feedbackquestion": {
+				"feedbackquestions": {
 					"exclude": [],
 					"fieldOrder": 2,
 					"fieldSubType": null,
@@ -525,6 +572,16 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.String"
 				},
+				"sessionId": {
+					"exclude": [],
+					"fieldOrder": 4,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
 				"text": {
 					"exclude": [],
 					"fieldOrder": 2,
@@ -534,16 +591,6 @@ wm.types = {
 					"noChange": [],
 					"required": false,
 					"type": "java.lang.String"
-				},
-				"userSessions": {
-					"exclude": [],
-					"fieldOrder": 4,
-					"fieldSubType": null,
-					"include": [],
-					"isList": false,
-					"noChange": [],
-					"required": true,
-					"type": "com.genushealthdb.data.UserSessions"
 				}
 			},
 			"internal": false,
@@ -554,7 +601,7 @@ wm.types = {
 			"fields": {
 				"answer": {
 					"exclude": [],
-					"fieldOrder": 1,
+					"fieldOrder": 2,
 					"fieldSubType": null,
 					"include": [],
 					"isList": false,
@@ -564,7 +611,7 @@ wm.types = {
 				},
 				"createdAt": {
 					"exclude": [],
-					"fieldOrder": 3,
+					"fieldOrder": 4,
 					"fieldSubType": null,
 					"include": [],
 					"isList": false,
@@ -582,39 +629,19 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.Integer"
 				},
-				"nodegroups": {
+				"parentId": {
 					"exclude": [],
-					"fieldOrder": 8,
-					"fieldSubType": null,
-					"include": [],
-					"isList": true,
-					"noChange": [],
-					"required": false,
-					"type": "com.genushealthdb.data.NodeGroup"
-				},
-				"nodes": {
-					"exclude": [],
-					"fieldOrder": 6,
-					"fieldSubType": null,
-					"include": [],
-					"isList": true,
-					"noChange": [],
-					"required": false,
-					"type": "com.genushealthdb.data.Node"
-				},
-				"parent": {
-					"exclude": [],
-					"fieldOrder": 5,
+					"fieldOrder": 1,
 					"fieldSubType": null,
 					"include": [],
 					"isList": false,
 					"noChange": [],
 					"required": false,
-					"type": "com.genushealthdb.data.Node"
+					"type": "java.lang.Integer"
 				},
 				"question": {
 					"exclude": [],
-					"fieldOrder": 2,
+					"fieldOrder": 3,
 					"fieldSubType": null,
 					"include": [],
 					"isList": false,
@@ -624,7 +651,7 @@ wm.types = {
 				},
 				"updatedAt": {
 					"exclude": [],
-					"fieldOrder": 4,
+					"fieldOrder": 5,
 					"fieldSubType": null,
 					"include": [],
 					"isList": false,
@@ -634,7 +661,7 @@ wm.types = {
 				},
 				"usersessionss": {
 					"exclude": [],
-					"fieldOrder": 7,
+					"fieldOrder": 6,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -659,16 +686,6 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.String"
 				},
-				"node": {
-					"exclude": [],
-					"fieldOrder": 3,
-					"fieldSubType": null,
-					"include": [],
-					"isList": false,
-					"noChange": [],
-					"required": true,
-					"type": "com.genushealthdb.data.Node"
-				},
 				"nodegroupId": {
 					"exclude": ["insert"],
 					"fieldOrder": 0,
@@ -679,9 +696,19 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.Integer"
 				},
-				"status": {
+				"rootNodeId": {
 					"exclude": [],
 					"fieldOrder": 2,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				},
+				"status": {
+					"exclude": [],
+					"fieldOrder": 3,
 					"fieldSubType": null,
 					"include": [],
 					"isList": false,
@@ -713,7 +740,7 @@ wm.types = {
 					"include": [],
 					"isList": false,
 					"noChange": [],
-					"required": true,
+					"required": false,
 					"type": "java.util.Date"
 				},
 				"feedback": {
@@ -725,16 +752,6 @@ wm.types = {
 					"noChange": [],
 					"required": false,
 					"type": "java.lang.String"
-				},
-				"messagess": {
-					"exclude": [],
-					"fieldOrder": 8,
-					"fieldSubType": null,
-					"include": [],
-					"isList": true,
-					"noChange": [],
-					"required": false,
-					"type": "com.genushealthdb.data.Messages"
 				},
 				"modelDiagnosis": {
 					"exclude": [],
@@ -763,7 +780,7 @@ wm.types = {
 					"include": [],
 					"isList": false,
 					"noChange": [],
-					"required": true,
+					"required": false,
 					"type": "java.lang.String"
 				},
 				"sessionId": {
@@ -789,6 +806,148 @@ wm.types = {
 			},
 			"internal": false,
 			"liveService": true,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.output.GetJsonFilesByConditionTypeRtnType": {
+			"fields": {
+				"text": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.output.GetMaxNodeIdRtnType": {
+			"fields": {
+				"newId": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.output.GroupByConditionTypeQueryRtnType": {
+			"fields": {
+				"conditionType": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"count": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Long"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.output.GroupByDiagnosisRtnType": {
+			"fields": {
+				"count": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Long"
+				},
+				"modelDiagnosis": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.output.GroupByNodeIdRtnType": {
+			"fields": {
+				"count": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Long"
+				},
+				"nodeId": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Integer"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "GenusHealthDB"
+		},
+		"com.genushealthdb.data.output.SynopsisQueryRtnType": {
+			"fields": {
+				"conditionType": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				},
+				"count": {
+					"exclude": [],
+					"fieldOrder": 1,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.Long"
+				}
+			},
+			"internal": false,
+			"liveService": false,
 			"service": "GenusHealthDB"
 		},
 		"double": {
@@ -890,11 +1049,11 @@ dojo.declare("GenusHealthClient", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha34", 
+	"projectSubVersion": "Alpha35", 
 	"projectVersion": 1, 
 	"sessionExpirationHandler": "nothing", 
 	"showIOSPhoneGapBackButton": false, 
-	"studioVersion": "6.5.1.Release", 
+	"studioVersion": "6.5.2.Release", 
 	"tabletMain": "", 
 	"theme": "wm_default", 
 	"toastPosition": "br", 
@@ -965,6 +1124,7 @@ dojo.declare("GenusHealthClient", wm.Application, {
 				"parse.com.RegistrationResponse.sessionToken": ["wm.TypeDefinitionField", {"fieldName":"sessionToken","fieldType":"string"}, {}]
 			}]
 		}], 
+		currentDispositionVar: ["wm.Variable", {"type":"com.genushealthdb.data.Dispositions"}, {}], 
 		currentSessionVar: ["wm.Variable", {"type":"com.genushealthdb.data.UserSessions"}, {}, {
 			binding: ["wm.Binding", {}, {}, {
 				wire: ["wm.Wire", {"expression":undefined,"source":"[oneQuestionPage].createSessionLVar","targetProperty":"dataSet"}, {}]
@@ -1220,118 +1380,3 @@ position: relative;\
 top: 12px;\
 }\
 ';
-wm.Page.extend({
-    loadComponent: function(inName, inParent, inType, inProps, inEvents, inChildren, isSecond) {
-    	if (!this._isDesignLoaded && inProps.deviceType && wm.device && dojo.indexOf(inProps.deviceType, wm.device) == -1) {
-			if (djConfig.isDebug) this.warnDroppedWidgets(inName, inProps.deviceType.join(","), inChildren);
-			return;
-		}
-		// Some code for debugging performance; normally skipped
-		if (wm.debugPerformance) {
-			if (inType == "wm.Layout") {
-				if (dojo.isFF) console.groupCollapsed("LOAD COMPONENT " + inType + ": " + inName);
-				else console.group("LOAD COMPONENT " + inType + ": " + inName);
-			}
-
-			this.startTimerWithName("LoadComponent", inType);
-			this.startTimerWithName("LoadPage", inType);
-		}
-
-		var ctor = wm.getObject(inType);
-		if (!ctor) {
-			try {
-				wm.getComponentStructure(inType);
-				ctor = dojo.getObject(inType);
-			} catch (e) {
-				console.info('Error : Page.js trying to get component dynamically-------------> ' + e);
-			}
-
-			if (!ctor) {
-				console.debug('Component type "' + inType + '" is not available.');
-				ctor = wm.Box;
-			}
-		}
-
-
-		// FIXME: this check really needs to go
-		// yuk
-		var props = {};
-		isWidget = (ctor.prototype instanceof wm.Control || ctor.prototype instanceof dijit._Widget);
-		if (isWidget) {
-			var parentNode = (inParent ? inParent.containerNode || inParent.domNode : this.domNode);
-			props = {
-				owner: this,
-				parent: inParent,
-				domNode: parentNode ? null : document.body,
-				parentNode: parentNode
-			};
-		}
-
-
-		// props.name should overwrite getUniqueName(inName), which should overwrite inProps.
-		if (!props.owner) {
-			if (inParent && inParent instanceof wm.Layout) props.owner = inParent.owner;
-			else if (inParent) props.owner = inParent;
-			else props.owner = this;
-		}
-	    if (this[inName] instanceof wm.Component) {
-		c = this[inName];
-	    } else {
-		props = dojo.mixin({}, inProps, {
-		        name: inName,
-			_designer: this._designer,
-			_loading: true
-		}, props);
-	    }
-	    if (!c) {
-        /* Special case where a Composite being designed opens a PageDialog at designtime where the PageDialog 
-         * is itself not being designed but is in fact a wizard
-         */
-        if (inProps._isDesignLoaded === false) delete props._designer;
-
-		if (this.isRelativePositioned && inType == "wm.Layout") {
-			props.isRelativePositioned = true;
-		}
-
-		// All custom methods should be page methods; page methods have not been evaled, so
-		// can not be defined nor invoked at design time
-		if (!this.isDesignLoaded()) {
-			for (var p in props) {
-				if (p.indexOf("custom") == 0 && dojo.isFunction(ctor.prototype[p])) {
-					var owner = props.owner;
-					props[p] = dojo.hitch(owner, owner[props[p]]);
-				}
-			}
-		}
-
-
-
-		// Calls Component.create, which calls prepare, build, init and postInit
-		var c = this._create(ctor, props);
-
-
-		// FIXME: this initialization should be in Component
-		// to remove the distinction between 'loading' and 'creating'
-		if (!inParent && isWidget) {
-			c.moveable = false;
-			this.root = c;
-		}
-	    }
-		this.makeEvents(inEvents, c);
-		//if (!(c instanceof wm.Layer) || !c.deferLoading)
-		if (inChildren) this.loadComponents(inChildren, c);
-
-		c.loaded(); // Component.loaded calls postInit
-		var timeToLoad = this.stopTimerWithName("LoadComponent", inType);
-		if (wm.debugPerformance) {
-			if (inType == "wm.Layout") {
-				console.log(inType + ": " + inName + " TOOK " + timeToLoad + " ms");
-				console.groupEnd();
-				this.printPagePerformanceData();
-				console.log(inType + ": " + inName + " TOOK " + timeToLoad + " ms");
-			}
-		}
-
-		return c;
-	}
-});
