@@ -4,7 +4,16 @@ dojo.declare("Main", wm.Page, {
     start: function() {
             if (wm.device == "desktop") {
                window.location.search = djConfig.isDebug ? "?debug&wmmobile=tablet" : "?wmmobile=tablet";
+            } else {
+                this.showLicenseOrMainMenu();
             }
+    },
+    showLicenseOrMainMenu: function() {
+        if (dojo.cookie("licenseAgreed")) {
+            this.mainMenuLayer.activate();
+        } else {
+            this.licenseLayer.activate();   
+        }
     },
 /*
     logoutButtonClick: function(inSender) {
@@ -31,7 +40,10 @@ backButtonClick: function(inSender) {
        }
     },
     layers1Change: function(inSender, inIndex) {
-        this.backAndForthPanel.setShowing(inIndex > 1);        
+        this.backAndForthPanel.setShowing(inIndex > 3);
+        if (this.toggleButtonPanel1) {
+            this.toggleButtonPanel1.setShowing(inIndex > 2);
+        }
     },
     diagnosisLayerShow: function(inSender) {
         var diagnosisId;
@@ -75,12 +87,14 @@ backButtonClick: function(inSender) {
         });
     },
     examRoomTglBtnClick: function(inSender) {
+        /* Uncomment if we reenable login
         if (!app.phonegapCredentialsVar.isEmpty()) {
             this.mainMenuLayer.update();
         } else {
-            //this.loginLayer.update();
-            this.mainMenuLayer.update();
-        }
+            this.loginLayer.update();
+        }*/
+        
+        if (this.layers1.layerIndex > 2) this.mainMenuLayer.activate();
     },
    
     _end: 0

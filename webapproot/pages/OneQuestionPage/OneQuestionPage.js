@@ -48,13 +48,8 @@ dojo.declare("OneQuestionPage", wm.Page, {
       } else if (data.answer.match(/Back to previous question/)) {
            this.priorQuestion(); */
       } else if (app.historyVar.getItem(app.historyVar.getCount()-1).getValue("question") == this.cameraQuestion.getValue("question")) {
-            if (data.answer == this.cameraQuestion.getValue("responses").getItem(0).getValue("answer")) {
-                if (window["PhoneGap"]) {
-                    this.cameraSVar.update();
-                } else {
-                    this.cameraSVar.setValue('dataValue', "sample image");
-                    this.cameraSVarSuccess(this.cameraSVar);
-                }
+            if (window["PhoneGap"] && data.answer == this.cameraQuestion.getValue("responses").getItem(0).getValue("answer")) {                
+                    this.cameraSVar.update();            
             } else {
                 this.questionsDone();                
                 this.showInputPanel();
@@ -158,9 +153,9 @@ updateAnswerList: function() {
         inRow.customClasses += " AnswerRow";
     }
    },
-  responseListStyleRow: function(inSender, inRow/* inRow.customClasses += " myClass"; inRow.customStyles += ";background-color:red"; */, rowData) {
-      inRow.customClasses += " wmbutton";
-    },
+ // responseListStyleRow: function(inSender, inRow/* inRow.customClasses += " myClass"; inRow.customStyles += ";background-color:red"; */, rowData) {
+ //     inRow.customClasses += " wmbutton";
+ //   },
     questionsDone: function() {
         app.announcePath();
         var actionCode ;

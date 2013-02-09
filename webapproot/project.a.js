@@ -1049,7 +1049,7 @@ dojo.declare("GenusHealthClient", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha35", 
+	"projectSubVersion": "Alpha36", 
 	"projectVersion": 1, 
 	"sessionExpirationHandler": "nothing", 
 	"showIOSPhoneGapBackButton": false, 
@@ -1379,4 +1379,122 @@ height: 100%;\
 position: relative;\
 top: 12px;\
 }\
+html.WMApp body .SubmitButton {\
+background-color: #0498D8;\
+color: #FEFFFF;\
+background: -webkit-gradient(linear, center top, center bottom, from(#0974BF), color-stop(25%,#0498D8), color-stop(75%,#0498D8), to(#0974BF));\
+background: -moz-linear-gradient(top, #0974BF 0%,#0fa1e7 25%,#0498D8 75%,#0974BF 100%);\
+background: -o-linear-gradient(top, #0974BF 0%,#0fa1e7 25%,#0498D8 75%,#0974BF 100%);\
+background: -ms-linear-gradient(top, #0974BF 0%,#0fa1e7 25%,#0498D8 75%,#0974BF 100%);\
+}\
 ';
+if (wm.Splitter) {
+wm.Splitter.extend({
+mousedown: function(e) {
+        this.sizeControl = this.getSizeControl();
+        if (!this.sizeControl)
+            return;
+        var otherControl = this.sizeControl.getIndexInParent() > this.getIndexInParent() ? this.sizeControl.parent.c$[this.sizeControl.getIndexInParent()-2] : this.sizeControl.parent.c$[this.sizeControl.getIndexInParent()+2];
+        //this.size = dojo._getMarginBox(this.sizeNode);
+        //this.containerSize = dojo._getContentBox(this.sizeNode.parentNode);
+        this.size = this.sizeControl.cloneBounds();
+        this.containerSize = this.sizeControl.parent.cloneBounds();
+        this.initialPosition = this.getPosition();
+        this.position = this.getPosition();
+        wm.Splitter.resizer.beginResize(e, this);
+
+        switch (this.layout) {
+            case "top":
+            case "bottom":
+                this._boundsMax = this.sizeControl.parent.bounds.h - otherControl.getPreferredFitToContentHeight() + this.sizeControl.bounds.h;
+                this._boundsMin = this.sizeControl.getPreferredFitToContentHeight ? this.sizeControl.getPreferredFitToContentHeight() : this.sizeControl.getMinHeightProp();
+
+                break;
+            case "left":
+            case "right":
+                this._boundsMax = this.sizeControl.parent.bounds.w - otherControl.getPreferredFitToContentWidth() + this.sizeControl.bounds.w;
+                this._boundsMin = this.sizeControl.getPreferredFitToContentWidth ? this.sizeControl.getPreferredFitToContentWidth() : this.sizeControl.getMinWidthProp();
+                break;
+        }
+    }
+});
+}
+wm.Application.extend({
+    doRun: function() {
+        if (wm.isPhonegap) {
+            if (!window["PhoneGap"] && !window["cordova"]) {
+                wm.job("doRun", 100, this, "doRun");
+                return;
+            }
+            /* IFrame added by phonegap build server seems to disrupt touch events */
+            if (document.body.nextSibling && document.body.nextSibling.tagName == "IFRAME") {
+                dojo.destroy(document.body.nextSibling);
+            }
+            dojo["require"]("build.Gzipped.wm_phonegap_misc", true);
+            dojo.forEach(wm.componentFixList._phonegap, function(fix) {
+                try {
+                    fix();
+                } catch(e){}
+            });
+        }
+
+    	/* Needs to be here rather than postInit because wm.ServiceVariable not loaded in phonegap build until this point */
+		if (!this._isDesignLoaded) {
+
+            if (wm.serverTimeOffset === undefined) {
+                this.getServerTimeOffset();
+            } else {
+                wm.currentTimeZone = new Date().getTimezoneOffset();
+            }
+            window.setInterval(dojo.hitch(this, "_pollForTimezoneChange"), 10000); //3600000); // once per hour check to see if the timezone has changed
+        }
+
+        this.createPageContainer();
+        this.domNode = this.appRoot.domNode;
+        this.reflow();
+
+        /* Load all app-level components from project.js */
+        this.loadComponents(this.constructor.widgets || this.widgets);
+
+
+        if (!this.debugDialog) {
+            if (this._overrideDebugDialog !== undefined) {
+                if (this._overrideDebugDialog) this.createDebugDialog();
+            } else if (djConfig.isDebug && (wm.device != "phone" || wm.isFakeMobile)) {
+                this.createDebugDialog();
+            }
+        }
+
+        if (!wm.isPhonegap) {
+            this.pageDialog = new wm.PageDialog({
+                name: "pageDialog",
+                owner: this
+            });
+        }
+
+
+        /* WM-2794: ENTER key in a text input causes focus to move to first button and fire it; make sure its a button that does nothing; only certain this is an issue in IE 8 */
+        if (dojo.isIE <= 8) {
+            var button = document.createElement("BUTTON");
+            button.style.width = "1px";
+            button.style.height = "1px";
+            this.domNode.appendChild(button);
+        }
+        var main;
+        if (wm.device == "tablet") {
+            main = this.tabletMain;
+        } else if (wm.device == "phone") {
+            main = this.phoneMain;
+        }
+        if (!main) {
+            main = this.main;
+        }
+        this.pageContainer._initialPageName = main;
+        if (window["PhoneGap"] && this.isSecurityEnabled && this.isLoginPageEnabled && this.phoneGapLoginPage) {
+            this.loadPage(this.phoneGapLoginPage);
+        } else {
+            this.loadPage(main);
+        }
+        this.hideLoadingIndicator();
+    }
+});

@@ -27,9 +27,13 @@ Main.widgets = {
 				}]
 			}]
 		}],
-		layers1: ["wm.Layers", {"defaultLayer":1,"styles":{"backgroundColor":"","backgroundImage":"url(resources/images/pattern.png)","backgroundRepeat":"repeat"}}, {"onchange":"layers1Change"}, {
+		layers1: ["wm.Layers", {"defaultLayer":0,"styles":{"backgroundColor":"","backgroundImage":"url(resources/images/pattern.png)","backgroundRepeat":"repeat"}}, {"onchange":"layers1Change"}, {
+			emptyLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}],
 			loginLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}, {
 				pageContainer2: ["wm.PageContainer", {"deferLoad":true,"pageName":"LoginPage","subpageEventlist":{"onParseLoginSVarSuccess":"parseLoginSVar.onSuccess"},"subpageMethodlist":{},"subpageProplist":{}}, {"onParseLoginSVarSuccess":"mainMenuLayer"}]
+			}],
+			licenseLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}, {
+				pageContainer7: ["wm.PageContainer", {"deferLoad":true,"pageName":"LicensePage","subpageEventlist":{"onAgreeButtonClick":"agreeButton.onclick"},"subpageMethodlist":{},"subpageProplist":{}}, {"onAgreeButtonClick":"mainMenuLayer"}]
 			}],
 			mainMenuLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}, {
 				mainMenuList: ["wm.List", {"_classes":{"domNode":["MobileListStyle","ButtonList"]},"border":"0","columns":[{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","editorProps":{"restrictValues":true},"expression":"\"<div class='MobileRowTitle'>Name: \" + ${name} + \"</div>\"\n","mobileColumn":false},{"show":false,"field":"nodegroupId","title":"NodegroupId","width":"80px","align":"left","formatFunc":"","mobileColumn":false},{"show":true,"field":"name","title":"Name","width":"100%","align":"left","formatFunc":"","mobileColumn":false},{"show":false,"field":"status","title":"Status","width":"80px","align":"left","formatFunc":"","mobileColumn":false},{"show":false,"field":"rootNodeId","title":"RootNodeId","width":"80px","displayType":"Number","align":"left","formatFunc":""}],"headerVisible":false,"height":"100%","isNavigationMenu":true,"margin":"10","minDesktopHeight":60,"padding":"4","styleAsGrid":false,"styles":{"backgroundGradient":""}}, {"onSelect":"mainMenuListSelect"}, {

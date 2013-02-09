@@ -10,7 +10,7 @@ dojo.declare("GenusHealthClient", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha36", 
+	"projectSubVersion": "Alpha37", 
 	"projectVersion": 1, 
 	"sessionExpirationHandler": "nothing", 
 	"showIOSPhoneGapBackButton": false, 
