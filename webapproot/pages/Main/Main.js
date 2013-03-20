@@ -29,7 +29,7 @@ restoreLoginSession: function() {
       if (page) page.showRegistrationForm();
     },
 */
-backButtonClick: function(inSender) {
+    backButtonClick: function(inSender) {
       if (this.diagnosisLayer.isActive() || this.endLayer.isActive()) {
           app.historyVar.clearData();
           this.mainMenuLayer.activate();
@@ -97,5 +97,12 @@ backButtonClick: function(inSender) {
         if (this.layers1.layerIndex > 2) this.mainMenuLayer.activate();
     },
    
-    _end: 0
+    mainMenuLayerShow: function(inSender) {
+        if (!wm.isPhonegap && !this._addToHomeCalled) {         
+            addToHome.reset();
+            addToHome.show(); // if needed, show the prompt to add to home page for IOS users; http://cubiq.org/add-to-home-screen
+            this._addToHomeCalled = true;
+        }
+	},
+	_end: 0
 });

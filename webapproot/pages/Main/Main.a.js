@@ -92,6 +92,13 @@ this.loginLayer.update();
 }*/
 if (this.layers1.layerIndex > 2) this.mainMenuLayer.activate();
 },
+mainMenuLayerShow: function(inSender) {
+if (!wm.isPhonegap && !this._addToHomeCalled) {
+addToHome.reset();
+addToHome.show(); // if needed, show the prompt to add to home page for IOS users; http://cubiq.org/add-to-home-screen
+this._addToHomeCalled = true;
+}
+},
 _end: 0
 });
 
@@ -132,7 +139,7 @@ pageContainer2: ["wm.PageContainer", {"deferLoad":true,"pageName":"LoginPage","s
 licenseLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}, {
 pageContainer7: ["wm.PageContainer", {"deferLoad":true,"pageName":"LicensePage","subpageEventlist":{"onAgreeButtonClick":"agreeButton.onclick"},"subpageMethodlist":{},"subpageProplist":{}}, {"onAgreeButtonClick":"mainMenuLayer"}]
 }],
-mainMenuLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {}, {
+mainMenuLayer: ["wm.Layer", {"borderColor":"","caption":"layer1","horizontalAlign":"left","themeStyleType":"","verticalAlign":"top"}, {"onShow":"mainMenuLayerShow"}, {
 mainMenuList: ["wm.List", {"_classes":{"domNode":["MobileListStyle","ButtonList"]},"border":"0","columns":[{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","editorProps":{"restrictValues":true},"expression":"\"<div class='MobileRowTitle'>Name: \" + ${name} + \"</div>\"\n","mobileColumn":false},{"show":false,"field":"nodegroupId","title":"NodegroupId","width":"80px","align":"left","formatFunc":"","mobileColumn":false},{"show":true,"field":"name","title":"Name","width":"100%","align":"left","formatFunc":"","mobileColumn":false},{"show":false,"field":"status","title":"Status","width":"80px","align":"left","formatFunc":"","mobileColumn":false},{"show":false,"field":"rootNodeId","title":"RootNodeId","width":"80px","displayType":"Number","align":"left","formatFunc":""}],"headerVisible":false,"height":"100%","isNavigationMenu":true,"margin":"10","minDesktopHeight":60,"padding":"4","styleAsGrid":false,"styles":{"backgroundGradient":""}}, {"onSelect":"mainMenuListSelect"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"getConditionsQuerySVar","targetProperty":"dataSet"}, {}]
