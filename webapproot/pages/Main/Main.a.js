@@ -94,7 +94,6 @@ if (this.layers1.layerIndex > 2) this.mainMenuLayer.activate();
 },
 mainMenuLayerShow: function(inSender) {
 if (!wm.isPhonegap && !this._addToHomeCalled) {
-addToHome.reset();
 addToHome.show(); // if needed, show the prompt to add to home page for IOS users; http://cubiq.org/add-to-home-screen
 this._addToHomeCalled = true;
 }
