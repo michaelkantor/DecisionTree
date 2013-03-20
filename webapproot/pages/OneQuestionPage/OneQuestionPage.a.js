@@ -41,7 +41,7 @@ this.nextQuestion(data,nextHistoryItem);*/
 } else if (data.answer.match(/Back to previous question/)) {
 this.priorQuestion(); */
 } else if (app.historyVar.getItem(app.historyVar.getCount()-1).getValue("question") == this.cameraQuestion.getValue("question")) {
-if (window["PhoneGap"] && data.answer == this.cameraQuestion.getValue("responses").getItem(0).getValue("answer")) {
+if (wm.isPhonegap && data.answer == this.cameraQuestion.getValue("responses").getItem(0).getValue("answer")) {
 this.cameraSVar.update();
 } else {
 this.questionsDone();
@@ -65,12 +65,14 @@ this.updateAnswerList();
 nextQuestion: function(questionItem) {
 this.updateScrollTop();
 this.currentQuestionVar.setData(questionItem);
-this.currentQuestionVar.setData(questionItem);
 this.updateAnswerList();
 this.updateScrollTop();
 },
 updateAnswerList: function() {
+dojo.removeClass(this.responseList.domNode, "fadeInAnim");
+this.responseList.domNode.style.opacity = 0.1;
 this.responseList.setDataSet(this.currentQuestionVar.getValue("responses"));
+dojo.addClass(this.responseList.domNode, "fadeInAnim");
 this.createMessageLVar.sourceData.setData({
 messageId: 0,
 sender: "autodoctor",

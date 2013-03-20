@@ -59,7 +59,10 @@ this.diagnosisPanel.domNode.scrollTop = 0;
 mainMenuListSelect: function(inSender, inItem) {
 var json;
 this._disposition = inSender.selectedItem.getValue("name");
-if (wm.isPhonegap) {
+/* TODO: Need to figure out how to bundle this data with phonegap builds.  Until then, just
+* assume they have a network connection.
+*/
+if (wm.isPhonegap && false) {
 json = wm.load("resources/data/" + inSender.selectedItem.getValue("dataValue") + ".js");
 this.showQuestions(dojo.fromJson(json));
 } else {

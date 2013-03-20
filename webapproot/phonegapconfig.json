@@ -1,13 +1,15 @@
 {
 	"xhrpaths": [
 		"http://genushealth.cloudfoundry.com", 
+		"http://192.168.19.121:8094/GenusHealthClient", 
 		"http://10.0.1.5:8094/DecisionTree", 
 		"http://10.0.1.5:8080/DecisionTree", 
-		"http://DecisionTree.cloudfoundry.com"
+		"http://DecisionTree.cloudfoundry.com", 
+		"http://GenusHealthClient.cloudfoundry.com"
 	], 
 	"appName": "Genus Health", 
 	"appId": "KWR92347HU", 
-	"appVersion": "1.26", 
+	"appVersion": "1.40", 
 	"xhrPath": "http://genushealth.cloudfoundry.com", 
 	"iosIconListVar": [
 		{
