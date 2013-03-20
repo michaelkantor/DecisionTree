@@ -58,8 +58,8 @@ this.showInputPanel();
 }
 },
 priorQuestion: function() {
-app.historyVar.removeItem(app.historyVar.getCount()-1);
 this.currentQuestionVar.setData(app.historyVar.getItem(app.historyVar.getCount()-1));
+app.historyVar.removeItem(app.historyVar.getCount()-1);
 this.updateAnswerList();
 },
 nextQuestion: function(questionItem) {
@@ -162,6 +162,14 @@ this.addMessagesToSessionSVar.update();
 updateSessionSVarSuccess: function(inSender, inDeprecated) {
 this.createSessionSVarSuccess(inSender, inDeprecated);
 },*/
+backButtonClick: function() {
+if (app.historyVar.getCount() > 0) {
+this.priorQuestion();
+return true;
+} else {
+return false;
+}
+},
 _end: 0
 });
 

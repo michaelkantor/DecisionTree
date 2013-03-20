@@ -1143,6 +1143,16 @@ dojo.declare("GenusHealthClient", wm.Application, {
 
 GenusHealthClient.extend({
     isTestVersion: true,
+    /* Build in support for Android back button */
+    _onBack: function(inEvent) {
+        /* onBack is called as a result of loading the page as well as from hitting the back button */
+        if (this._initializingBack) {
+            delete this._initializingBack;
+            return;
+        }
+        this.history = [];
+        main.backButtonClick();
+    },
      announcePath: function() {
          main.diagnosisLayer.activate();
          return;

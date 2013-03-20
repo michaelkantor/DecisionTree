@@ -2,11 +2,11 @@ dojo.declare("Main", wm.Page, {
 	"preferredDevice": "phone",
     
     start: function() {
-            if (wm.device == "desktop") {
-               window.location.search = djConfig.isDebug ? "?debug&wmmobile=tablet" : "?wmmobile=tablet";
-            } else {
-                this.showLicenseOrMainMenu();
-            }
+        if (wm.device == "desktop") {
+           window.location.search = djConfig.isDebug ? "?debug&wmmobile=tablet" : "?wmmobile=tablet";
+        } else {
+            this.showLicenseOrMainMenu();
+        }
     },
     showLicenseOrMainMenu: function() {
         if (dojo.cookie("licenseAgreed")) {
@@ -30,14 +30,32 @@ restoreLoginSession: function() {
     },
 */
     backButtonClick: function(inSender) {
-      if (this.diagnosisLayer.isActive() || this.endLayer.isActive()) {
-          app.historyVar.clearData();
-          this.mainMenuLayer.activate();
-       } else if (app.historyVar.getCount() > 1) {
-            this.questionsPageContainer.page.priorQuestion();
-       } else {
-            this.mainMenuLayer.activate();
-       }
+        var currentLayer = this.layers1.getActiveLayer();
+        var pageContainer = currentLayer.c$[0];        
+        if (pageContainer instanceof wm.PageContainer && pageContainer.page && 
+            pageContainer.page.backButtonClick && pageContainer.page.backButtonClick()) {
+            ;
+        } else {
+            switch(currentLayer.name) {
+                case "loginLayer":
+                    break;
+                case "licenseLayer":
+                    break;
+                case "mainMenuLayer":
+                    break;
+                case "questionsLayer":
+                    app.historyVar.clearData();
+                    this.mainMenuLayer.activate();
+                    break;
+                case "diagnosisLayer":
+                    app.historyVar.clearData();
+                    this.mainMenuLayer.activate();
+                    break;
+                case "feedbackLayer":
+                    this.diagnosisLayer.activate();
+                    break;
+            }
+        }      
     },
     layers1Change: function(inSender, inIndex) {
         this.backAndForthPanel.setShowing(inIndex > 3);

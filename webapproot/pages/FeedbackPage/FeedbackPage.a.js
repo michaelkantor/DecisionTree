@@ -36,6 +36,16 @@ var p = wm.getPage("OneQuestionPage");
 p.updateSessionLVar.sourceData.setValue("feedback", dojo.toJson(this.feedbackHistoryVar.getData()));
 p.updateSessionLVar.update();
 },
+backButtonClick: function() {
+if (this.feedbackquestionsLiveVariable1.cursor == 0) {
+return false;
+} else {
+this.feedbackquestionsLiveVariable1.setPrevious();
+this.currentQuestion.setData(this.feedbackquestionsLiveVariable1.getCursorItem().getData());
+this.feedbackHistoryVar.removeItem(this.feedbackquestionsLiveVariable1.cursor);
+return true;
+}
+},
 _end: 0
 });
 
