@@ -1,11 +1,9 @@
 dojo.declare("LicensePage", wm.Page, {
 start: function() {
-/* Button panel sometimes fails to layout on phonegap app */
-wm.job("ReflowLicensePage", 1000, this, function() {
-this.root.reflow();
-this.panel1.reflow();
-this.panel2.reflow();
-});
+        /* Button panel sometimes fails to layout on phonegap app */
+	    wm.job("FixLicenseButtons", 1000, this, function() {
+		this.panel2.setPadding("1");
+	    });
 },
 "preferredDevice": "phone",
 agreeButtonClick: function(inSender) {
