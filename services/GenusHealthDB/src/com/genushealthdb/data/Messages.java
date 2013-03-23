@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  *  GenusHealthDB.Messages
- *  12/26/2012 13:46:00
+ *  03/21/2013 17:01:30
  * 
  */
 public class Messages {
@@ -15,7 +15,8 @@ public class Messages {
     private String sender;
     private String text;
     private Date createdAt;
-    private Integer sessionId;
+    private Integer node_id;
+    private UserSessions userSessions;
 
     public Integer getMessageId() {
         return messageId;
@@ -49,12 +50,20 @@ public class Messages {
         this.createdAt = createdAt;
     }
 
-    public Integer getSessionId() {
-        return sessionId;
+    public Integer getNode_id() {
+        return node_id;
     }
 
-    public void setSessionId(Integer sessionId) {
-        this.sessionId = sessionId;
+    public void setNode_id(Integer node_id) {
+        this.node_id = node_id;
+    }
+
+    public UserSessions getUserSessions() {
+        return userSessions;
+    }
+
+    public void setUserSessions(UserSessions userSessions) {
+        this.userSessions = userSessions;
     }
 
 }

@@ -5,7 +5,7 @@ package com.genushealthdb;
 
 /**
  *  Query names for service "GenusHealthDB"
- *  12/26/2012 16:43:20
+ *  03/21/2013 17:05:58
  * 
  */
 public class GenusHealthDBConstants {

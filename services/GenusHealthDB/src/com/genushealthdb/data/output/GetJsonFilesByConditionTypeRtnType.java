@@ -4,7 +4,7 @@ package com.genushealthdb.data.output;
 
 
 /**
- * Generated for query "getJsonFilesByConditionType" on 12/26/2012 16:43:17
+ * Generated for query "getJsonFilesByConditionType" on 03/21/2013 17:01:32
  * 
  */
 public class GetJsonFilesByConditionTypeRtnType {
