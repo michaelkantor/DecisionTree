@@ -13,7 +13,6 @@ dojo.declare("OneQuestionPage", wm.Page, {
         this.currentQuestionVar.setData(app.decisionTreeVar);
         this.responseList.setDataSet(this.currentQuestionVar.getValue("responses"));
         this.createSessionLVar.update();
-        
     },
   responseListSelect: function(inSender, inItem) {
       var data = inSender.selectedItem.getData();     
@@ -34,7 +33,8 @@ dojo.declare("OneQuestionPage", wm.Page, {
           sender: "user", 
           text: data.answer,
           createdAt: new Date().getTime(),
-          userSessions: {sessionId: this.createSessionLVar.getValue("sessionId")}
+          userSessions: {sessionId: this.createSessionLVar.getValue("sessionId")},
+          node_id: data.nodeId
           });
       this.createMessageLVar.update();
 
@@ -49,8 +49,8 @@ dojo.declare("OneQuestionPage", wm.Page, {
       } else if (data.answer.match(/Back to previous question/)) {
            this.priorQuestion(); */
       } else if (app.historyVar.getItem(app.historyVar.getCount()-1).getValue("question") == this.cameraQuestion.getValue("question")) {
-            if (wm.isPhonegap && data.answer == this.cameraQuestion.getValue("responses").getItem(0).getValue("answer")) {                
-                    this.cameraSVar.update();            
+            if (wm.isPhonegap && data.answer == this.cameraQuestion.getValue("responses").getItem(0).getValue("answer")) {                                
+                this.cameraSVar.update();            
             } else {
                 this.questionsDone();                
                 this.showInputPanel();
@@ -78,18 +78,19 @@ dojo.declare("OneQuestionPage", wm.Page, {
         this.updateScrollTop();
     },
     updateAnswerList: function() {
-        dojo.removeClass(this.responseList.domNode, "fadeInAnim");
-        this.responseList.domNode.style.opacity = 0.1;        
+        dojo.removeClass(this.responseListPanel.domNode, "fadeInAnim");
+        this.responseListPanel.domNode.style.opacity = 0.1;        
         this.responseList.setDataSet(this.currentQuestionVar.getValue("responses"));
         
-        dojo.addClass(this.responseList.domNode, "fadeInAnim");
+        dojo.addClass(this.responseListPanel.domNode, "fadeInAnim");
      
      this.createMessageLVar.sourceData.setData({
           messageId: 0,
           sender: "autodoctor", 
           text: this.currentQuestionVar.getValue("question"),
           createdAt: new Date().getTime(),
-          userSessions: {sessionId: this.createSessionLVar.getValue("sessionId")}
+          userSessions: {sessionId: this.createSessionLVar.getValue("sessionId")},
+          node_id: this.currentQuestionVar.getValue("nodeId")
       });
       this.createMessageLVar.update();
 
@@ -187,5 +188,16 @@ dojo.declare("OneQuestionPage", wm.Page, {
            return false;
        }                
     },
+	createSessionLVarSuccess: function(inSender, inDeprecated) {
+		this.createMessageLVar.sourceData.setData({
+              messageId: 0,
+              sender: "autodoctor", 
+              text: app.decisionTreeVar.getValue("question"),
+              createdAt: new Date().getTime(),
+              userSessions: {sessionId: this.createSessionLVar.getValue("sessionId")},
+              node_id: app.decisionTreeVar.getValue("nodeId")
+        });
+      this.createMessageLVar.update();
+	},
 	_end: 0
 });     
