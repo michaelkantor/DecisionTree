@@ -85,15 +85,15 @@ wire: ["wm.Wire", {"expression":undefined,"source":"currentQuestion.question","t
 }]
 }]
 }],
-responseListPanel: ["wm.Panel", {"autoScroll":true,"fitToContentHeight":true,"height":"89px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"bottom","width":"100%"}, {}, {
+responseListPanel: ["wm.Panel", {"autoScroll":true,"fitToContentHeight":true,"height":"97px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"bottom","width":"100%"}, {}, {
 responseList: ["wm.List", {"_classes":{"domNode":["AnswersMenu","MobileListStyle","ButtonList","responseList"]},"autoSizeHeight":true,"border":"1","borderColor":"#cccccc","columns":[{"show":true,"field":"answer","title":"Answer","width":"100%","mobileColumn":false},{"show":false,"field":"MOBILE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>Answer: \" + ${answer} + \"</div>\"\n","isCustomField":true,"mobileColumn":false},{"show":false,"field":"PHONE COLUMN","title":"-","width":"100%","align":"left","expression":"\"<div class='MobileRowTitle'>Answer: \" + ${answer} + \"</div>\"\n","mobileColumn":false},{"show":false,"field":"feedbackresponseid","title":"Feedbackresponseid","width":"80px","displayType":"Number","align":"left","formatFunc":""}],"headerVisible":false,"height":"20px","margin":"0,0,6,0","minDesktopHeight":60,"padding":"5,10,5,10","renderVisibleRowsOnly":false,"styleAsGrid":false,"styles":{"backgroundGradient":""}}, {"onSelect":"responseListSelect","onStyleRow":"responseListStyleRow"}, {
 binding: ["wm.Binding", {}, {}, {
 wire: ["wm.Wire", {"expression":undefined,"source":"feedbackresponsesLiveVariable1","targetProperty":"dataSet"}, {}]
 }]
 }],
-picture2Panel: ["wm.Panel", {"_classes":{"domNode":["OverflowNotHidden"]},"height":"87px","horizontalAlign":"left","verticalAlign":"top","width":"64px"}, {}, {
+picture2Panel: ["wm.Panel", {"_classes":{"domNode":["OverflowNotHidden"]},"height":"95px","horizontalAlign":"left","verticalAlign":"top","width":"72px"}, {}, {
 picture4: ["wm.Picture", {"_classes":{"domNode":["OverflowNotHidden","ShiftLeft"]},"height":"21px","source":"resources/images/bubblearrowright.png","width":"21px"}, {}],
-picture2: ["wm.Picture", {"height":"64px","source":"resources/images/patientcircle.png","width":"100%"}, {}]
+picture2: ["wm.Picture", {"height":"72px","source":"resources/images/patientcircle.png","width":"100%"}, {}]
 }]
 }]
 }]
