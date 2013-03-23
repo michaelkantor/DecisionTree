@@ -562,6 +562,16 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.Integer"
 				},
+				"node_id": {
+					"exclude": [],
+					"fieldOrder": 4,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.Integer"
+				},
 				"sender": {
 					"exclude": [],
 					"fieldOrder": 1,
@@ -572,16 +582,6 @@ wm.types = {
 					"required": true,
 					"type": "java.lang.String"
 				},
-				"sessionId": {
-					"exclude": [],
-					"fieldOrder": 4,
-					"fieldSubType": null,
-					"include": [],
-					"isList": false,
-					"noChange": [],
-					"required": true,
-					"type": "java.lang.Integer"
-				},
 				"text": {
 					"exclude": [],
 					"fieldOrder": 2,
@@ -591,6 +591,16 @@ wm.types = {
 					"noChange": [],
 					"required": false,
 					"type": "java.lang.String"
+				},
+				"userSessions": {
+					"exclude": [],
+					"fieldOrder": 5,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "com.genushealthdb.data.UserSessions"
 				}
 			},
 			"internal": false,
@@ -753,6 +763,16 @@ wm.types = {
 					"required": false,
 					"type": "java.lang.String"
 				},
+				"messagess": {
+					"exclude": [],
+					"fieldOrder": 9,
+					"fieldSubType": null,
+					"include": [],
+					"isList": true,
+					"noChange": [],
+					"required": false,
+					"type": "com.genushealthdb.data.Messages"
+				},
 				"modelDiagnosis": {
 					"exclude": [],
 					"fieldOrder": 2,
@@ -765,7 +785,7 @@ wm.types = {
 				},
 				"node": {
 					"exclude": [],
-					"fieldOrder": 7,
+					"fieldOrder": 8,
 					"fieldSubType": null,
 					"include": [],
 					"isList": false,
@@ -802,6 +822,16 @@ wm.types = {
 					"noChange": [],
 					"required": true,
 					"type": "java.util.Date"
+				},
+				"version": {
+					"exclude": [],
+					"fieldOrder": 7,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": false,
+					"type": "java.lang.String"
 				}
 			},
 			"internal": false,
@@ -1049,11 +1079,11 @@ dojo.declare("GenusHealthClient", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": "Alpha40", 
+	"projectSubVersion": "Alpha47", 
 	"projectVersion": 1, 
 	"sessionExpirationHandler": "nothing", 
 	"showIOSPhoneGapBackButton": false, 
-	"studioVersion": "6.5.2.Release", 
+	"studioVersion": "6.5.3.Release", 
 	"tabletMain": "", 
 	"theme": "wm_default", 
 	"toastPosition": "br", 
@@ -1136,10 +1166,15 @@ dojo.declare("GenusHealthClient", wm.Application, {
 			liveView: ["wm.LiveView", {"dataType":"com.genushealthdb.data.Dispositions","view":[{"caption":"DispositionId","sortable":true,"dataIndex":"dispositionId","type":"java.lang.Integer","displayType":"Number","required":true,"readonly":true,"includeLists":true,"includeForms":true,"order":0,"subType":null},{"caption":"Name","sortable":true,"dataIndex":"name","type":"java.lang.String","displayType":"Text","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":1,"subType":null},{"caption":"Text","sortable":true,"dataIndex":"text","type":"java.sql.Clob","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":2,"subType":null},{"caption":"CreatedAt","sortable":true,"dataIndex":"createdAt","type":"java.util.Date","displayType":"Date","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":3,"subType":null},{"caption":"ModifiedAt","sortable":true,"dataIndex":"modifiedAt","type":"java.util.Date","displayType":"Date","required":true,"readonly":false,"includeLists":true,"includeForms":true,"order":4,"subType":null},{"caption":"DisplayName","sortable":true,"dataIndex":"displayName","type":"java.lang.String","displayType":"Text","required":false,"readonly":false,"includeLists":true,"includeForms":true,"order":5,"subType":null}]}, {}]
 		}], 
 		historyVar: ["wm.Variable", {"isList":true,"type":"QueryResponse"}, {}], 
-		phonegapCredentialsVar: ["wm.Variable", {"saveInPhonegap":true,"type":"EntryData"}, {}]
+		phonegapCredentialsVar: ["wm.Variable", {"saveInPhonegap":true,"type":"EntryData"}, {}], 
+		versionVar: ["wm.Variable", {"json":"{\"dataValue\":\"0.9\"}","type":"StringData"}, {}]
 	},
 	_end: 0
 });
+
+/* ON DATABASE REIMPORT:
+ * Messages table; sessionId needs a relationship to userSessions called "userSessions"
+ */
 
 GenusHealthClient.extend({
     isTestVersion: true,
@@ -1398,37 +1433,7 @@ background: -o-linear-gradient(top, #0974BF 0%,#0fa1e7 25%,#0498D8 75%,#0974BF 1
 background: -ms-linear-gradient(top, #0974BF 0%,#0fa1e7 25%,#0498D8 75%,#0974BF 100%);\
 }\
 ';
-if (wm.Splitter) {
-wm.Splitter.extend({
-mousedown: function(e) {
-        this.sizeControl = this.getSizeControl();
-        if (!this.sizeControl)
-            return;
-        var otherControl = this.sizeControl.getIndexInParent() > this.getIndexInParent() ? this.sizeControl.parent.c$[this.sizeControl.getIndexInParent()-2] : this.sizeControl.parent.c$[this.sizeControl.getIndexInParent()+2];
-        //this.size = dojo._getMarginBox(this.sizeNode);
-        //this.containerSize = dojo._getContentBox(this.sizeNode.parentNode);
-        this.size = this.sizeControl.cloneBounds();
-        this.containerSize = this.sizeControl.parent.cloneBounds();
-        this.initialPosition = this.getPosition();
-        this.position = this.getPosition();
-        wm.Splitter.resizer.beginResize(e, this);
 
-        switch (this.layout) {
-            case "top":
-            case "bottom":
-                this._boundsMax = this.sizeControl.parent.bounds.h - otherControl.getPreferredFitToContentHeight() + this.sizeControl.bounds.h;
-                this._boundsMin = this.sizeControl.getPreferredFitToContentHeight ? this.sizeControl.getPreferredFitToContentHeight() : this.sizeControl.getMinHeightProp();
-
-                break;
-            case "left":
-            case "right":
-                this._boundsMax = this.sizeControl.parent.bounds.w - otherControl.getPreferredFitToContentWidth() + this.sizeControl.bounds.w;
-                this._boundsMin = this.sizeControl.getPreferredFitToContentWidth ? this.sizeControl.getPreferredFitToContentWidth() : this.sizeControl.getMinWidthProp();
-                break;
-        }
-    }
-});
-}
 wm.Application.extend({
     doRun: function() {
         if (wm.isPhonegap) {
@@ -1436,6 +1441,7 @@ wm.Application.extend({
                 wm.job("doRun", 100, this, "doRun");
                 return;
             }
+            if (!window["PhoneGap"]) window["PhoneGap"] = true;
             /* IFrame added by phonegap build server seems to disrupt touch events */
             if (document.body.nextSibling && document.body.nextSibling.tagName == "IFRAME") {
                 dojo.destroy(document.body.nextSibling);
@@ -1444,29 +1450,24 @@ wm.Application.extend({
             dojo.forEach(wm.componentFixList._phonegap, function(fix) {
                 try {
                     fix();
-                } catch(e){}
+                } catch (e) {}
             });
         }
-
-    	/* Needs to be here rather than postInit because wm.ServiceVariable not loaded in phonegap build until this point */
-		if (!this._isDesignLoaded) {
-
+        /* Needs to be here rather than postInit because wm.ServiceVariable not loaded in phonegap build until this point */
+        if (!this._isDesignLoaded) {
             if (wm.serverTimeOffset === undefined) {
                 this.getServerTimeOffset();
             } else {
-                wm.currentTimeZone = new Date().getTimezoneOffset();
+                wm.currentTimeZone = new Date()
+                    .getTimezoneOffset();
             }
             window.setInterval(dojo.hitch(this, "_pollForTimezoneChange"), 10000); //3600000); // once per hour check to see if the timezone has changed
         }
-
         this.createPageContainer();
         this.domNode = this.appRoot.domNode;
         this.reflow();
-
         /* Load all app-level components from project.js */
         this.loadComponents(this.constructor.widgets || this.widgets);
-
-
         if (!this.debugDialog) {
             if (this._overrideDebugDialog !== undefined) {
                 if (this._overrideDebugDialog) this.createDebugDialog();
@@ -1474,16 +1475,12 @@ wm.Application.extend({
                 this.createDebugDialog();
             }
         }
-
         if (!wm.isPhonegap) {
             this.pageDialog = new wm.PageDialog({
                 name: "pageDialog",
                 owner: this
             });
         }
-
-
-        /* WM-2794: ENTER key in a text input causes focus to move to first button and fire it; make sure its a button that does nothing; only certain this is an issue in IE 8 */
         if (dojo.isIE <= 8) {
             var button = document.createElement("BUTTON");
             button.style.width = "1px";

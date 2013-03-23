@@ -117,7 +117,8 @@
             <element name="sender" typeRef="java.lang.String" isList="false" allowNull="false"/>
             <element name="text" typeRef="java.lang.String" isList="false" allowNull="true"/>
             <element name="createdAt" typeRef="java.util.Date" isList="false" allowNull="false"/>
-            <element name="sessionId" typeRef="java.lang.Integer" isList="false" allowNull="false"/>
+            <element name="node_id" typeRef="java.lang.Integer" isList="false" allowNull="true"/>
+            <element name="userSessions" typeRef="com.genushealthdb.data.UserSessions" isList="false" allowNull="false"/>
         </dataobject>
         <dataobject javaType="com.genushealthdb.data.Node" supportsQuickData="true">
             <element name="nodeId" typeRef="java.lang.Integer" isList="false" allowNull="false">
@@ -166,7 +167,9 @@
             <element name="createdAt" typeRef="java.util.Date" isList="false" allowNull="true"/>
             <element name="updatedAt" typeRef="java.util.Date" isList="false" allowNull="false"/>
             <element name="feedback" typeRef="java.lang.String" isList="false" allowNull="true"/>
+            <element name="version" typeRef="java.lang.String" isList="false" allowNull="true"/>
             <element name="node" typeRef="com.genushealthdb.data.Node" isList="false" allowNull="true"/>
+            <element name="messagess" typeRef="com.genushealthdb.data.Messages" isList="true" allowNull="true"/>
         </dataobject>
         <dataobject javaType="com.genushealthdb.data.output.GroupByDiagnosisRtnType" supportsQuickData="false">
             <element name="modelDiagnosis" typeRef="java.lang.String" isList="false" allowNull="false"/>
